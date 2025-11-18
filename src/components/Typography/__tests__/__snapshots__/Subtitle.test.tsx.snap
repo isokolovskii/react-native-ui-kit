@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Subtitle component tests base = false, color = default 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#181a1f",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = false, color = primary 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#44e858",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = false, color = secondary 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#85888e",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = false, color = undefined 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#181a1f",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = true, color = default 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#181a1f",
+      },
+      {
+        "fontFamily": "PT Sans",
+        "fontSize": 14,
+      },
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = true, color = primary 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#44e858",
+      },
+      {
+        "fontFamily": "PT Sans",
+        "fontSize": 14,
+      },
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = true, color = secondary 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#85888e",
+      },
+      {
+        "fontFamily": "PT Sans",
+        "fontSize": 14,
+      },
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = true, color = undefined 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#181a1f",
+      },
+      {
+        "fontFamily": "PT Sans",
+        "fontSize": 14,
+      },
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = undefined, color = default 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#181a1f",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = undefined, color = primary 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#44e858",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = undefined, color = secondary 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#85888e",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;
+
+exports[`Subtitle component tests base = undefined, color = undefined 1`] = `
+<Text
+  style={
+    [
+      {
+        "fontFamily": "TT Fellows",
+        "fontSize": 12.25,
+        "fontWeight": 700,
+        "textTransform": "uppercase",
+      },
+      {
+        "color": "#181a1f",
+      },
+      false,
+      {
+        "margin": 10,
+      },
+    ]
+  }
+>
+  Text
+</Text>
+`;

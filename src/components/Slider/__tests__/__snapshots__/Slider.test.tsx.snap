@@ -1,0 +1,1155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider snapshots default 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      false,
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 0,
+            "width": 8.75,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 0,
+            "width": 8.75,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="auto"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Slider snapshots disabled = false, range = false 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      false,
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 0,
+            "width": 8.75,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 0,
+            "width": 8.75,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="auto"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Slider snapshots disabled = false, range = true 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      false,
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 8.75,
+            "width": 0,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 8.75,
+            "width": 0,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="auto"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="auto"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Slider snapshots disabled = false, range = true, maxPointerValueInit = 80 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      false,
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 8.75,
+            "width": 0,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 8.75,
+            "width": 0,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="auto"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="auto"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Slider snapshots disabled = true, range = false 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      {
+        "mixBlendMode": "luminosity",
+        "opacity": 0.6,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 0,
+            "width": 8.75,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 0,
+            "width": 8.75,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="none"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Slider snapshots disabled = true, range = true 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      {
+        "mixBlendMode": "luminosity",
+        "opacity": 0.6,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 8.75,
+            "width": 0,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 8.75,
+            "width": 0,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="none"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="none"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`Slider snapshots disabled = true, range = true, maxPointerValueInit = 80 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "width": "100%",
+      },
+      {
+        "mixBlendMode": "luminosity",
+        "opacity": 0.6,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#e2e2e4",
+        "borderRadius": 14,
+        "height": 3.5,
+        "justifyContent": "center",
+        "position": "relative",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "left": 8.75,
+            "width": 0,
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#2b2e33",
+              "borderRadius": 14,
+              "height": 3.5,
+              "position": "absolute",
+            },
+            false,
+          ],
+        ]
+      }
+      style={
+        [
+          {
+            "backgroundColor": "#2b2e33",
+            "borderRadius": 14,
+            "height": 3.5,
+            "position": "absolute",
+          },
+          false,
+          {
+            "left": 8.75,
+            "width": 0,
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="none"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <View
+      collapsable={false}
+      jestAnimatedProps={
+        {
+          "value": {},
+        }
+      }
+      jestAnimatedStyle={
+        {
+          "value": {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        }
+      }
+      jestInlineStyle={
+        [
+          [
+            {
+              "backgroundColor": "#ffffff",
+              "borderColor": "#2b2e33",
+              "borderRadius": 8.75,
+              "borderWidth": 3,
+              "height": 17.5,
+              "position": "absolute",
+              "width": 17.5,
+            },
+            false,
+          ],
+        ]
+      }
+      pointerEvents="none"
+      style={
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderColor": "#2b2e33",
+            "borderRadius": 8.75,
+            "borderWidth": 3,
+            "height": 17.5,
+            "position": "absolute",
+            "width": 17.5,
+          },
+          false,
+          {
+            "transform": [
+              {
+                "translateX": 0,
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;

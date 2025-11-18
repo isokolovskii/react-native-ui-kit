@@ -1,0 +1,32 @@
+import { Text, type TextProps } from 'react-native'
+
+import { makeStyles } from '../../utils/makeStyles'
+
+export interface TitleProps extends TextProps {
+  readonly level: 'd1' | 'd2' | 'd3' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+}
+
+export const Title = ({ level, style, ...other }: TitleProps) => {
+  const styles = useStyles()
+
+  return <Text style={[styles.text, styles[level], style]} {...other} />
+}
+
+const useStyles = makeStyles(({ theme, typography, fonts }) => ({
+  text: {
+    color: theme.General.textColor,
+    fontFamily: fonts.primary,
+    fontWeight: 700,
+    includeFontPadding: false,
+    verticalAlign: 'middle',
+  },
+  d1: { fontSize: typography.Size['text-6xl'] },
+  d2: { fontSize: typography.Size['text-5xl'] },
+  d3: { fontSize: typography.Size['text-4xl'] },
+  h1: { fontSize: typography.Size['text-3xl'] },
+  h2: { fontSize: typography.Size['text-2xl'] },
+  h3: { fontSize: typography.Size['text-xl'] },
+  h4: { fontSize: typography.Size['text-lg'] },
+  h5: { fontSize: typography.Size['text-base'] },
+  h6: { fontSize: typography.Size['text-sm'] },
+}))

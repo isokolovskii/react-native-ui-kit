@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputTextBase component functionality tests should pass args to custom render function correctly 1`] = `
+[
+  {
+    "editable": true,
+    "inputRef": {
+      "current": null,
+    },
+    "onBlur": [Function],
+    "onChangeText": [Function],
+    "onFocus": [Function],
+    "placeholder": undefined,
+    "placeholderTextColor": "#85888e",
+    "secureTextEntry": false,
+    "style": [
+      {
+        "borderRadius": 10.5,
+        "color": "#181a1f",
+        "flex": 1,
+        "fontFamily": "PT Sans",
+        "fontSize": 14,
+        "includeFontPadding": false,
+        "overflow": "hidden",
+        "paddingHorizontal": 10.5,
+        "verticalAlign": "middle",
+      },
+      false,
+      undefined,
+    ],
+    "testID": "InputTextBase",
+    "value": "",
+  },
+]
+`;

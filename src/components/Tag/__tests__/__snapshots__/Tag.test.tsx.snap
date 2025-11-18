@@ -1,0 +1,581 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag snapshot: default 1`] = `
+<View
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#44e858",
+        },
+        undefined,
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#000000",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tag snapshot: severity = basic, rounded = true, with Icon 1`] = `
+<View
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#44e858",
+        },
+        {
+          "borderRadius": 100,
+        },
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={12.25}
+      bbWidth={12.25}
+      fill="none"
+      focusable={false}
+      height={12.25}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      stroke="#000000"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 12,
+            "width": 12,
+          },
+        ]
+      }
+      testID="Tag.icon"
+      vbHeight={24}
+      vbWidth={24}
+      width={12.25}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth={2}
+      >
+        <RNSVGPath
+          d="M5 12l5 5l10 -10"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth={2}
+          testID="Tag.icon"
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#000000",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tag snapshot: severity = danger 1`] = `
+<View
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#fbacaa",
+        },
+        undefined,
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#45120e",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tag snapshot: severity = info, showIcon = false, with Icon 1`] = `
+<View
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#aad7fb",
+        },
+        undefined,
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={12.25}
+      bbWidth={12.25}
+      fill="none"
+      focusable={false}
+      height={12.25}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      stroke="#0e2a45"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 12,
+            "width": 12,
+          },
+        ]
+      }
+      testID="Tag.icon"
+      vbHeight={24}
+      vbWidth={24}
+      width={12.25}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4279118405,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth={2}
+      >
+        <RNSVGPath
+          d="M5 12l5 5l10 -10"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4279118405,
+              "type": 0,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth={2}
+          testID="Tag.icon"
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#0e2a45",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tag snapshot: severity = secondary, rounded = false, showIcon = true, with Icon 1`] = `
+<View
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#e2e2e4",
+        },
+        false,
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <RNSVGSvgView
+      align="xMidYMid"
+      bbHeight={12.25}
+      bbWidth={12.25}
+      fill="none"
+      focusable={false}
+      height={12.25}
+      meetOrSlice={0}
+      minX={0}
+      minY={0}
+      stroke="#000000"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+            "borderWidth": 0,
+          },
+          {
+            "flex": 0,
+            "height": 12,
+            "width": 12,
+          },
+        ]
+      }
+      testID="Tag.icon"
+      vbHeight={24}
+      vbWidth={24}
+      width={12.25}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <RNSVGGroup
+        fill={null}
+        propList={
+          [
+            "fill",
+            "stroke",
+            "strokeWidth",
+            "strokeLinecap",
+            "strokeLinejoin",
+          ]
+        }
+        stroke={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
+        strokeLinecap={1}
+        strokeLinejoin={1}
+        strokeWidth={2}
+      >
+        <RNSVGPath
+          d="M5 12l5 5l10 -10"
+          fill={null}
+          propList={
+            [
+              "fill",
+              "stroke",
+              "strokeWidth",
+              "strokeLinecap",
+              "strokeLinejoin",
+            ]
+          }
+          stroke={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          strokeLinecap={1}
+          strokeLinejoin={1}
+          strokeWidth={2}
+          testID="Tag.icon"
+        />
+      </RNSVGGroup>
+    </RNSVGSvgView>
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#000000",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tag snapshot: severity = success, with custom styles 1`] = `
+<View
+  style={
+    {
+      "margin": 10,
+    }
+  }
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#aafbb7",
+        },
+        undefined,
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#0e4514",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Tag snapshot: severity = warning 1`] = `
+<View
+  testID="Tag"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "flex-start",
+          "borderRadius": 7,
+          "flexDirection": "row",
+          "gap": 3.5,
+          "height": 21,
+          "paddingHorizontal": 7,
+        },
+        {
+          "backgroundColor": "#fddeaa",
+        },
+        undefined,
+      ]
+    }
+    testID="Tag.innerContainer"
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        [
+          {
+            "flexShrink": 1,
+            "fontFamily": "TT Fellows",
+            "fontSize": 10.5,
+            "includeFontPadding": false,
+            "verticalAlign": "middle",
+          },
+          {
+            "color": "#4f3709",
+          },
+        ]
+      }
+      testID="Tag.text"
+    >
+      Tag
+    </Text>
+  </View>
+</View>
+`;

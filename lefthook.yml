@@ -1,0 +1,83 @@
+assert_lefthook_installed: true
+colors: true
+
+output:
+  - success
+  - failure
+  - execution
+  - execution_out
+
+prepare-commit-msg:
+  parallel: false
+  commands:
+    validate-branch-name:
+      skip:
+        - merge
+        - rebase
+        - run: '[ -z "$TERM" ] || [ "$TERM" = "dumb" ]'
+      run: |
+        branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+        if [[ "$branch_name" == "HEAD" ]]; then
+          echo "⚠️ Репозиторий пуст или вы делаете первый коммит без ветки. Пропускаем проверку имени ветки."
+          exit 0
+        fi
+
+        if echo "$branch_name" | grep -Eq '^(main|master|develop)$'; then
+          echo "✅ Имя ветки корректно: $branch_name"
+        elif echo "$branch_name" | grep -Eq '^release/[0-9]+\.[0-9]+\.[0-9]+$'; then
+          echo "✅ Имя ветки корректно: $branch_name"
+        elif echo "$branch_name" | grep -Eq '^(feature|hotfix|fix)/[A-Z]+-[0-9]+'; then
+          echo "✅ Имя ветки корректно: $branch_name"
+        elif echo "$branch_name" | grep -Eq '^(feature|hotfix|fix)/[^/]+$'; then
+          echo "⚠️ Ветка $branch_name не содержит номера задачи. Если ветка имеет соответствующую задачу то следует указать её в названии ветки (например: feature/TASK-1-description)"
+        else
+          echo "❌ Ошибка!\nНекорректное имя ветки: $branch_name\nВетка может иметь следующие названия:\n  - main\n  - master\n  - develop\n  - release/major.minor.patch (например: release/1.5.2)\n  - feature/название ветки\n  - fix/название ветки\n  - hotfix/название ветки"
+          exit 1
+        fi
+    commitizen:
+      interactive: true
+      skip:
+        - merge
+        - rebase
+        - run: '[ -z "$TERM" ] || [ "$TERM" = "dumb" ]'
+      run: npx cz --hook
+      env:
+        LEFTHOOK: '0'
+commit-msg:
+  parallel: false
+  commands:
+    commitlint:
+      skip:
+        - merge
+        - rebase
+      run: yarn run commitlint --edit {1}
+
+pre-push:
+  parallel: true
+  commands:
+    validate-branch-name:
+      run: |
+        branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+
+        if [[ "$branch_name" == "HEAD" ]]; then
+          echo "⚠️ Репозиторий пуст или вы делаете первый коммит без ветки. Пропускаем проверку имени ветки."
+          exit 0
+        fi
+
+        if echo "$branch_name" | grep -Eq '^(main|master|develop)$'; then
+          echo "✅ Имя ветки корректно: $branch_name"
+        elif echo "$branch_name" | grep -Eq '^release/[0-9]+\.[0-9]+\.[0-9]+$'; then
+          echo "✅ Имя ветки корректно: $branch_name"
+        elif echo "$branch_name" | grep -Eq '^(feature|hotfix|fix)/[A-Z]+-[0-9]+'; then
+          echo "✅ Имя ветки корректно: $branch_name"
+        elif echo "$branch_name" | grep -Eq '^(feature|hotfix|fix)/[^/]+$'; then
+          echo "⚠️ Ветка $branch_name не содержит номера задачи. Если ветка имеет соответствующую задачу то следует указать её в названии ветки (например: feature/TASK-1-description)"
+        else
+          echo "❌ Ошибка!\nНекорректное имя ветки: $branch_name\nВетка может иметь следующие названия:\n  - main\n  - master\n  - develop\n  - release/major.minor.patch (например: release/1.5.2)\n  - feature/название ветки\n  - fix/название ветки\n  - hotfix/название ветки"
+          exit 1
+        fi
+    eslint:
+      run: npx yarn eslint .
+    type-check:
+      run: npx yarn tsc --noEmit
