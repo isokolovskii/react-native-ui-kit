@@ -35,7 +35,8 @@
     "lint:fix": "eslint --fix .",
     "prettier:check": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "prettier:watch": "onchange . -- prettier --write --ignore-unknown \"{{changed}}\""
+    "prettier:watch": "onchange . -- prettier --write --ignore-unknown \"{{changed}}\"",
+    "release": "release-it"
   },
   "devDependencies": {
     "@babel/core": "7.28.3",
@@ -50,6 +51,7 @@
     "@react-native-async-storage/async-storage": "2.1.2",
     "@react-native-community/datetimepicker": "8.4.1",
     "@react-native-community/slider": "4.5.6",
+    "@release-it/conventional-changelog": "10.0.1",
     "@storybook/addon-actions": "8.3.5",
     "@storybook/addon-controls": "8.3.5",
     "@storybook/addon-ondevice-actions": "8.3.5",
@@ -105,6 +107,7 @@
     "react-native-reanimated": "3.19.1",
     "react-native-safe-area-context": "5.6.1",
     "react-native-svg": "15.12.1",
+    "release-it": "19.0.6",
     "standard-version": "9.5.0",
     "storybook": "8.3.5",
     "ts-node": "10.9.2",
@@ -125,6 +128,9 @@
     "expo": {
       "optional": true
     }
+  },
+  "resolutions": {
+    "conventional-changelog-conventionalcommits": "8.0.0"
   },
   "packageManager": "yarn@4.6.0",
   "engines": {

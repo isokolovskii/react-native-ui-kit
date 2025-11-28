@@ -1,0 +1,83 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      noIncrement:
+        description: "Создать релиз без увеличения версии и публикации в npm"
+        required: false
+        default: false
+        type: boolean
+      bumpMode:
+        description: "Режим обновления версии. auto - автоматически на основе списка изменений, major - увеличение мажорной версии, minor - увеличение минорной версии, patch - выпуск патча"
+        required: false
+        default: auto
+        type: choice
+        options:
+          - auto
+          - major
+          - minor
+          - patch
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-node
+
+  test:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-node
+
+      - name: Test
+        run: yarn test
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup-node
+
+      - name: Lint
+        run: yarn lint:check
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{secrets.npm_token}}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-node
+
+      - name: Configure Git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
+      - name: Release with Increment and Publishing
+        if: inputs.noIncrement == false && inputs.bumpMode == 'auto'
+        run: yarn release
+
+      - name: Release with Increment as ${{ inputs.bumpMode }} and Publishing
+        if: inputs.noIncrement == false && inputs.bumpMode != 'auto'
+        run: yarn release ${{ inputs.bumpMode }}
+
+      - name: Release Without Increment and Publishing
+        if: inputs.noIncrement == true
+        run: yarn release --no-increment --no-npm.publish
+
+      - name: Send Notification
+        run: |
+          PACKAGE_NAME=$(jq -r ".name" package.json)
+          PACKAGE_VERSION=$(jq -r ".version" package.json)
+          REPO_URL="${{ github.server_url }}/${{ github.repository }}"
+          MESSAGE="Выпущена новая версия [${PACKAGE_NAME}](${REPO_URL})\n[v${PACKAGE_VERSION}](${REPO_URL}/releases/tag/v${PACKAGE_VERSION})"
+          curl -X POST -H "Content-Type: application/json" -d "{\"text\": \"$MESSAGE\"}" "${{ secrets.BUILD_CHAT_WEBHOOK }}"

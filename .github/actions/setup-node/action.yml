@@ -1,0 +1,20 @@
+name: 'Setup Node.js with Dependencies'
+description: 'Checkout repo, setup Node.js, cache and install dependencies'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+
+    - name: Cache Dependencies
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: yarn install --immutable
