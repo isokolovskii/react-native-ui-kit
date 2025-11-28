@@ -1,4 +1,4 @@
-name: Performance Tests
+name: Tests
 
 on:
   push:
@@ -11,11 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test_performance:
+  test:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
