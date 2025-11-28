@@ -39,7 +39,7 @@ export const reactNativeConfig = defineConfig([
     },
   },
   {
-    files: ['**/*.{test,spec}.{js,jsx,cjs,mjs,ts,tsx,mts,cts}'],
+    files: ['**/*.{test,spec,perf-test}.{js,jsx,cjs,mjs,ts,tsx,mts,cts}'],
     rules: {
       'react-native/no-inline-styles': 'off',
       'react-native/no-raw-text': 'off',

@@ -109,6 +109,7 @@
     "react-native-reanimated": "3.19.1",
     "react-native-safe-area-context": "5.6.1",
     "react-native-svg": "15.12.1",
+    "reassure": "1.4.0",
     "release-it": "19.0.6",
     "standard-version": "9.5.0",
     "storybook": "8.3.5",
@@ -163,7 +164,5 @@
       }
     }
   },
-  "dependencies": {
-    "reassure": "1.4.0"
-  }
+  "dependencies": {}
 }
