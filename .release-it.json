@@ -8,7 +8,7 @@
     "requireBranch": "main"
   },
   "github": { "release": true },
-  "npm": { "publish": true },
+  "npm": { "publish": true, "skipChecks": true },
   "hooks": {
     "after:bump": "yarn build",
     "after:release": "yarn expo prebuild --no-install && git restore package.json && git add . && git commit --amend --no-edit && git push"
