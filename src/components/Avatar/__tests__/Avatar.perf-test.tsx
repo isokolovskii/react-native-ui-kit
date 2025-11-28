@@ -1,7 +1,8 @@
 import { IconUser } from '@tabler/icons-react-native'
-import { Badge } from '../../Badge'
 
 import { measureComponentPerformance } from '../../../utils/__tests__/perf-utils'
+import { Badge } from '../../Badge'
+
 import { Avatar } from '../Avatar'
 
 describe('Avatar performance', () => {

@@ -27,10 +27,10 @@ describe('RadioButton performance', () => {
 
   test('Interaction', async () => {
     await measureComponentPerformance(
-      <RadioButton testID='radio-button' onPress={jest.fn()} />,
+      <RadioButton testID='RadioButton' onPress={jest.fn()} />,
       {
         scenario: async ({ getByTestId }) => {
-          fireEvent.press(getByTestId('radio-button'))
+          fireEvent.press(getByTestId('RadioButton'))
         },
       }
     )
