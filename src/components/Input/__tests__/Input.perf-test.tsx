@@ -1,3 +1,4 @@
+import { IconUser } from '@tabler/icons-react-native'
 import { fireEvent, screen } from '@testing-library/react-native'
 
 import { measureComponentPerformance } from '../../../utils/__tests__/perf-utils'
@@ -46,9 +47,19 @@ describe('Input performance', () => {
   })
 
   describe('InputGroup', () => {
-    test('input with addons', async () => {
+    test('input with text addons', async () => {
       await measureComponentPerformance(
         <InputGroup left='L' placeholder='Input with Addons' right='R' />
+      )
+    })
+
+    test('input with icon addons', async () => {
+      await measureComponentPerformance(
+        <InputGroup
+          left={IconUser}
+          placeholder='Input with Addons'
+          right={IconUser}
+        />
       )
     })
   })
