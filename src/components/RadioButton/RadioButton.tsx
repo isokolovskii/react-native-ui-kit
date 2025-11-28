@@ -36,7 +36,7 @@ export const RadioButton = memo<RadioButtonProps>(
     checked = false,
     disabled = false,
     state = 'default',
-    testID,
+    testID = 'RadioButton_Pressable',
     ...rest
   }) => {
     const styles = useStyles()
