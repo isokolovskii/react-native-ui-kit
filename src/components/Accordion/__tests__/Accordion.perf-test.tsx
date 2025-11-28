@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react-native'
 import { View } from 'react-native'
-import { measureRenders } from 'reassure'
 
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
 import { Accordion, AccordionTestIds } from '../Accordion'
 
 test('Accordion toggle performance', async () => {
@@ -17,10 +17,10 @@ test('Accordion toggle performance', async () => {
     fireEvent.press(screen.getByText('Accordion'))
   }
 
-  await measureRenders(
+  await measureComponentPerformance(
     <Accordion title='Accordion'>
       <View style={{ height: 100 }} />
     </Accordion>,
-    { warmupRuns: 5, runs: 10, writeFile: true, removeOutliers: true, scenario }
+    { scenario }
   )
 })

@@ -1,5 +1,4 @@
-import { measureRenders } from 'reassure'
-
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
 import { Badge, type BadgeSeverity } from '../Badge'
 
 const severities: BadgeSeverity[] = [
@@ -14,7 +13,7 @@ describe('Badge performance', () => {
   describe('dot', () => {
     for (const severity of severities) {
       test(`severity: ${severity}`, async () => {
-        await measureRenders(<Badge dot severity={severity} />)
+        await measureComponentPerformance(<Badge dot severity={severity} />)
       })
     }
   })
@@ -22,7 +21,7 @@ describe('Badge performance', () => {
   describe('text', () => {
     for (const severity of severities) {
       test(`severity: ${severity}`, async () => {
-        await measureRenders(<Badge severity={severity}>12</Badge>)
+        await measureComponentPerformance(<Badge severity={severity}>12</Badge>)
       })
     }
   })

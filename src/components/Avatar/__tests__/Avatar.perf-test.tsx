@@ -1,10 +1,10 @@
 import { IconUser } from '@tabler/icons-react-native'
-import { measureRenders } from 'reassure'
 
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
 import { Avatar } from '../Avatar'
 
 test('Avatar label performance', async () => {
-  await measureRenders(
+  await measureComponentPerformance(
     <Avatar shape='circle' size='large' type='label'>
       A
     </Avatar>
@@ -12,13 +12,13 @@ test('Avatar label performance', async () => {
 })
 
 test('Avatar icon performance', async () => {
-  await measureRenders(
+  await measureComponentPerformance(
     <Avatar Icon={IconUser} shape='circle' size='large' type='icon' />
   )
 })
 
 test('Avatar image performance', async () => {
-  await measureRenders(
+  await measureComponentPerformance(
     <Avatar
       shape='circle'
       size='large'
