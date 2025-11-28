@@ -5,7 +5,7 @@
 ## Installation
 
 ```shell
-yarn add --save-exact @cdek-it/react-native-prime-ui-kit
+yarn add --save-exact @cdek-it/react-native-ui-kit
 yarn add react react-native @tabler/icons-react-native react-native-svg react-native-reanimateds
 ```
 
@@ -142,7 +142,7 @@ UI kit использует следующие виды шрифтов.
 
 `yarn install` - установка зависимостей `yarn start` - запуск Metro Bundler для
 Storybook `yarn ios` - запуск Storybook на iOS `yarn android` - запуск Storybook
-на Android\
+на Android
 
 Storybook проект создан с помощью Expo
 
