@@ -1,7 +1,7 @@
 import { IconCheck, IconList, IconUser } from '@tabler/icons-react-native'
 import { fireEvent, screen } from '@testing-library/react-native'
 
-import { measureComponentPerformance } from '../../../../utils/__tests__/perf-test-utils'
+import { measureComponentPerformance } from '../../../../utils/__tests__/perf-utils'
 import { ListBase } from '../ListBase'
 
 describe('ListBase performance', () => {

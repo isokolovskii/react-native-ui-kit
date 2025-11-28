@@ -50,6 +50,7 @@ export const reactNativeConfig = defineConfig([
     rules: {
       'react-native/no-inline-styles': 'off',
       'react-native/no-raw-text': 'off',
+      'react-native/no-color-literals': 'off',
     },
   },
 ])

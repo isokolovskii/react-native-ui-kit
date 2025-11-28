@@ -1,6 +1,6 @@
 import { IconArrowDownRight } from '@tabler/icons-react-native'
 
-import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-utils'
 import { Button } from '../Button'
 
 describe('Button performance', () => {

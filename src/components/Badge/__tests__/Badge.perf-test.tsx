@@ -1,4 +1,4 @@
-import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-utils'
 import { Badge, type BadgeSeverity } from '../Badge'
 
 const severities: BadgeSeverity[] = [

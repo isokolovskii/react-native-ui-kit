@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react-native'
 import { View } from 'react-native'
 
-import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-utils'
 import { Accordion, AccordionTestIds } from '../Accordion'
 
 test('Accordion toggle performance', async () => {

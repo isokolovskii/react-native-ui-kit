@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { Button, Text, View } from 'react-native'
 
-import { measureComponentPerformance } from '../../../utils/__tests__/perf-test-utils'
+import { measureComponentPerformance } from '../../../utils/__tests__/perf-utils'
 import { Dialog } from '../Dialog'
 import { DialogHeader } from '../DialogHeader'
 
