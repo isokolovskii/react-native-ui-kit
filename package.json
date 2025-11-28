@@ -162,5 +162,8 @@
         "listUnknownPackages": false
       }
     }
+  },
+  "dependencies": {
+    "reassure": "1.4.0"
   }
 }

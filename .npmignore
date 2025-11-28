@@ -50,3 +50,6 @@ expo
 .vscode
 xcode-installation.png
 configs
+dangerfile.js
+.reassure
+reassure-tests.sh
