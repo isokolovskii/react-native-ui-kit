@@ -1,0 +1,45 @@
+name: Performance Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  pull-requests: write # required for Danger to post comments
+  statuses: write # required for Danger to post commit statuses
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  test_performance:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0 # Required for git operations in reassure-tests.sh
+
+      - name: Setup Node.js with Dependencies
+        uses: ./.github/actions/setup-node
+
+      - name: Run Reassure Performance Tests
+        run: ./reassure-tests.sh
+        env:
+          REASSURE_OUTPUT_FILE: .reassure/output.md
+
+      - name: Run Danger
+        run: yarn danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Reassure report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: reassure-report
+          path: .reassure/output.md

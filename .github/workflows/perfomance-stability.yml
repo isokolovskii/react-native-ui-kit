@@ -1,0 +1,23 @@
+name: Test Performance Stability
+
+on: [workflow_dispatch]
+
+permissions: read-all
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !contains(github.ref, 'main')}}
+
+jobs:
+  test:
+    name: Performance Stability
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js with Dependencies
+        uses: ./.github/actions/setup-node
+
+      - name: Run stability checks
+        run: yarn reassure check-stability
