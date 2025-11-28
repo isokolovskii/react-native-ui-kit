@@ -11,12 +11,6 @@
   "npm": { "publish": true },
   "hooks": {
     "after:bump": "yarn build",
-    "before:git:init": "echo before:git:init",
-    "after:git:init": "echo after:git:init",
-    "before:git:release": "echo before:git:release",
-    "after:git:release": "echo after:git:release",
-    "before:git:push": "echo before:git:push",
-    "after:git:push": "echo after:git:push",
     "after:release": "yarn expo prebuild --no-install && git restore package.json && git add . && git commit --amend --no-edit && git push"
   },
   "plugins": {
