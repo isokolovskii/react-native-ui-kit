@@ -112,7 +112,7 @@ export const RadioButton = memo<RadioButtonProps>(
         <Pressable
           disabled={disabled}
           style={pressableStyles}
-          testID={testID || 'RadioButton_Pressable'}
+          testID={testID}
           onPress={onPress}
           {...rest}
         >

@@ -62,6 +62,7 @@ export const SelectButtonItem = memo<SelectButtonItemProps>(
     size = 'base',
     showIcon = true,
     Icon,
+    testID = 'SelectButtonItem_TouchableOpacity',
   }) => {
     const styles = useStyles()
 
@@ -142,7 +143,7 @@ export const SelectButtonItem = memo<SelectButtonItemProps>(
           styles[size],
           disabled && styles.disabledContainer,
         ]}
-        testID='SelectButtonItem_TouchableOpacity'
+        testID={testID}
         onLayout={onLayout}
         onPress={onPress}
       >
