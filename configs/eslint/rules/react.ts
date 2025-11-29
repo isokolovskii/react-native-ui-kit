@@ -1,7 +1,6 @@
 import { defineConfig } from 'eslint/config'
 import react from 'eslint-plugin-react'
-
-// eslint-disable-next-line import-x/no-namespace
+import * as reactCompiler from 'eslint-plugin-react-compiler'
 import * as reactHooks from 'eslint-plugin-react-hooks'
 
 export const reactConfig = defineConfig([
@@ -380,6 +379,11 @@ export const reactConfig = defineConfig([
       'react-hooks/rules-of-hooks': 'warn',
       'react-hooks/exhaustive-deps': 'warn',
     },
+  },
+  {
+    files: ['**/*.{js,jsx,cjs,mjs,ts,tsx,mts,cts}'],
+    plugins: { 'react-compiler': reactCompiler },
+    rules: { 'react-compiler/react-compiler': 'error' },
   },
   {
     files: ['**/*.stories.{js,jsx,cjs,mjs,ts,tsx,mts,cts}'],

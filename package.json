@@ -25,7 +25,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "build": "rm -rf dist && babel src --out-dir dist --extensions '.ts,.tsx' --ignore '**/__tests__','**/*.stories.ts','**/*.stories.tsx' --source-maps inline && tsc -p tsconfig.build.json --emitDeclarationOnly",
     "test": "jest",
     "start": "expo start --dev-client",
     "android": "expo run:android",
@@ -40,7 +40,11 @@
     "prettier:watch": "onchange . -- prettier --write --ignore-unknown \"{{changed}}\"",
     "release": "release-it"
   },
+  "dependencies": {
+    "react-compiler-runtime": "1.0.0"
+  },
   "devDependencies": {
+    "@babel/cli": "7.28.3",
     "@babel/core": "7.28.3",
     "@babel/plugin-transform-class-static-block": "7.28.3",
     "@babel/preset-env": "7.28.3",
@@ -71,6 +75,7 @@
     "@types/lodash.map": "^4",
     "@types/react": "19.0.10",
     "babel-loader": "8.2.3",
+    "babel-plugin-react-compiler": "1.0.0",
     "chalk": "4.1.2",
     "commitizen": "4.3.1",
     "cross-env": "7.0.3",
@@ -82,6 +87,7 @@
     "eslint-plugin-prettier": "5.5.4",
     "eslint-plugin-promise": "7.2.1",
     "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-compiler": "19.1.0-rc.2",
     "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-react-native": "5.0.0",
     "eslint-plugin-testing-library": "7.13.4",
@@ -163,6 +169,5 @@
         "listUnknownPackages": false
       }
     }
-  },
-  "dependencies": {}
+  }
 }

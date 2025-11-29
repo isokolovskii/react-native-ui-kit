@@ -23,5 +23,6 @@ export default {
     plugins: ['./expo/plugins/withEnsureBundler.js'],
     newArchEnabled: true,
     assetBundlePatterns: ['**/*'],
+    experiments: { reactCompiler: true },
   } satisfies ExpoConfig,
 }

@@ -1,7 +1,6 @@
 import { defineConfig } from 'eslint/config'
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
 
-// eslint-disable-next-line import-x/no-named-as-default
 import importX from 'eslint-plugin-import-x'
 
 export const importConfig = defineConfig([
@@ -213,10 +212,12 @@ export const importConfig = defineConfig([
       '**/*.d.ts',
       'eslint/**',
       '*prettier.config*',
+      'configs/eslint/**/*.ts',
     ],
     rules: {
       'import-x/no-namespace': 'off',
       'import-x/no-default-export': 'off',
+      'import-x/no-named-as-default': 'off',
       'import-x/no-named-as-default-member': 'off',
       'import-x/no-anonymous-default-export': 'off',
       'import-x/no-nodejs-modules': 'off',
