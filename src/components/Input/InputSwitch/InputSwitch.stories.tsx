@@ -1,6 +1,5 @@
 import { useArgs } from '@storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/react'
-import { useCallback } from 'react'
 
 import { InputSwitch } from './InputSwitch'
 
@@ -11,10 +10,8 @@ const meta: Meta<typeof InputSwitch> = {
   render: (args) => {
     const [, updateArgs] = useArgs()
 
-    const onCheckedChange = useCallback(
-      (nextValue: boolean) => updateArgs({ checked: nextValue }),
-      [updateArgs]
-    )
+    const onCheckedChange = (nextValue: boolean) =>
+      updateArgs({ checked: nextValue })
 
     return <InputSwitch {...args} onCheckedChange={onCheckedChange} />
   },

@@ -1,4 +1,4 @@
-import { memo, type ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import { Pressable, type PressableProps } from 'react-native'
 
 import { makeStyles } from '../../utils/makeStyles'
@@ -13,18 +13,18 @@ export interface RatingItemContainerProps
    * Отображение элемента с паддингами
    * @default false
    */
-  paddings?: boolean
+  readonly paddings?: boolean
   /**
    * Обработчик нажатия элемента
    * @default undefined
    */
-  onPress?: () => void
+  readonly onPress?: () => void
   /**
    * Функция отображения дочернего компонента в контейнере
    * @param renderProps - свойства состояния контейнера для изменения отображения дочернего компонента
    * @returns отрендеренный компонент
    */
-  children: (renderProps: {
+  readonly children: (renderProps: {
     disabled: boolean | null
     pressed: boolean
   }) => ReactNode
@@ -39,21 +39,24 @@ export interface RatingItemContainerProps
  * @see RatingItem - вариация компонента элемента рейтинга с иконкой звёздочки
  * @see RatingClear - вариация компонента элемента рейтинга с иконкой очистки
  */
-export const RatingItemContainer = memo<RatingItemContainerProps>(
-  ({ disabled = false, paddings = false, children, ...rest }) => {
-    const styles = useStyles()
+export const RatingItemContainer: FC<RatingItemContainerProps> = ({
+  disabled = false,
+  paddings = false,
+  children,
+  ...rest
+}) => {
+  const styles = useStyles()
 
-    return (
-      <Pressable
-        disabled={disabled}
-        style={[styles.container, paddings && styles.containerWithPaddings]}
-        {...rest}
-      >
-        {({ pressed }) => children({ disabled, pressed })}
-      </Pressable>
-    )
-  }
-)
+  return (
+    <Pressable
+      disabled={disabled}
+      style={[styles.container, paddings && styles.containerWithPaddings]}
+      {...rest}
+    >
+      {({ pressed }) => children({ disabled, pressed })}
+    </Pressable>
+  )
+}
 
 const useStyles = makeStyles(({ theme, sizing }) => ({
   container: {

@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import type { FC } from 'react'
 import { Pressable, Text } from 'react-native'
 
 import { SvgUniversal, type SvgSource } from '../../utils/SvgUniversal'
@@ -6,13 +6,13 @@ import { makeStyles } from '../../utils/makeStyles'
 
 export interface InputGroupAddonProps {
   /** Содержимое аддона инпут группы, текст или SVG-иконка */
-  content: string | SvgSource
+  readonly content: string | SvgSource
   /** Расположение аддона слева или справа в группе */
-  position: 'left' | 'right'
+  readonly position: 'left' | 'right'
   /** Управление активностью аддона */
-  disabled?: boolean
+  readonly disabled?: boolean
   /** Обработчик нажатия */
-  onPress?: () => void
+  readonly onPress?: () => void
 }
 
 /**
@@ -20,36 +20,35 @@ export interface InputGroupAddonProps {
  * @link https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-5932&m=dev
  * @see InputGroup
  */
-export const InputGroupAddon = memo<InputGroupAddonProps>(
-  ({ content, onPress, position, disabled }) => {
-    const styles = useStyles()
+export const InputGroupAddon: FC<InputGroupAddonProps> = ({
+  content,
+  onPress,
+  position,
+  disabled,
+}) => {
+  const styles = useStyles()
 
-    return (
-      <Pressable
-        collapsable={false}
-        disabled={disabled}
-        style={[
-          styles.container,
-          styles[position],
-          disabled && styles.disabled,
-        ]}
-        testID='InputGroupAddon_Pressable'
-        onPress={onPress}
-      >
-        {typeof content === 'string' ? (
-          <Text style={styles.text}>{content}</Text>
-        ) : (
-          <SvgUniversal
-            height={styles.icon.height}
-            source={content}
-            style={styles.icon}
-            width={styles.icon.width}
-          />
-        )}
-      </Pressable>
-    )
-  }
-)
+  return (
+    <Pressable
+      collapsable={false}
+      disabled={disabled}
+      style={[styles.container, styles[position], disabled && styles.disabled]}
+      testID='InputGroupAddon_Pressable'
+      onPress={onPress}
+    >
+      {typeof content === 'string' ? (
+        <Text style={styles.text}>{content}</Text>
+      ) : (
+        <SvgUniversal
+          height={styles.icon.height}
+          source={content}
+          style={styles.icon}
+          width={styles.icon.width}
+        />
+      )}
+    </Pressable>
+  )
+}
 
 const useStyles = makeStyles(({ theme, typography, fonts }) => ({
   container: {

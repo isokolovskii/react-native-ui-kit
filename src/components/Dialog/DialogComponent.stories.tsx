@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useCallback } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
 import { DialogComponent, type DialogComponentProps } from './DialogComponent'
@@ -28,21 +27,21 @@ const meta: Meta<DialogComponentProps & DialogHeaderProps> = {
   },
 }
 
+const Body = () => {
+  return (
+    <Text>Войдите в приложение, чтобы заказ сохранился в списке заказов</Text>
+  )
+}
+
+const Footer = () => {
+  return (
+    <TouchableOpacity>
+      <Text>Войти</Text>
+    </TouchableOpacity>
+  )
+}
+
 const Template = ({ severity }: DialogComponentProps & DialogHeaderProps) => {
-  const Body = useCallback(() => {
-    return (
-      <Text>Войдите в приложение, чтобы заказ сохранился в списке заказов</Text>
-    )
-  }, [])
-
-  const Footer = useCallback(() => {
-    return (
-      <TouchableOpacity>
-        <Text>Войти</Text>
-      </TouchableOpacity>
-    )
-  }, [])
-
   return (
     <View>
       <DialogComponent

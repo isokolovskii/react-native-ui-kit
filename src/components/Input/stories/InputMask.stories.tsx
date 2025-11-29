@@ -3,7 +3,6 @@ import {
   type ComponentProps,
   type ComponentType,
   type RefObject,
-  useCallback,
   useState,
 } from 'react'
 import { View } from 'react-native'
@@ -36,23 +35,20 @@ const MaskedInput = <T extends InputTextProps>({
   const [value, setValue] = useState('')
 
   // Коллбэк, адаптированный для использования как с MaskedTextInput, так и с дефолтным TextInput
-  const onChangeText = useCallback(
-    (
-      formatted: string,
-      extracted: string,
-      tailPlacehilder: string,
-      complete: boolean
-    ) => {
-      setValue(formatted)
-      onChangeTextProp?.(
-        formatted,
-        extracted ?? formatted,
-        tailPlacehilder,
-        complete
-      )
-    },
-    [onChangeTextProp]
-  )
+  const onChangeText = (
+    formatted: string,
+    extracted: string,
+    tailPlacehilder: string,
+    complete: boolean
+  ) => {
+    setValue(formatted)
+    onChangeTextProp?.(
+      formatted,
+      extracted ?? formatted,
+      tailPlacehilder,
+      complete
+    )
+  }
 
   return (
     <InputText
@@ -97,10 +93,10 @@ const meta: Meta<typeof MaskedInput> = {
     const [formatted, setFormatted] = useState('')
     const [extracted, setExtracted] = useState('')
 
-    const onChangeText = useCallback((formatted: string, extracted: string) => {
+    const onChangeText = (formatted: string, extracted: string) => {
       setFormatted(formatted)
       setExtracted(extracted)
-    }, [])
+    }
 
     return (
       <View style={{ gap: 10 }}>

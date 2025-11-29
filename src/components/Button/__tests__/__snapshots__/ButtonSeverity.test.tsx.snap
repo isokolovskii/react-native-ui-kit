@@ -52,14 +52,21 @@ exports[`ButtonSeverity component tests severity - danger 1`] = `
 >
   <Text
     style={
-      {
-        "color": "#000000",
-        "fontFamily": "TT Fellows",
-        "fontSize": 14,
-        "fontWeight": 600,
-        "includeFontPadding": false,
-        "verticalAlign": "middle",
-      }
+      [
+        {
+          "fontFamily": "TT Fellows",
+          "fontWeight": 600,
+          "includeFontPadding": false,
+          "verticalAlign": "middle",
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "color": "#000000",
+        },
+        false,
+      ]
     }
     testID="Button_Text"
   >
@@ -120,14 +127,21 @@ exports[`ButtonSeverity component tests severity - info 1`] = `
 >
   <Text
     style={
-      {
-        "color": "#000000",
-        "fontFamily": "TT Fellows",
-        "fontSize": 14,
-        "fontWeight": 600,
-        "includeFontPadding": false,
-        "verticalAlign": "middle",
-      }
+      [
+        {
+          "fontFamily": "TT Fellows",
+          "fontWeight": 600,
+          "includeFontPadding": false,
+          "verticalAlign": "middle",
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "color": "#000000",
+        },
+        false,
+      ]
     }
     testID="Button_Text"
   >
@@ -188,14 +202,21 @@ exports[`ButtonSeverity component tests severity - success 1`] = `
 >
   <Text
     style={
-      {
-        "color": "#000000",
-        "fontFamily": "TT Fellows",
-        "fontSize": 14,
-        "fontWeight": 600,
-        "includeFontPadding": false,
-        "verticalAlign": "middle",
-      }
+      [
+        {
+          "fontFamily": "TT Fellows",
+          "fontWeight": 600,
+          "includeFontPadding": false,
+          "verticalAlign": "middle",
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "color": "#000000",
+        },
+        false,
+      ]
     }
     testID="Button_Text"
   >
@@ -256,14 +277,21 @@ exports[`ButtonSeverity component tests severity - warning 1`] = `
 >
   <Text
     style={
-      {
-        "color": "#000000",
-        "fontFamily": "TT Fellows",
-        "fontSize": 14,
-        "fontWeight": 600,
-        "includeFontPadding": false,
-        "verticalAlign": "middle",
-      }
+      [
+        {
+          "fontFamily": "TT Fellows",
+          "fontWeight": 600,
+          "includeFontPadding": false,
+          "verticalAlign": "middle",
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "color": "#000000",
+        },
+        false,
+      ]
     }
     testID="Button_Text"
   >

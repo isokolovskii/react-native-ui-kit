@@ -1,9 +1,7 @@
 import { Text } from 'react-native'
 
-import { genericMemo } from '../../../utils/genericMemo'
+import { makeStyles } from '../../../utils/makeStyles'
 import type { BaseButtonProps, ButtonVariant, VariantStyles } from '../types'
-
-import { useButtonLabelStyle } from './useButtonLabelStyle'
 
 export type ButtonLabelComponentProps<Variant extends ButtonVariant> = Pick<
   BaseButtonProps<Variant>,
@@ -15,7 +13,7 @@ export type ButtonLabelComponentProps<Variant extends ButtonVariant> = Pick<
   > &
   Pick<VariantStyles<Variant>, 'labelVariantStyles'>
 
-export const ButtonLabelComponent = <Variant extends ButtonVariant>({
+export const ButtonLabel = <Variant extends ButtonVariant>({
   label,
   iconOnly,
   size,
@@ -24,23 +22,42 @@ export const ButtonLabelComponent = <Variant extends ButtonVariant>({
   variant,
   labelVariantStyles,
 }: ButtonLabelComponentProps<Variant>) => {
-  const labelStyle = useButtonLabelStyle(
-    size,
-    variant,
-    disabled,
-    loading,
-    labelVariantStyles
-  )
+  const styles = useStyles()
 
   if (iconOnly) {
     return null
   }
 
   return (
-    <Text style={labelStyle} testID='Button_Text'>
+    <Text
+      style={[
+        styles.font,
+        styles[size],
+        labelVariantStyles[variant],
+        (disabled || loading) && styles.disabled,
+      ]}
+      testID='Button_Text'
+    >
       {label}
     </Text>
   )
 }
 
-export const ButtonLabel = genericMemo(ButtonLabelComponent)
+const useStyles = makeStyles(({ theme, typography, fonts }) => ({
+  font: {
+    fontWeight: 600,
+    includeFontPadding: false,
+    verticalAlign: 'middle',
+    fontFamily: fonts.primary,
+  },
+
+  xlarge: { fontSize: typography.Size['text-xl'] },
+
+  large: { fontSize: typography.Size['text-xl'] },
+
+  base: { fontSize: typography.Size['text-base'] },
+
+  small: { fontSize: typography.Size['text-sm'] },
+
+  disabled: { color: theme.Button.Disabled.disabledButtonTextColor },
+}))

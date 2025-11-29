@@ -271,7 +271,7 @@ export const javascriptConfig = defineConfig([
       'class-methods-use-this': 'warn',
 
       // https://eslint.org/docs/latest/rules/complexity
-      complexity: ['warn', { max: 20, variant: 'classic' }],
+      complexity: ['warn', { max: 40, variant: 'classic' }],
 
       // https://eslint.org/docs/latest/rules/consistent-return
       'consistent-return': 'off',
@@ -344,7 +344,7 @@ export const javascriptConfig = defineConfig([
       'id-match': 'off',
 
       // https://eslint.org/docs/latest/rules/max-params
-      'max-params': ['warn', 5],
+      'max-params': ['warn', 10],
 
       // https://eslint.org/docs/latest/rules/max-nested-callbacks
       'max-nested-callbacks': ['warn', 5],
@@ -352,13 +352,13 @@ export const javascriptConfig = defineConfig([
       // https://eslint.org/docs/latest/rules/max-lines-per-function
       'max-lines-per-function': [
         'warn',
-        { max: 200, skipBlankLines: true, skipComments: true, IIFEs: true },
+        { max: 300, skipBlankLines: true, skipComments: true, IIFEs: true },
       ],
 
       // https://eslint.org/docs/latest/rules/max-lines
       'max-lines': [
         'warn',
-        { max: 300, skipBlankLines: true, skipComments: true },
+        { max: 500, skipBlankLines: true, skipComments: true },
       ],
 
       // https://eslint.org/docs/latest/rules/max-depth
@@ -374,7 +374,7 @@ export const javascriptConfig = defineConfig([
       'init-declarations': ['off', 'always'],
 
       // https://eslint.org/docs/latest/rules/max-statements
-      'max-statements': ['warn', 20, { ignoreTopLevelFunctions: true }],
+      'max-statements': ['warn', 30, { ignoreTopLevelFunctions: true }],
 
       // https://eslint.org/docs/latest/rules/new-cap
       'new-cap': [

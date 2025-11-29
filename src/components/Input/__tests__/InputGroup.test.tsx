@@ -2,9 +2,7 @@ import { render } from '@testing-library/react-native'
 
 import { InputGroup, type InputGroupProps } from '../InputGroup'
 
-jest.mock('../InputTextBase/InputTextBase', () => ({
-  InputTextBase: 'InputTextBase',
-}))
+jest.mock('../InputTextBase', () => ({ InputTextBase: 'InputTextBase' }))
 
 jest.mock('../InputGroupAddon', () => ({ InputGroupAddon: 'InputGroupAddon' }))
 

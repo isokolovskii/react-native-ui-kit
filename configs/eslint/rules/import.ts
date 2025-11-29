@@ -213,6 +213,8 @@ export const importConfig = defineConfig([
       'eslint/**',
       '*prettier.config*',
       'configs/eslint/**/*.ts',
+      '.prettierrc.mjs',
+      'dangerfile.js',
     ],
     rules: {
       'import-x/no-namespace': 'off',

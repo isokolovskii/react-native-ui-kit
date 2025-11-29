@@ -1,5 +1,5 @@
 import { IconStar, IconStarFilled } from '@tabler/icons-react-native'
-import { memo, useMemo } from 'react'
+import type { FC } from 'react'
 
 import { makeStyles } from '../../utils/makeStyles'
 
@@ -18,7 +18,7 @@ export interface RatingItemProps
   /**
    * Управление состоянием активности элемента
    */
-  checked: boolean
+  readonly checked: boolean
 }
 
 /**
@@ -27,10 +27,10 @@ export interface RatingItemProps
  * @see RatingItemProps - тип свойств компонента
  * @see RatingItemContainer - компонент контейнер для элемента
  */
-export const RatingItem = memo<RatingItemProps>(({ checked, ...rest }) => {
+export const RatingItem: FC<RatingItemProps> = ({ checked, ...rest }) => {
   const styles = useStyles()
 
-  const Icon = useMemo(() => (checked ? IconStarFilled : IconStar), [checked])
+  const Icon = checked ? IconStarFilled : IconStar
 
   return (
     <RatingItemContainer {...rest}>
@@ -63,7 +63,7 @@ export const RatingItem = memo<RatingItemProps>(({ checked, ...rest }) => {
       )}
     </RatingItemContainer>
   )
-})
+}
 
 const useStyles = makeStyles(({ theme }) => ({
   icon: {

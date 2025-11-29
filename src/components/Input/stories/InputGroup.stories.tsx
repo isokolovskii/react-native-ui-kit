@@ -1,7 +1,6 @@
 import { useArgs } from '@storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/react'
 import { IconLock, IconUser } from '@tabler/icons-react-native'
-import { useCallback } from 'react'
 
 import { InputGroup } from '../InputGroup'
 
@@ -19,10 +18,7 @@ const meta: Meta<typeof InputGroup> = {
   render: (args) => {
     const [, updateArgs] = useArgs()
 
-    const onChangeText = useCallback(
-      (nextValue: string) => updateArgs({ value: nextValue }),
-      [updateArgs]
-    )
+    const onChangeText = (nextValue: string) => updateArgs({ value: nextValue })
 
     return <InputGroup {...args} onChangeText={onChangeText} />
   },

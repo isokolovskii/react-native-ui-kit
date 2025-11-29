@@ -69,14 +69,21 @@ exports[`ButtonSeverity component tests badge - basic 1`] = `
     >
       <Text
         style={
-          {
-            "color": "#000000",
-            "fontFamily": "TT Fellows",
-            "fontSize": 14,
-            "fontWeight": 600,
-            "includeFontPadding": false,
-            "verticalAlign": "middle",
-          }
+          [
+            {
+              "fontFamily": "TT Fellows",
+              "fontWeight": 600,
+              "includeFontPadding": false,
+              "verticalAlign": "middle",
+            },
+            {
+              "fontSize": 14,
+            },
+            {
+              "color": "#000000",
+            },
+            false,
+          ]
         }
         testID="Button_Text"
       >
@@ -240,14 +247,21 @@ exports[`ButtonSeverity component tests badge - dot 1`] = `
     >
       <Text
         style={
-          {
-            "color": "#000000",
-            "fontFamily": "TT Fellows",
-            "fontSize": 14,
-            "fontWeight": 600,
-            "includeFontPadding": false,
-            "verticalAlign": "middle",
-          }
+          [
+            {
+              "fontFamily": "TT Fellows",
+              "fontWeight": 600,
+              "includeFontPadding": false,
+              "verticalAlign": "middle",
+            },
+            {
+              "fontSize": 14,
+            },
+            {
+              "color": "#000000",
+            },
+            false,
+          ]
         }
         testID="Button_Text"
       >

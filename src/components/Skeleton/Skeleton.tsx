@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react'
+import { useEffect, type FC } from 'react'
 import { View } from 'react-native'
 import Animated, {
   Easing,
@@ -21,7 +21,11 @@ export const ANIMATION_DURATION = 1200 // ms
  * Используется для отображения контента в момент загрузки
  * @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=5241-3731
  */
-export const Skeleton = memo<SkeletonProps>(({ style, testID, ...rest }) => {
+export const Skeleton: FC<SkeletonProps> = ({
+  style,
+  testID = SkeletonTestId.root,
+  ...rest
+}) => {
   const styles = useStyles()
   const animation = useSharedValue(0)
   const animatedStyles = useAnimatedStyle(() => ({
@@ -36,11 +40,7 @@ export const Skeleton = memo<SkeletonProps>(({ style, testID, ...rest }) => {
   }, [animation])
 
   return (
-    <View
-      {...rest}
-      style={[styles.container, style]}
-      testID={testID ?? SkeletonTestId.root}
-    >
+    <View {...rest} style={[styles.container, style]} testID={testID}>
       <Animated.View
         style={[styles.gradientContainer, animatedStyles]}
         testID={SkeletonTestId.animatedView}
@@ -70,7 +70,7 @@ export const Skeleton = memo<SkeletonProps>(({ style, testID, ...rest }) => {
       </Animated.View>
     </View>
   )
-})
+}
 
 const useStyles = makeStyles(({ border, theme }) => ({
   container: {

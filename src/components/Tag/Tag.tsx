@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import type { FC } from 'react'
 import {
   View,
   Text,
@@ -15,78 +15,82 @@ export interface TagProps
   extends AccessibilityProps,
     Pick<ViewProps, 'testID'> {
   /** Текст */
-  text: string
+  readonly text: string
 
   /** true, если необходимо полное скругление углов компонента */
-  rounded?: boolean
+  readonly rounded?: boolean
 
   /**
    *  Выбор варианта стиля компонента
    *  @default 'basic'
    */
-  severity?: 'basic' | 'info' | 'success' | 'warning' | 'danger' | 'secondary'
+  readonly severity?:
+    | 'basic'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'secondary'
 
   /**
    * Показать или скрыть иконку внутри компонента
    * @default true
    */
-  showIcon?: boolean
+  readonly showIcon?: boolean
 
   /** Дополнительная стилизация для контейнера компонента */
-  style?: StyleProp<ViewStyle>
+  readonly style?: StyleProp<ViewStyle>
 
   /** SVG-иконка */
-  Icon?: SvgSource
+  readonly Icon?: SvgSource
 }
 
 /**
  * Используется для маркировки элементов интерфейса
  * @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-4921
  */
-export const Tag = memo<TagProps>(
-  ({
-    text,
-    rounded,
-    severity = 'basic',
-    showIcon = true,
-    style,
-    Icon,
-    testID,
-    ...rest
-  }) => {
-    const styles = useStyles()
+export const Tag: FC<TagProps> = ({
+  text,
+  rounded,
+  severity = 'basic',
+  showIcon = true,
+  style,
+  Icon,
+  testID = TagTestId.root,
+  ...rest
+}) => {
+  const styles = useStyles()
 
-    return (
-      <View style={style} testID={testID || TagTestId.root} {...rest}>
-        <View
-          style={[
-            styles.container,
-            styles[severity],
-            rounded && styles.roundedContainer,
-          ]}
-          testID={TagTestId.innerContainer}
+  return (
+    <View style={style} testID={testID} {...rest}>
+      <View
+        style={[
+          styles.container,
+          styles[severity],
+          rounded && styles.roundedContainer,
+        ]}
+        testID={TagTestId.innerContainer}
+      >
+        {showIcon && Icon ? (
+          <SvgUniversal
+            color={styles[`text${severity}`].color}
+            height={styles.icon.height}
+            source={Icon}
+            testID={TagTestId.icon}
+            width={styles.icon.width}
+          />
+        ) : null}
+        <Text
+          numberOfLines={1}
+          style={[styles.text, styles[`text${severity}`]]}
+          testID={TagTestId.text}
         >
-          {showIcon && Icon ? (
-            <SvgUniversal
-              color={styles[`text${severity}`].color}
-              height={styles.icon.height}
-              source={Icon}
-              testID={TagTestId.icon}
-              width={styles.icon.width}
-            />
-          ) : null}
-          <Text
-            numberOfLines={1}
-            style={[styles.text, styles[`text${severity}`]]}
-            testID={TagTestId.text}
-          >
-            {text}
-          </Text>
-        </View>
+          {text}
+        </Text>
       </View>
-    )
-  }
-)
+    </View>
+  )
+}
 
 const useStyles = makeStyles(
   ({ theme, border, spacing, typography, fonts }) => ({

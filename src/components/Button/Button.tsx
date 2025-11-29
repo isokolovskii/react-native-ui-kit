@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import type { FC } from 'react'
 
 import { BaseButton } from './BaseButton'
 import { useBasicButtonStyles } from './styles'
@@ -18,10 +18,11 @@ import type { ButtonBaseVariant, ButtonProps } from './types'
  * @param style - external style control for component
  * @see BaseButton
  */
-export const Button = memo<ButtonProps<ButtonBaseVariant>>(
-  ({ variant = 'primary', ...props }) => {
-    const buttonStyles = useBasicButtonStyles()
+export const Button: FC<ButtonProps<ButtonBaseVariant>> = ({
+  variant = 'primary',
+  ...props
+}) => {
+  const buttonStyles = useBasicButtonStyles()
 
-    return <BaseButton variant={variant} {...props} {...buttonStyles} />
-  }
-)
+  return <BaseButton variant={variant} {...props} {...buttonStyles} />
+}

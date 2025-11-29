@@ -1,103 +1,91 @@
-import { memo, useCallback, type ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import { Text, Pressable, View, type ViewProps } from 'react-native'
 
-import { type SvgSource, SvgUniversal } from '../../../utils/SvgUniversal'
-import { makeStyles } from '../../../utils/makeStyles'
+import { type SvgSource, SvgUniversal } from '../../utils/SvgUniversal'
+import { makeStyles } from '../../utils/makeStyles'
 
 export interface TabItemProps {
   /** SVG-иконка */
-  Icon?: SvgSource
+  readonly Icon?: SvgSource
 
   /** Текст для отображения */
-  label: string
+  readonly label: string
 
   /** Компонент бейджа **/
-  badge?: ReactNode
+  readonly badge?: ReactNode
 
   /** Индекс этой табы **/
-  index: number
+  readonly index: number
 
   /** Обработчик нажатия на кнопку */
-  onPress: (index: number) => void
+  readonly onPress: (index: number) => void
 
   /** Признак доступности компонента */
-  disabled?: boolean
+  readonly disabled?: boolean
 
   /** Признак активен ли компонент */
-  active?: boolean
+  readonly active?: boolean
 
-  onLayout?: ViewProps['onLayout']
+  readonly onLayout?: ViewProps['onLayout']
 }
 
 // Часть навигационного компонента Tabs
 // @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=888-13076&t=hIQjdrqPKK8BWYev-4
 //
-export const TabItem = memo<TabItemProps>(
-  ({ Icon, label, badge, index, onPress, disabled, active, onLayout }) => {
-    const styles = useStyles()
+export const TabItem: FC<TabItemProps> = ({
+  Icon,
+  label,
+  badge,
+  index,
+  onPress,
+  disabled = false,
+  active = false,
+  onLayout,
+}) => {
+  const styles = useStyles()
 
-    const getIconColor = useCallback(
-      (pressed: boolean) => {
-        if (disabled) {
-          return styles.disabledIcon.color
-        }
-
-        if (pressed) {
-          return styles.pressedIcon.color
-        }
-
-        if (active) {
-          return styles.activeIcon.color
-        }
-
-        return styles.icon.color
-      },
-      [disabled, active, styles]
-    )
-
-    return (
-      <Pressable
-        accessibilityRole='button'
-        disabled={disabled}
-        testID={TestId.Container + index}
-        onLayout={onLayout}
-        onPress={() => onPress(index)}
-      >
-        {({ pressed }) => (
-          <View
+  return (
+    <Pressable
+      accessibilityRole='button'
+      disabled={disabled}
+      testID={TestId.Container + index}
+      onLayout={onLayout}
+      onPress={() => onPress(index)}
+    >
+      {({ pressed }) => (
+        <View
+          style={[
+            styles.container,
+            pressed && styles.pressedContainer,
+            active && styles.activeContainer,
+            disabled && styles.disabledContainer,
+          ]}
+        >
+          {Icon ? (
+            <SvgUniversal
+              color={styles[getIconStyleName(pressed, disabled, active)].color}
+              height={styles.icon.height}
+              source={Icon}
+              width={styles.icon.width}
+            />
+          ) : null}
+          <Text
+            numberOfLines={1}
             style={[
-              styles.container,
-              pressed && styles.pressedContainer,
-              active && styles.activeContainer,
-              disabled && styles.disabledContainer,
+              styles.text,
+              active && styles.activeText,
+              pressed && styles.pressedText,
+              disabled && styles.disabledText,
             ]}
           >
-            {Icon ? (
-              <SvgUniversal
-                color={getIconColor(pressed)}
-                height={styles.icon.height}
-                source={Icon}
-                width={styles.icon.width}
-              />
-            ) : null}
-            <Text
-              numberOfLines={1}
-              style={[
-                styles.text,
-                active && styles.activeText,
-                pressed && styles.pressedText,
-                disabled && styles.disabledText,
-              ]}
-            >
-              {label}
-            </Text>
-            {badge}
-          </View>
-        )}
-      </Pressable>
-    )
-  }
-)
+            {label}
+          </Text>
+          {badge}
+        </View>
+      )}
+    </Pressable>
+  )
+}
 
 const useStyles = makeStyles(({ theme, typography, fonts }) => ({
   container: {
@@ -143,4 +131,24 @@ const useStyles = makeStyles(({ theme, typography, fonts }) => ({
 
 export enum TestId {
   Container = 'TabItem_Container',
+}
+
+const getIconStyleName = (
+  pressed: boolean,
+  disabled: boolean,
+  active: boolean
+) => {
+  if (disabled) {
+    return 'disabledIcon'
+  }
+
+  if (pressed) {
+    return 'pressedIcon'
+  }
+
+  if (active) {
+    return 'activeIcon'
+  }
+
+  return 'icon'
 }

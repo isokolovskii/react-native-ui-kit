@@ -199,11 +199,15 @@ exports[`MenuItemTemplate tests MenuItemTemplate full disabled 1`] = `
                   {
                     "alignItems": "flex-start",
                   },
-                  {
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  },
+                  [
+                    {
+                      "position": "absolute",
+                    },
+                    {
+                      "right": 0,
+                      "top": 0,
+                    },
+                  ],
                 ]
               }
             >
@@ -1774,11 +1778,15 @@ exports[`MenuItemTemplate tests MenuItemTemplate with icon and badge 1`] = `
                   {
                     "alignItems": "flex-start",
                   },
-                  {
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  },
+                  [
+                    {
+                      "position": "absolute",
+                    },
+                    {
+                      "right": 0,
+                      "top": 0,
+                    },
+                  ],
                 ]
               }
             >

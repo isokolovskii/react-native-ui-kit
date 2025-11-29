@@ -1,10 +1,9 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useState } from 'react'
 import {
   type ColorValue,
   type DimensionValue,
   type LayoutChangeEvent,
   View,
-  StyleSheet,
 } from 'react-native'
 
 import { type SvgSource, SvgUniversal } from '../../utils/SvgUniversal'
@@ -56,19 +55,10 @@ export const MenuItemIcon = ({
     right: DimensionValue
   }>({ top: 0, right: 0 })
 
-  const onLayout = useCallback((event: LayoutChangeEvent) => {
+  const onLayout = (event: LayoutChangeEvent) => {
     const { width, height } = event.nativeEvent.layout
     setBadgePosition({ top: -width / 2, right: -height / 2 })
-  }, [])
-
-  const badgeStyle = useMemo(
-    () =>
-      StyleSheet.flatten([
-        styles.badge,
-        { top: badgePosition.top, right: badgePosition.right },
-      ]),
-    [badgePosition.right, badgePosition.top, styles.badge]
-  )
+  }
 
   return (
     <View style={styles.container}>
@@ -78,7 +68,10 @@ export const MenuItemIcon = ({
           <Badge
             dot
             severity={badgeSeverity}
-            style={badgeStyle}
+            style={[
+              styles.badge,
+              { top: badgePosition.top, right: badgePosition.right },
+            ]}
             testID='MenuItemIconBadge'
             onLayout={onLayout}
           />

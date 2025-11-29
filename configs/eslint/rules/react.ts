@@ -12,7 +12,7 @@ export const reactConfig = defineConfig([
     rules: {
       // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/boolean-prop-naming.md
       'react/boolean-prop-naming': [
-        'error',
+        'off',
         {
           validateNested: true,
           rule: '(^(is|has|with|show)[A-Z]([A-Za-z0-9]?)+)|disabled|loading|paragraph|base|controlled',

@@ -6,7 +6,7 @@ import {
   IconUser,
 } from '@tabler/icons-react-native'
 
-import { memo } from 'react'
+import type { FC } from 'react'
 import { View } from 'react-native'
 
 import { Body } from '../Typography'
@@ -19,7 +19,7 @@ const Extras = {
   IconDiamond: <IconDiamond height={21} width={21} />,
 }
 
-const TestAccordion = memo<Omit<AccordionProps, 'childern'>>((props) => {
+const TestAccordion: FC<Omit<AccordionProps, 'childern'>> = (props) => {
   return (
     <Accordion {...props}>
       <View style={{ padding: 24, backgroundColor: 'blanchedalmond' }}>
@@ -27,7 +27,7 @@ const TestAccordion = memo<Omit<AccordionProps, 'childern'>>((props) => {
       </View>
     </Accordion>
   )
-})
+}
 
 const meta: Meta<typeof Accordion> = {
   title: 'Panel/Accordion',

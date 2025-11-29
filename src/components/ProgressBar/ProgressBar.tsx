@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import {
   View,
   Text,
@@ -19,15 +19,15 @@ export interface ProgressBarProps extends Pick<ViewProps, 'testID'> {
   /**
    * Значение прогресса от 0 до 100
    */
-  value: number
+  readonly value: number
   /**
    * Отображение значения прогресса
    */
-  showValue?: boolean
+  readonly showValue?: boolean
   /**
    * Стилизация компонента ProgressBar
    */
-  style?: StyleProp<ProgressBarStyle>
+  readonly style?: StyleProp<ProgressBarStyle>
 }
 
 /**
@@ -38,58 +38,37 @@ export interface ProgressBarProps extends Pick<ViewProps, 'testID'> {
  * @see ProgressBarProps
  * @link https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-5024&m=dev
  */
-export const ProgressBar = memo<ProgressBarProps>(
-  ({ value: propsValue, showValue = false, style }) => {
-    const styles = useStyles()
+export const ProgressBar: FC<ProgressBarProps> = ({
+  value: propsValue,
+  showValue = false,
+  style,
+}) => {
+  const styles = useStyles()
 
-    const [containerWidth, setContainerWidth] = useState(0)
-    const indicatorWidth = useSharedValue(0)
+  const [containerWidth, setContainerWidth] = useState(0)
+  const indicatorWidth = useSharedValue(0)
 
-    const onLayout = useCallback(
-      ({
-        nativeEvent: {
-          layout: { width },
-        },
-      }: LayoutChangeEvent) => {
-        setContainerWidth(width)
-      },
-      []
-    )
-
-    const value = useMemo(() => {
-      if (propsValue > 100) {
-        return 100
-      }
-
-      if (propsValue < 0) {
-        return 0
-      }
-
-      return propsValue
-    }, [propsValue])
-
-    useEffect(() => {
-      indicatorWidth.value = withTiming(containerWidth * (value / 100))
-    }, [containerWidth, indicatorWidth, value])
-
-    return (
-      <View
-        style={[
-          styles.container,
-          style,
-          showValue && styles.containerShowValue,
-        ]}
-        onLayout={onLayout}
-      >
-        <Animated.View style={[styles.indicator, { width: indicatorWidth }]}>
-          {showValue ? (
-            <Text style={styles.indicatorText}>{value} %</Text>
-          ) : null}
-        </Animated.View>
-      </View>
-    )
+  const onLayout = ({ nativeEvent }: LayoutChangeEvent) => {
+    setContainerWidth(nativeEvent.layout.width)
   }
-)
+
+  const value = propsValue > 100 ? 100 : propsValue < 0 ? 0 : propsValue
+
+  useEffect(() => {
+    indicatorWidth.value = withTiming(containerWidth * (value / 100))
+  }, [containerWidth, indicatorWidth, value])
+
+  return (
+    <View
+      style={[styles.container, style, showValue && styles.containerShowValue]}
+      onLayout={onLayout}
+    >
+      <Animated.View style={[styles.indicator, { width: indicatorWidth }]}>
+        {showValue ? <Text style={styles.indicatorText}>{value} %</Text> : null}
+      </Animated.View>
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme, typography, border, fonts }) => ({
   container: {

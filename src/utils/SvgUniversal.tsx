@@ -1,4 +1,4 @@
-import { type ComponentType, memo } from 'react'
+import type { ComponentType, FC } from 'react'
 import { SvgUri, SvgXml, type SvgProps } from 'react-native-svg'
 
 export type SvgSource =
@@ -8,7 +8,7 @@ export type SvgSource =
 
 interface SvgUniversalProps extends SvgProps {
   /** Источник SVG */
-  source: SvgSource
+  readonly source: SvgSource
 }
 
 /**
@@ -22,7 +22,7 @@ interface SvgUniversalProps extends SvgProps {
  * <SvgUniversal source={{ xml: '<svg><path d="M1 1h1v1H1z" /></svg>' }} />
  * <SvgUniversal source={IconUser} />
  */
-export const SvgUniversal = memo<SvgUniversalProps>(({ source, ...rest }) => {
+export const SvgUniversal: FC<SvgUniversalProps> = ({ source, ...rest }) => {
   if ('uri' in source) {
     return <SvgUri testID={SvgUniversalTestId.uri} uri={source.uri} {...rest} />
   }
@@ -34,7 +34,7 @@ export const SvgUniversal = memo<SvgUniversalProps>(({ source, ...rest }) => {
   const Component = source
 
   return <Component testID={SvgUniversalTestId.component} {...rest} />
-})
+}
 
 export const SvgUniversalTestId = {
   component: 'SvgUniversalComponent',

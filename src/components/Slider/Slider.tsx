@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from 'react'
+import { useState, type FC } from 'react'
 import {
   type AccessibilityProps,
   type LayoutChangeEvent,
@@ -23,30 +23,30 @@ export interface SliderProps
    * Управление доступностью компонента
    * @default false
    */
-  disabled?: boolean
+  readonly disabled?: boolean
   /**
    * Признак наличия диапазона выбираемых значений
    * @default false
    */
-  range?: boolean
+  readonly range?: boolean
   /**
    * Начальное значение/позиция стартового ползунка
    * @default 0
    */
-  minPointerValueInit: number
+  readonly minPointerValueInit: number
   /**
    * Конечное значение/позиция конечного ползунка
    * @default 100
    */
-  maxPointerValueInit?: number
+  readonly maxPointerValueInit?: number
   /**
    * Значение/позиция возвращаемое стартовым ползунком
    */
-  onMinPointerValueChange: (value: number) => void
+  readonly onMinPointerValueChange: (value: number) => void
   /**
    * Значение/позиция возвращаемое конечным ползунком
    */
-  onMaxPointerValueChange: (value: number) => void
+  readonly onMaxPointerValueChange: (value: number) => void
 }
 
 const MIN_TRACK_SCALE = 0
@@ -62,197 +62,168 @@ const clamp = (val: number, min: number, max: number) => {
  * Используется для указания значения или диапазона значений с помощью ползунка
  * @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-6090&m=dev
  */
-export const Slider = memo<SliderProps>(
-  // TODO: refactor component to fix max-statements
-  // eslint-disable-next-line max-statements
-  ({
-    disabled = false,
-    range = false,
-    minPointerValueInit = 0,
-    maxPointerValueInit = 100,
-    onMinPointerValueChange,
-    onMaxPointerValueChange,
-    testID,
-    ...rest
-  }) => {
-    const styles = useStyles()
-    const minPointX = useSharedValue(0)
-    const maxPointX = useSharedValue(0)
+export const Slider: FC<SliderProps> = ({
+  disabled = false,
+  range = false,
+  minPointerValueInit = 0,
+  maxPointerValueInit = 100,
+  onMinPointerValueChange,
+  onMaxPointerValueChange,
+  testID,
+  ...rest
+}) => {
+  const styles = useStyles()
+  const minPointX = useSharedValue(0)
+  const maxPointX = useSharedValue(0)
 
-    const trackWidth = useSharedValue(0)
-    const pointerWidth = styles.point.width
+  const trackWidth = useSharedValue(0)
+  const pointerWidth = styles.point.width
 
-    const [isPressed, setIsPressed] = useState(false)
+  const [isPressed, setIsPressed] = useState(false)
 
-    const prevMinPointX = useSharedValue(0)
-    const prevMaxPointX = useSharedValue(0)
+  const prevMinPointX = useSharedValue(0)
+  const prevMaxPointX = useSharedValue(0)
 
-    const pointerStyle = useMemo(
-      () => [styles.point, isPressed && styles.hovered],
-      [styles.point, isPressed, styles.hovered]
-    )
+  const pointerStyle = [styles.point, isPressed && styles.hovered]
 
-    const lineStyle = useMemo(
-      () => [styles.line, isPressed && styles.hovered],
-      [styles.line, isPressed, styles.hovered]
-    )
+  const lineStyle = [styles.line, isPressed && styles.hovered]
 
-    const interpolateInitVal = useCallback(
-      (value: number, width: number) => {
-        return interpolate(
-          value,
-          [MIN_TRACK_SCALE, MAX_TRACK_SCALE],
-          [0, width - pointerWidth],
-          Extrapolation.CLAMP
-        )
-      },
-      [pointerWidth]
-    )
-
-    const onContainerLayout = useCallback(
-      (event: LayoutChangeEvent) => {
-        event.target.measure((x, y, width) => {
-          trackWidth.value = width
-          const min = interpolateInitVal(minPointerValueInit, width)
-          const max = interpolateInitVal(maxPointerValueInit, width)
-
-          minPointX.value = min
-          maxPointX.value = max
-        })
-      },
-      [
-        minPointerValueInit,
-        maxPointerValueInit,
-        interpolateInitVal,
-        trackWidth,
-        minPointX,
-        maxPointX,
-      ]
-    )
-
-    const returnMinVal = useCallback(
-      (value: number) => {
-        const min = interpolate(
-          value,
-          [0, trackWidth.value - pointerWidth * 2],
-          [MIN_TRACK_SCALE, MAX_TRACK_SCALE],
-          Extrapolation.CLAMP
-        )
-        onMinPointerValueChange(min)
-      },
-      [trackWidth, pointerWidth, onMinPointerValueChange]
-    )
-
-    const returnMaxVal = useCallback(
-      (value: number) => {
-        const min = interpolate(
-          value,
-          [pointerWidth, trackWidth.value - pointerWidth],
-          [MIN_TRACK_SCALE, MAX_TRACK_SCALE],
-          Extrapolation.CLAMP
-        )
-        onMaxPointerValueChange(min)
-      },
-      [trackWidth, pointerWidth, onMaxPointerValueChange]
-    )
-
-    const panMinPoint = Gesture.Pan()
-      .minDistance(1)
-      .onBegin(() => {
-        prevMinPointX.value = minPointX.value
-        runOnJS(setIsPressed)(true)
-      })
-      .onUpdate((event) => {
-        const maxTranslateX = trackWidth.value - pointerWidth
-
-        const minPointPosition = clamp(
-          prevMinPointX.value + event.translationX,
-          0,
-          range ? maxPointX.value - pointerWidth : maxTranslateX
-        )
-
-        minPointX.value = minPointPosition
-        runOnJS(returnMinVal)(minPointPosition)
-      })
-      .onFinalize(() => {
-        runOnJS(setIsPressed)(false)
-      })
-
-    const minPointStyle = useAnimatedStyle(() => ({
-      transform: [{ translateX: minPointX.value }],
-    }))
-
-    const panMaxPoint = Gesture.Pan()
-      .minDistance(1)
-      .onBegin(() => {
-        prevMaxPointX.value = maxPointX.value
-        runOnJS(setIsPressed)(true)
-      })
-      .onUpdate((event) => {
-        const maxTranslateX = trackWidth.value - pointerWidth
-
-        const maxPointPosition = clamp(
-          prevMaxPointX.value + event.translationX,
-          minPointX.value + pointerWidth,
-          maxTranslateX
-        )
-        maxPointX.value = maxPointPosition
-        runOnJS(returnMaxVal)(maxPointPosition)
-      })
-      .onFinalize(() => {
-        runOnJS(setIsPressed)(false)
-      })
-
-    const maxPointStyle = useAnimatedStyle(() => ({
-      transform: [{ translateX: maxPointX.value }],
-    }))
-
-    const minLineStyle = useAnimatedStyle(() => ({
-      left: 0,
-      width: minPointX.value + pointerWidth / 2,
-    }))
-
-    const betweenLineStyle = useAnimatedStyle(() => ({
-      left: minPointX.value + pointerWidth / 2,
-      width: maxPointX.value - minPointX.value,
-    }))
-
-    return (
-      <View
-        style={[styles.container, disabled && styles.disabled]}
-        testID={testID}
-        onLayout={onContainerLayout}
-        {...rest}
-      >
-        <View style={styles.track}>
-          {range ? null : ( // индикатор старта
-            <Animated.View style={[lineStyle, minLineStyle]} />
-          )}
-
-          {range ? ( // индикатор между точками
-            <Animated.View style={[lineStyle, betweenLineStyle]} />
-          ) : null}
-
-          <GestureDetector gesture={panMinPoint}>
-            <Animated.View
-              pointerEvents={disabled ? 'none' : 'auto'}
-              style={[pointerStyle, minPointStyle]}
-            />
-          </GestureDetector>
-
-          {range ? ( // индикатор между точками
-            <GestureDetector gesture={panMaxPoint}>
-              <Animated.View
-                pointerEvents={disabled ? 'none' : 'auto'}
-                style={[pointerStyle, maxPointStyle]}
-              />
-            </GestureDetector>
-          ) : null}
-        </View>
-      </View>
+  const interpolateInitVal = (value: number, width: number) => {
+    return interpolate(
+      value,
+      [MIN_TRACK_SCALE, MAX_TRACK_SCALE],
+      [0, width - pointerWidth],
+      Extrapolation.CLAMP
     )
   }
-)
+
+  const onContainerLayout = (event: LayoutChangeEvent) => {
+    event.target.measure((x, y, width) => {
+      trackWidth.value = width
+      const min = interpolateInitVal(minPointerValueInit, width)
+      const max = interpolateInitVal(maxPointerValueInit, width)
+
+      minPointX.value = min
+      maxPointX.value = max
+    })
+  }
+
+  const returnMinVal = (value: number) => {
+    const min = interpolate(
+      value,
+      [0, trackWidth.value - pointerWidth * 2],
+      [MIN_TRACK_SCALE, MAX_TRACK_SCALE],
+      Extrapolation.CLAMP
+    )
+    onMinPointerValueChange(min)
+  }
+
+  const returnMaxVal = (value: number) => {
+    const min = interpolate(
+      value,
+      [pointerWidth, trackWidth.value - pointerWidth],
+      [MIN_TRACK_SCALE, MAX_TRACK_SCALE],
+      Extrapolation.CLAMP
+    )
+    onMaxPointerValueChange(min)
+  }
+
+  const panMinPoint = Gesture.Pan()
+    .minDistance(1)
+    .onBegin(() => {
+      prevMinPointX.value = minPointX.value
+      runOnJS(setIsPressed)(true)
+    })
+    .onUpdate((event) => {
+      const maxTranslateX = trackWidth.value - pointerWidth
+
+      const minPointPosition = clamp(
+        prevMinPointX.value + event.translationX,
+        0,
+        range ? maxPointX.value - pointerWidth : maxTranslateX
+      )
+
+      minPointX.value = minPointPosition
+      runOnJS(returnMinVal)(minPointPosition)
+    })
+    .onFinalize(() => {
+      runOnJS(setIsPressed)(false)
+    })
+
+  const minPointStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: minPointX.value }],
+  }))
+
+  const panMaxPoint = Gesture.Pan()
+    .minDistance(1)
+    .onBegin(() => {
+      prevMaxPointX.value = maxPointX.value
+      runOnJS(setIsPressed)(true)
+    })
+    .onUpdate((event) => {
+      const maxTranslateX = trackWidth.value - pointerWidth
+
+      const maxPointPosition = clamp(
+        prevMaxPointX.value + event.translationX,
+        minPointX.value + pointerWidth,
+        maxTranslateX
+      )
+      maxPointX.value = maxPointPosition
+      runOnJS(returnMaxVal)(maxPointPosition)
+    })
+    .onFinalize(() => {
+      runOnJS(setIsPressed)(false)
+    })
+
+  const maxPointStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: maxPointX.value }],
+  }))
+
+  const minLineStyle = useAnimatedStyle(() => ({
+    left: 0,
+    width: minPointX.value + pointerWidth / 2,
+  }))
+
+  const betweenLineStyle = useAnimatedStyle(() => ({
+    left: minPointX.value + pointerWidth / 2,
+    width: maxPointX.value - minPointX.value,
+  }))
+
+  return (
+    <View
+      style={[styles.container, disabled && styles.disabled]}
+      testID={testID}
+      onLayout={onContainerLayout}
+      {...rest}
+    >
+      <View style={styles.track}>
+        {range ? null : ( // индикатор старта
+          <Animated.View style={[lineStyle, minLineStyle]} />
+        )}
+
+        {range ? ( // индикатор между точками
+          <Animated.View style={[lineStyle, betweenLineStyle]} />
+        ) : null}
+
+        <GestureDetector gesture={panMinPoint}>
+          <Animated.View
+            pointerEvents={disabled ? 'none' : 'auto'}
+            style={[pointerStyle, minPointStyle]}
+          />
+        </GestureDetector>
+
+        {range ? ( // индикатор между точками
+          <GestureDetector gesture={panMaxPoint}>
+            <Animated.View
+              pointerEvents={disabled ? 'none' : 'auto'}
+              style={[pointerStyle, maxPointStyle]}
+            />
+          </GestureDetector>
+        ) : null}
+      </View>
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme, border }) => {
   return {

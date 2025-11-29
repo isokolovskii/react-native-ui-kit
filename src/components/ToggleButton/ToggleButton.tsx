@@ -1,7 +1,10 @@
-import { memo, useCallback, useMemo, useState } from 'react'
+import type { FC } from 'react'
 import {
   type AccessibilityProps,
   Pressable,
+  type PressableStateCallbackType,
+  type StyleProp,
+  StyleSheet,
   Text,
   View,
   type ViewProps,
@@ -11,168 +14,273 @@ import {
 import { type SvgSource, SvgUniversal } from '../../utils/SvgUniversal'
 import { makeStyles } from '../../utils/makeStyles'
 
-import { useIconSize } from './hooks/useIconSize'
-import { useLabelSize } from './hooks/useLabelSize'
-import { useStateStyles } from './hooks/useStateStyles'
-
 export interface ToggleButtonProps
   extends AccessibilityProps,
     Pick<ViewProps, 'testID'> {
   /** Обработчик нажатия на кнопку */
-  onPress: () => void
+  readonly onPress: () => void
   /**
    * true, если необходим компонент в активном состоянии
    * @default false
    */
-  checked?: boolean
+  readonly checked?: boolean
   /**
    * Управление доступностью компонента
    * @default false
    */
-  disabled?: boolean
+  readonly disabled?: boolean
   /** Отображение только иконки без текста */
-  iconOnly?: boolean
+  readonly iconOnly?: boolean
   /**
    * Выбор позиции иконки. 'left' - иконка слева, 'right' - иконка справа, null - иконка скрыта
    * @default 'left'
    */
-  iconPos?: 'left' | 'right' | null
+  readonly iconPos?: 'left' | 'right' | null
   /** Текст на кнопке */
-  label?: string
+  readonly label?: string
   /**
    * Выбор размера элемента
    * @default 'base'
    */
-  size?: 'xlarge' | 'large' | 'base' | 'small'
+  readonly size?: 'xlarge' | 'large' | 'base' | 'small'
   /** Дополнительная стилизация для контейнера компонента */
-  style?: ViewStyle
+  readonly style?: StyleProp<ViewStyle>
   /** SVG-иконка */
-  Icon?: SvgSource
+  readonly Icon?: SvgSource
 }
 
 /**
  * Используется для выбора нескольких значений с помощью кнопки
  * @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-4821
  */
-export const ToggleButton = memo<ToggleButtonProps>(
-  ({
-    onPress,
-    checked,
-    disabled,
-    iconOnly: iconOnlyProp,
-    iconPos = 'left',
-    label,
-    size = 'base',
+export const ToggleButton: FC<ToggleButtonProps> = ({
+  onPress,
+  checked,
+  disabled,
+  iconOnly: iconOnlyProp,
+  iconPos = 'left',
+  label,
+  size = 'base',
+  style,
+  Icon,
+  testID = ToggleButtonTestId.root,
+  ...rest
+}) => {
+  const styles = useStyles()
+
+  const iconOnly = iconOnlyProp || !label
+
+  const pressedStyle = ({ pressed }: PressableStateCallbackType) => [
+    styles.container,
     style,
-    Icon,
-    testID,
-    ...rest
-  }) => {
-    const styles = useStyles()
-    const labelSize = useLabelSize(size)
-    const iconSize = useIconSize(size)
-    const [pressed, setPressed] = useState(false)
-    const stateStyles = useStateStyles(checked, disabled, pressed)
+    styles.borderContainer,
+    pressed && styles.pressedBorderContainer,
+    checked && styles.checkedBorderContainer,
+    checked && pressed && styles.checkedPressedBorderContainer,
+    disabled && styles.disabledBorderContainer,
+  ]
 
-    const iconOnly = useMemo(
-      () => iconOnlyProp || !label,
-      [iconOnlyProp, label]
-    )
-
-    const icon = useMemo(() => {
-      if (!Icon) {
-        return null
-      }
-
-      return (
-        <SvgUniversal
-          height={iconSize.height}
-          source={Icon}
-          style={stateStyles.label as unknown as ViewStyle}
-          testID={ToggleButtonTestId.icon}
-          width={iconSize.width}
-        />
-      )
-    }, [Icon, iconSize.height, iconSize.width, stateStyles.label])
-
-    const onPressIn = useCallback(() => setPressed(true), [])
-    const onPressOut = useCallback(() => setPressed(false), [])
-
-    return (
-      <Pressable
-        disabled={disabled}
-        style={[styles.container, style, stateStyles.borderContainer]}
-        testID={testID || ToggleButtonTestId.root}
-        onPress={onPress}
-        onPressIn={onPressIn}
-        onPressOut={onPressOut}
-        {...rest}
-      >
+  return (
+    <Pressable
+      disabled={disabled}
+      style={pressedStyle}
+      testID={testID}
+      onPress={onPress}
+      {...rest}
+    >
+      {({ pressed }) => (
         <View
           style={[
             styles.contentContainer,
             styles[size],
             iconOnly && styles.iconOnly,
-            stateStyles.contentContainer,
+            pressed && styles.pressedContentContainer,
+            checked && styles.checkedContentContainer,
+            checked && pressed && styles.checkedPressedContentContainer,
+            disabled && styles.disabledContentContainer,
           ]}
           testID={ToggleButtonTestId.container}
         >
-          {iconOnly ? (
-            icon
+          {iconOnly && Icon ? (
+            <SvgUniversal
+              color={
+                StyleSheet.flatten([
+                  styles.label,
+                  pressed && styles.pressedLabel,
+                  checked && styles.checkedLabel,
+                  checked && pressed && styles.checkedPressedLabel,
+                  disabled && styles.disabledLabel,
+                ]).color
+              }
+              height={styles[`${size}Icon`].height}
+              source={Icon}
+              testID={ToggleButtonTestId.icon}
+              width={styles[`${size}Icon`].width}
+            />
           ) : (
             <>
-              {iconPos === 'left' && icon}
+              {iconPos === 'left' && Icon ? (
+                <SvgUniversal
+                  color={
+                    StyleSheet.flatten([
+                      styles.label,
+                      pressed && styles.pressedLabel,
+                      checked && styles.checkedLabel,
+                      checked && pressed && styles.checkedPressedLabel,
+                      disabled && styles.disabledLabel,
+                    ]).color
+                  }
+                  height={styles[`${size}Icon`].height}
+                  source={Icon}
+                  testID={ToggleButtonTestId.icon}
+                  width={styles[`${size}Icon`].width}
+                />
+              ) : null}
               <Text
-                style={[styles.label, labelSize, stateStyles.label]}
+                style={[
+                  styles.label,
+                  styles[`${size}Label`],
+                  pressed && styles.pressedLabel,
+                  checked && styles.checkedLabel,
+                  checked && pressed && styles.checkedPressedLabel,
+                  disabled && styles.disabledLabel,
+                ]}
                 testID={ToggleButtonTestId.text}
               >
                 {label}
               </Text>
-              {Icon && iconPos === 'right' ? icon : null}
+              {iconPos === 'right' && Icon ? (
+                <SvgUniversal
+                  color={
+                    StyleSheet.flatten([
+                      styles.label,
+                      pressed && styles.pressedLabel,
+                      checked && styles.checkedLabel,
+                      checked && pressed && styles.checkedPressedLabel,
+                      disabled && styles.disabledLabel,
+                    ]).color
+                  }
+                  height={styles[`${size}Icon`].height}
+                  source={Icon}
+                  testID={ToggleButtonTestId.icon}
+                  width={styles[`${size}Icon`].width}
+                />
+              ) : null}
             </>
           )}
         </View>
-      </Pressable>
-    )
-  }
-)
+      )}
+    </Pressable>
+  )
+}
 
-const useStyles = makeStyles(({ theme, spacing, border, fonts }) => ({
-  container: {
-    alignSelf: 'flex-start',
-    borderRadius: border.Radius['rounded-full'],
-    borderWidth: border.Width.border,
-    overflow: 'hidden',
-  },
-  contentContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'flex-start',
-    borderRadius: border.Radius['rounded-full'],
-    paddingVertical: theme.Button.Common.buttonPaddingTopBottom,
-    paddingHorizontal: spacing.Padding['p-6'],
-    gap: spacing.Gap['gap-3'],
-  },
-  xlarge: { minHeight: theme.Button.Common.buttonHeightXL },
-  large: { minHeight: theme.Button.Common.buttonHeightLG },
-  base: {
-    minHeight: theme.Button.Common.buttonHeight,
-    paddingHorizontal: theme.Button.Common.buttonPaddingLeftRight,
-    gap: theme.General.inlineSpacing,
-  },
-  small: {
-    minHeight: theme.Button.Common.buttonHeightSM,
-    paddingHorizontal: spacing.Padding['p-3'],
-    gap: theme.General.inlineSpacing,
-  },
-  iconOnly: {
-    aspectRatio: 1,
-    paddingHorizontal: 0,
-    paddingVertical: 0,
-    justifyContent: 'center',
-  },
-  label: { flexShrink: 1, fontFamily: fonts.primary },
-}))
+const useStyles = makeStyles(
+  ({ theme, spacing, border, fonts, typography }) => ({
+    container: {
+      alignSelf: 'flex-start',
+      borderRadius: border.Radius['rounded-full'],
+      borderWidth: border.Width.border,
+      overflow: 'hidden',
+    },
+    contentContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      borderRadius: border.Radius['rounded-full'],
+      paddingVertical: theme.Button.Common.buttonPaddingTopBottom,
+      paddingHorizontal: spacing.Padding['p-6'],
+      gap: spacing.Gap['gap-3'],
+      backgroundColor: theme.Form.ToggleButton.toggleButtonBg,
+    },
+    pressedContentContainer: {
+      backgroundColor: theme.Form.ToggleButton.toggleButtonHoverBg,
+    },
+    checkedContentContainer: {
+      backgroundColor: theme.Form.ToggleButton.toggleButtonActiveBg,
+    },
+    checkedPressedContentContainer: {
+      backgroundColor: theme.Form.ToggleButton.toggleButtonActiveHoverBg,
+    },
+    disabledContentContainer: {
+      backgroundColor: theme.Button.Disabled.disabledButtonBg,
+    },
+
+    xlarge: { minHeight: theme.Button.Common.buttonHeightXL },
+    large: { minHeight: theme.Button.Common.buttonHeightLG },
+    base: {
+      minHeight: theme.Button.Common.buttonHeight,
+      paddingHorizontal: theme.Button.Common.buttonPaddingLeftRight,
+      gap: theme.General.inlineSpacing,
+    },
+    small: {
+      minHeight: theme.Button.Common.buttonHeightSM,
+      paddingHorizontal: spacing.Padding['p-3'],
+      gap: theme.General.inlineSpacing,
+    },
+
+    iconOnly: {
+      aspectRatio: 1,
+      paddingHorizontal: 0,
+      paddingVertical: 0,
+      justifyContent: 'center',
+    },
+    xlargeIcon: {
+      width: typography.Size['text-4xl'],
+      height: typography.Size['text-4xl'],
+    },
+    largeIcon: {
+      width: typography.Size['text-2xl'],
+      height: typography.Size['text-2xl'],
+    },
+    baseIcon: {
+      width: typography.Size['text-xl'],
+      height: typography.Size['text-xl'],
+    },
+    smallIcon: {
+      width: typography.Size['text-base'],
+      height: typography.Size['text-base'],
+    },
+
+    xlargeLabel: { fontSize: typography.Size['text-2xl'] },
+    largeLabel: { fontSize: typography.Size['text-xl'] },
+    baseLabel: { fontSize: typography.Size['text-base'] },
+    smallLabel: { fontSize: typography.Size['text-sm'] },
+
+    borderContainer: {
+      borderColor: theme.Form.ToggleButton.toggleButtonBorderColor,
+    },
+    pressedBorderContainer: {
+      borderColor: theme.Form.ToggleButton.toggleButtonHoverBg,
+    },
+    checkedBorderContainer: {
+      borderColor: theme.Form.ToggleButton.toggleButtonActiveBorderColor,
+    },
+    checkedPressedBorderContainer: {
+      borderColor: theme.Form.ToggleButton.toggleButtonActiveHoverBorderColor,
+    },
+    disabledBorderContainer: {
+      borderColor: theme.Button.Disabled.disabledButtonBorderColor,
+      opacity: 0.6,
+    },
+
+    label: {
+      flexShrink: 1,
+      fontFamily: fonts.primary,
+      fontWeight: '600',
+      includeFontPadding: false,
+      verticalAlign: 'middle',
+      color: theme.Form.ToggleButton.toggleButtonTextColor,
+    },
+    pressedLabel: { color: theme.Form.ToggleButton.toggleButtonHoverTextColor },
+    checkedLabel: {
+      color: theme.Form.ToggleButton.toggleButtonActiveTextColor,
+    },
+    checkedPressedLabel: {
+      color: theme.Form.ToggleButton.toggleButtonTextActiveHoverColor,
+    },
+    disabledLabel: { color: theme.Button.Disabled.disabledButtonTextColor },
+  })
+)
 
 export const ToggleButtonTestId = {
   root: 'ToggleButton',

@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { Text, type TextProps } from 'react-native'
 
 import { makeStyles } from '../../utils/makeStyles'
@@ -10,7 +11,7 @@ export interface BodyProps extends TextProps {
   readonly weight?: 'regular' | 'medium' | 'bold'
 }
 
-export const Body = ({
+export const Body: FC<BodyProps> = ({
   base,
   color = 'default',
   disabled,
@@ -18,7 +19,7 @@ export const Body = ({
   weight = 'regular',
   style,
   ...other
-}: BodyProps) => {
+}) => {
   const styles = useStyles()
 
   return (

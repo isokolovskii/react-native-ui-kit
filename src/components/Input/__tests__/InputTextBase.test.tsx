@@ -2,8 +2,7 @@ import { fireEvent, render, userEvent } from '@testing-library/react-native'
 
 import { TextInput } from 'react-native-gesture-handler'
 
-import { InputTextBase } from '../InputTextBase/InputTextBase'
-import type { RenderTextInputArgs } from '../InputTextBase/types'
+import { InputTextBase, type RenderTextInputArgs } from '../InputTextBase'
 
 describe('InputTextBase component functionality tests', () => {
   test('should NOT be render outline elements in disabled state', () => {

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import-x/no-nodejs-modules
 import path from 'path'
 
 import { dangerReassure } from 'reassure'

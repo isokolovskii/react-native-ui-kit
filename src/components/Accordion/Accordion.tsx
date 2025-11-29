@@ -1,5 +1,5 @@
 import { IconChevronRight } from '@tabler/icons-react-native'
-import React, { useCallback, useState } from 'react'
+import { useState } from 'react'
 import { View, Text, Pressable, type LayoutChangeEvent } from 'react-native'
 import Animated, {
   interpolate,
@@ -46,7 +46,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   withSeparator = false,
   disabled = false,
   titleExtra,
-  testID,
+  testID = AccordionTestIds.component,
   children,
   ...rest
 }) => {
@@ -56,19 +56,16 @@ export const Accordion: React.FC<AccordionProps> = ({
   const contentOpenFraction = useSharedValue(initiallyExpanded ? 1 : 0)
   const [isExpanded, setIsExpanded] = useState(initiallyExpanded)
 
-  const onLayout = useCallback(
-    (event: LayoutChangeEvent) => {
-      contentHeight.value = event.nativeEvent.layout.height
-    },
-    [contentHeight]
-  )
+  const onLayout = (event: LayoutChangeEvent) => {
+    contentHeight.value = event.nativeEvent.layout.height
+  }
 
-  const toggle = useCallback(() => {
+  const toggle = () => {
     contentOpenFraction.value = withTiming(
       contentOpenFraction.value > 0 ? 0 : 1
     )
     setIsExpanded((value) => !value)
-  }, [contentOpenFraction])
+  }
 
   const arrowAnimatedStyle = useAnimatedStyle(() => ({
     transform: [
@@ -90,7 +87,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   return (
     <View
       style={[styles.component, withSeparator ? styles.separator : {}]}
-      testID={testID || AccordionTestIds.component}
+      testID={testID}
       {...rest}
     >
       <Pressable

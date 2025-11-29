@@ -1,16 +1,15 @@
-import { memo } from 'react'
-import { View, type ViewStyle } from 'react-native'
+import type { FC } from 'react'
+import { View, type StyleProp, type ViewStyle } from 'react-native'
 
-import { InputTextBase } from './InputTextBase/InputTextBase'
-import type { InputTextBaseProps } from './InputTextBase/types'
+import { InputTextBase, type InputTextBaseProps } from './InputTextBase'
 
 export interface FloatLabelProps extends InputTextBaseProps {
   /** Текст плейсхолдера */
-  placeholder: string
+  readonly placeholder: string
   /** Показать индикатор загрузки в поле */
-  loading?: boolean
+  readonly loading?: boolean
   /** Дополнительная стилизация для контейнера компонента */
-  style?: ViewStyle
+  readonly style?: StyleProp<ViewStyle>
 }
 
 /**
@@ -19,13 +18,13 @@ export interface FloatLabelProps extends InputTextBaseProps {
  * @see InputTextBaseProps
  * @deprecated Используйте {@link InputText} с `floatLabel={true}`
  */
-export const FloatLabel = memo<FloatLabelProps>(({ style, ...otherProps }) => {
+export const FloatLabel: FC<FloatLabelProps> = ({ style, ...otherProps }) => {
   return (
     <View style={style}>
       <InputTextBase {...otherProps} />
     </View>
   )
-})
+}
 
 export const FloatLabelTestId = {
   root: 'FloatLabel',

@@ -1,5 +1,4 @@
 import { SvgUniversal } from '../../../utils/SvgUniversal'
-import { genericMemo } from '../../../utils/genericMemo'
 import type { BaseButtonProps, ButtonVariant, VariantStyles } from '../types'
 
 import { useIconStyle } from './useIconStyle'
@@ -11,7 +10,7 @@ export type ButtonIconComponentProps<Variant extends ButtonVariant> = Pick<
   Pick<BaseButtonProps<Variant>, 'Icon'> &
   Pick<VariantStyles<Variant>, 'iconVariantStyles'>
 
-export const ButtonIconComponent = <Variant extends ButtonVariant>({
+export const ButtonIcon = <Variant extends ButtonVariant>({
   size,
   variant,
   disabled,
@@ -41,5 +40,3 @@ export const ButtonIconComponent = <Variant extends ButtonVariant>({
     />
   )
 }
-
-export const ButtonIcon = genericMemo(ButtonIconComponent)

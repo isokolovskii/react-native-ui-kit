@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { View } from 'react-native'
 import Animated, {
   cancelAnimation,
@@ -22,9 +22,9 @@ interface TimerProps {
    * Время в секундах, которое нужно отсчитать.
    * Min - 1, Max - 99
    */
-  countFrom: number
+  readonly countFrom: number
   /** Функция, которая будет вызвана по завершению отсчета */
-  onFinish?: () => void
+  readonly onFinish?: () => void
 }
 
 const BORDER_WIDTH = 2
@@ -33,7 +33,7 @@ const BORDER_WIDTH = 2
  * Таймер для использования внутри ui kit, не экспортируется для внешнего использования
  * @see https://www.figma.com/design/2ZnL6XPKEpxAHvrlbRvnMu/Template-Tailwind-CSS-(DS)?node-id=270-1514
  */
-export const Timer = memo<TimerProps>(({ countFrom, onFinish }) => {
+export const Timer: FC<TimerProps> = ({ countFrom, onFinish }) => {
   const styles = useStyles()
   const circleAnimation = useSharedValue(0)
   const [currentTimerValue, setCurrentTimerValue] = useState(countFrom)
@@ -96,7 +96,7 @@ export const Timer = memo<TimerProps>(({ countFrom, onFinish }) => {
       <TimerFlip value={currentTimerValue} />
     </View>
   )
-})
+}
 
 const useStyles = makeStyles(({ typography }) => ({
   container: {

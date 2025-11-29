@@ -5,7 +5,8 @@ import { View, Text } from 'react-native'
 
 import { Badge } from '../Badge'
 
-import { Tabs, TabPanel } from '.'
+import { TabPanel } from './TabPanel'
+import { Tabs } from './Tabs'
 
 const meta: Meta<typeof Tabs> = { title: 'Menu/Tab', component: Tabs }
 export default meta

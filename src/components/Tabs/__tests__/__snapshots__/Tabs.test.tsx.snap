@@ -7,7 +7,7 @@ exports[`TabItem component tests active: label 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -50,7 +50,7 @@ exports[`TabItem component tests active: label 1`] = `
         {
           "backgroundColor": "rgba(255, 255, 255, 0.0001)",
         },
-        undefined,
+        false,
       ]
     }
   >
@@ -69,7 +69,7 @@ exports[`TabItem component tests active: label 1`] = `
             "color": "#000000",
           },
           false,
-          undefined,
+          false,
         ]
       }
     >
@@ -86,7 +86,7 @@ exports[`TabItem component tests active: label, badge 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -129,7 +129,7 @@ exports[`TabItem component tests active: label, badge 1`] = `
         {
           "backgroundColor": "rgba(255, 255, 255, 0.0001)",
         },
-        undefined,
+        false,
       ]
     }
   >
@@ -148,7 +148,7 @@ exports[`TabItem component tests active: label, badge 1`] = `
             "color": "#000000",
           },
           false,
-          undefined,
+          false,
         ]
       }
     >
@@ -243,7 +243,7 @@ exports[`TabItem component tests active: label, icon 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -286,7 +286,7 @@ exports[`TabItem component tests active: label, icon 1`] = `
         {
           "backgroundColor": "rgba(255, 255, 255, 0.0001)",
         },
-        undefined,
+        false,
       ]
     }
   >
@@ -407,7 +407,7 @@ exports[`TabItem component tests active: label, icon 1`] = `
             "color": "#000000",
           },
           false,
-          undefined,
+          false,
         ]
       }
     >
@@ -424,7 +424,7 @@ exports[`TabItem component tests active: label, icon, badge 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -467,7 +467,7 @@ exports[`TabItem component tests active: label, icon, badge 1`] = `
         {
           "backgroundColor": "rgba(255, 255, 255, 0.0001)",
         },
-        undefined,
+        false,
       ]
     }
   >
@@ -588,7 +588,7 @@ exports[`TabItem component tests active: label, icon, badge 1`] = `
             "color": "#000000",
           },
           false,
-          undefined,
+          false,
         ]
       }
     >
@@ -807,7 +807,7 @@ exports[`TabItem component tests disabled: label 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
+        false,
         {
           "mixBlendMode": "luminosity",
           "opacity": 0.6,
@@ -826,7 +826,7 @@ exports[`TabItem component tests disabled: label 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
+          false,
           false,
           {
             "color": "#85888e",
@@ -887,7 +887,7 @@ exports[`TabItem component tests disabled: label, badge 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
+        false,
         {
           "mixBlendMode": "luminosity",
           "opacity": 0.6,
@@ -906,7 +906,7 @@ exports[`TabItem component tests disabled: label, badge 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
+          false,
           false,
           {
             "color": "#85888e",
@@ -1045,7 +1045,7 @@ exports[`TabItem component tests disabled: label, icon 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
+        false,
         {
           "mixBlendMode": "luminosity",
           "opacity": 0.6,
@@ -1166,7 +1166,7 @@ exports[`TabItem component tests disabled: label, icon 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
+          false,
           false,
           {
             "color": "#85888e",
@@ -1227,7 +1227,7 @@ exports[`TabItem component tests disabled: label, icon, badge 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
+        false,
         {
           "mixBlendMode": "luminosity",
           "opacity": 0.6,
@@ -1348,7 +1348,7 @@ exports[`TabItem component tests disabled: label, icon, badge 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
+          false,
           false,
           {
             "color": "#85888e",
@@ -1447,7 +1447,7 @@ exports[`TabItem component tests label 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -1487,8 +1487,8 @@ exports[`TabItem component tests label 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
-        undefined,
+        false,
+        false,
       ]
     }
   >
@@ -1503,9 +1503,9 @@ exports[`TabItem component tests label 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
           false,
-          undefined,
+          false,
+          false,
         ]
       }
     >
@@ -1522,7 +1522,7 @@ exports[`TabItem component tests label, badge 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -1562,8 +1562,8 @@ exports[`TabItem component tests label, badge 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
-        undefined,
+        false,
+        false,
       ]
     }
   >
@@ -1578,9 +1578,9 @@ exports[`TabItem component tests label, badge 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
           false,
-          undefined,
+          false,
+          false,
         ]
       }
     >
@@ -1675,7 +1675,7 @@ exports[`TabItem component tests label, icon 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -1715,8 +1715,8 @@ exports[`TabItem component tests label, icon 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
-        undefined,
+        false,
+        false,
       ]
     }
   >
@@ -1833,9 +1833,9 @@ exports[`TabItem component tests label, icon 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
           false,
-          undefined,
+          false,
+          false,
         ]
       }
     >
@@ -1852,7 +1852,7 @@ exports[`TabItem component tests label, icon, badge 1`] = `
     {
       "busy": undefined,
       "checked": undefined,
-      "disabled": undefined,
+      "disabled": false,
       "expanded": undefined,
       "selected": undefined,
     }
@@ -1892,8 +1892,8 @@ exports[`TabItem component tests label, icon, badge 1`] = `
           "paddingVertical": 14,
         },
         false,
-        undefined,
-        undefined,
+        false,
+        false,
       ]
     }
   >
@@ -2010,9 +2010,9 @@ exports[`TabItem component tests label, icon, badge 1`] = `
             "includeFontPadding": false,
             "verticalAlign": "middle",
           },
-          undefined,
           false,
-          undefined,
+          false,
+          false,
         ]
       }
     >

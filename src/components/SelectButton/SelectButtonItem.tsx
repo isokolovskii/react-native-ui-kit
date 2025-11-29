@@ -1,4 +1,4 @@
-import { memo, useMemo, useState } from 'react'
+import { useState, type FC } from 'react'
 import { TouchableOpacity, type ViewProps, type ViewStyle } from 'react-native'
 import Animated, {
   interpolateColor,
@@ -14,170 +14,124 @@ import { makeStyles } from '../../utils/makeStyles'
 export interface SelectButtonItemProps
   extends Pick<ViewProps, 'onLayout' | 'testID'> {
   /** Индекс кнопки */
-  index: number
+  readonly index: number
 
   /** Обработчик нажатия на кнопку */
-  onPress: () => void
+  readonly onPress: () => void
 
   /**
    * Анимированное значение 0...n-1, где n - это количество кнопок.
    * Кнопка считается выбранной, если значение position равно индексу кнопки.
    */
-  position: SharedValue<number>
+  readonly position: SharedValue<number>
 
   /** true - если кнопка недоступна для нажатия */
-  disabled?: boolean
+  readonly disabled?: boolean
 
   /** Текст на кнопке */
-  label?: string
+  readonly label?: string
 
   /**
    * Выбор размера элемента
    * @default 'base'
    */
-  size?: 'small' | 'base' | 'large' | 'xlarge'
+  readonly size?: 'small' | 'base' | 'large' | 'xlarge'
 
   /**
    * Показать или скрыть иконку внутри компонента
    * @default true
    */
-  showIcon?: boolean
+  readonly showIcon?: boolean
 
   /** SVG-иконка */
-  Icon?: SvgSource
+  readonly Icon?: SvgSource
 }
 
 /**
  * Дочерний элемент компонента SelectButton. Не используется отдельно от SelectButton.
  * @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=481-4393
  */
-export const SelectButtonItem = memo<SelectButtonItemProps>(
-  ({
-    index,
-    position,
-    onPress,
-    disabled,
-    label,
-    onLayout,
-    size = 'base',
-    showIcon = true,
-    Icon,
-    testID = 'SelectButtonItem_TouchableOpacity',
-  }) => {
-    const styles = useStyles()
+export const SelectButtonItem: FC<SelectButtonItemProps> = ({
+  index,
+  position,
+  onPress,
+  disabled,
+  label,
+  onLayout,
+  size = 'base',
+  showIcon = true,
+  Icon,
+  testID = 'SelectButtonItem_TouchableOpacity',
+}) => {
+  const styles = useStyles()
 
-    const iconSize = useMemo(() => {
-      switch (size) {
-        case 'small':
-          return styles.iconSmall
+  const animatedColorStyle = useAnimatedStyle(() => {
+    return {
+      color: interpolateColor(
+        position.value,
+        [index - 1, index, index + 1],
+        [
+          styles.textColor.color,
+          styles.checkedTextColor.color,
+          styles.textColor.color,
+        ]
+      ),
+    }
+  })
 
-        case 'base':
-          return styles.iconBase
+  const [isSelected, setIsSelected] = useState(false)
 
-        case 'large':
-          return styles.iconLarge
-
-        case 'xlarge':
-          return styles.iconXLarge
+  useAnimatedReaction(
+    () => position.value,
+    (value, prevValue) => {
+      if (value !== prevValue) {
+        runOnJS(setIsSelected)(value === index)
       }
-    }, [
-      size,
-      styles.iconBase,
-      styles.iconLarge,
-      styles.iconSmall,
-      styles.iconXLarge,
-    ])
+    }
+  )
 
-    const labelFontSize = useMemo(() => {
-      switch (size) {
-        case 'small':
-          return styles.labelSmall
-
-        case 'base':
-          return styles.labelBase
-
-        case 'large':
-          return styles.labelLarge
-
-        case 'xlarge':
-          return styles.labelXLarge
-      }
-    }, [
-      size,
-      styles.labelBase,
-      styles.labelLarge,
-      styles.labelSmall,
-      styles.labelXLarge,
-    ])
-
-    const animatedColorStyle = useAnimatedStyle(() => {
-      return {
-        color: interpolateColor(
-          position.value,
-          [index - 1, index, index + 1],
-          [
-            styles.textColor.color,
-            styles.checkedTextColor.color,
-            styles.textColor.color,
-          ]
-        ),
-      }
-    })
-
-    const [isSelected, setIsSelected] = useState(false)
-
-    useAnimatedReaction(
-      () => position.value,
-      (value, prevValue) => {
-        if (value !== prevValue) {
-          runOnJS(setIsSelected)(value === index)
-        }
-      }
-    )
-
-    return (
-      <TouchableOpacity
-        disabled={disabled}
+  return (
+    <TouchableOpacity
+      disabled={disabled}
+      style={[
+        styles.container,
+        styles[size],
+        disabled && styles.disabledContainer,
+      ]}
+      testID={testID}
+      onLayout={onLayout}
+      onPress={onPress}
+    >
+      {Icon && showIcon ? (
+        <SvgUniversal
+          height={styles[`icon${size}`].height}
+          source={Icon}
+          style={
+            [
+              styles.textColor,
+              isSelected && styles.checkedTextColor,
+              disabled && styles.disabledTextColor,
+            ] as ViewStyle[]
+          }
+          testID='SelectButtonItem_Icon'
+          width={styles[`icon${size}`].width}
+        />
+      ) : null}
+      <Animated.Text
+        numberOfLines={1}
         style={[
-          styles.container,
-          styles[size],
-          disabled && styles.disabledContainer,
+          styles.label,
+          styles[`label${size}`],
+          styles.textColor,
+          disabled ? styles.disabledTextColor : animatedColorStyle,
         ]}
-        testID={testID}
-        onLayout={onLayout}
-        onPress={onPress}
+        testID='SelectButtonItem_Text'
       >
-        {Icon && showIcon ? (
-          <SvgUniversal
-            height={iconSize.height}
-            source={Icon}
-            style={
-              [
-                styles.textColor,
-                isSelected && styles.checkedTextColor,
-                disabled && styles.disabledTextColor,
-              ] as ViewStyle[]
-            }
-            testID='SelectButtonItem_Icon'
-            width={iconSize.width}
-          />
-        ) : null}
-        <Animated.Text
-          numberOfLines={1}
-          style={[
-            styles.label,
-            labelFontSize,
-            styles.textColor,
-            disabled ? styles.disabledTextColor : animatedColorStyle,
-          ]}
-          testID='SelectButtonItem_Text'
-        >
-          {label}
-        </Animated.Text>
-      </TouchableOpacity>
-    )
-  }
-)
+        {label}
+      </Animated.Text>
+    </TouchableOpacity>
+  )
+}
 
 const useStyles = makeStyles(
   ({ theme, typography, border, spacing, fonts }) => ({
@@ -205,24 +159,24 @@ const useStyles = makeStyles(
       borderWidth: 1,
       borderColor: theme.Button.Disabled.disabledButtonBorderColor,
     },
-    iconSmall: {
+    iconsmall: {
       width: typography.Size['text-base'],
       height: typography.Size['text-base'],
     },
-    iconBase: {
+    iconbase: {
       width: typography.Size['text-xl'],
       height: typography.Size['text-xl'],
     },
-    iconLarge: {
+    iconlarge: {
       width: typography.Size['text-2xl'],
       height: typography.Size['text-2xl'],
     },
-    iconXLarge: { width: 28, height: 28 },
+    iconxlarge: { width: 28, height: 28 },
     label: { flexShrink: 1, fontWeight: 600, fontFamily: fonts.primary },
-    labelSmall: { fontSize: typography.Size['text-sm'] },
-    labelBase: { fontSize: typography.Size['text-base'] },
-    labelLarge: { fontSize: typography.Size['text-xl'] },
-    labelXLarge: { fontSize: typography.Size['text-2xl'] },
+    labelsmall: { fontSize: typography.Size['text-sm'] },
+    labelbase: { fontSize: typography.Size['text-base'] },
+    labellarge: { fontSize: typography.Size['text-xl'] },
+    labelxlarge: { fontSize: typography.Size['text-2xl'] },
     textColor: { color: theme.Form.SelectButton.selectButtonTextColor },
     checkedTextColor: {
       color: theme.Form.SelectButton.selectButtonIconActiveColor,

@@ -1,5 +1,5 @@
 import { IconX } from '@tabler/icons-react-native'
-import { memo } from 'react'
+import type { FC } from 'react'
 import { Text, Pressable, type PressableProps } from 'react-native'
 
 import { type SvgSource, SvgUniversal } from '../../utils/SvgUniversal'
@@ -7,21 +7,21 @@ import { makeStyles } from '../../utils/makeStyles'
 
 export interface ChipProps extends PressableProps {
   /** SVG-иконка */
-  Icon?: SvgSource
+  readonly Icon?: SvgSource
   /** Текст для отображения */
-  label: string
+  readonly label: string
   /**
    * Показывать или скрыть кнопку для скрытия компонента
    * @default true если onClose задан, иначе false
    */
-  showClose?: boolean
+  readonly showClose?: boolean
   /**
    * Показывать или скрыть иконку внутри компонента
    * @default true
    */
-  showIcon?: boolean
+  readonly showIcon?: boolean
   /** Обработчик нажатия на кнопку скрытия компонента */
-  onClose?: () => void
+  readonly onClose?: () => void
 }
 
 /**
@@ -29,62 +29,60 @@ export interface ChipProps extends PressableProps {
  * Используется для представления массива данных в виде меток
  * @see https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-5126&t=jMMaE0JO924pG1ga-4
  */
-export const Chip = memo<ChipProps>(
-  ({
-    Icon,
-    label,
-    disabled,
-    testID,
-    onClose,
-    showClose = !!onClose,
-    showIcon = true,
-    ...rest
-  }) => {
-    const styles = useStyles()
+export const Chip: FC<ChipProps> = ({
+  Icon,
+  label,
+  disabled,
+  testID = TestId.Container,
+  onClose,
+  showClose = !!onClose,
+  showIcon = true,
+  ...rest
+}) => {
+  const styles = useStyles()
 
-    return (
-      <Pressable
-        {...rest}
-        disabled={disabled}
-        style={[styles.chip, disabled && styles.disabledChip]}
-        testID={testID || TestId.Container}
+  return (
+    <Pressable
+      {...rest}
+      disabled={disabled}
+      style={[styles.chip, disabled && styles.disabledChip]}
+      testID={testID}
+    >
+      {showIcon && Icon ? (
+        <SvgUniversal
+          color={disabled ? styles.disabledIcon.color : styles.icon.color}
+          height={styles.icon.height}
+          source={Icon}
+          width={styles.icon.width}
+        />
+      ) : null}
+
+      <Text
+        numberOfLines={1}
+        style={[styles.text, disabled && styles.disabledText]}
       >
-        {showIcon && Icon ? (
-          <SvgUniversal
-            color={disabled ? styles.disabledIcon.color : styles.icon.color}
-            height={styles.icon.height}
-            source={Icon}
-            width={styles.icon.width}
-          />
-        ) : null}
+        {label}
+      </Text>
 
-        <Text
-          numberOfLines={1}
-          style={[styles.text, disabled && styles.disabledText]}
+      {showClose ? (
+        <Pressable
+          disabled={disabled}
+          testID={TestId.RemoveButton}
+          onPress={onClose}
         >
-          {label}
-        </Text>
-
-        {showClose ? (
-          <Pressable
-            disabled={disabled}
-            testID={TestId.RemoveButton}
-            onPress={onClose}
-          >
-            {({ pressed }) => (
-              <IconX
-                color={disabled ? styles.disabledIcon.color : styles.icon.color}
-                height={styles.icon.height}
-                style={pressed ? styles.pressedClose : null}
-                width={styles.icon.width}
-              />
-            )}
-          </Pressable>
-        ) : null}
-      </Pressable>
-    )
-  }
-)
+          {({ pressed }) => (
+            <IconX
+              color={disabled ? styles.disabledIcon.color : styles.icon.color}
+              height={styles.icon.height}
+              style={pressed ? styles.pressedClose : null}
+              width={styles.icon.width}
+            />
+          )}
+        </Pressable>
+      ) : null}
+    </Pressable>
+  )
+}
 
 const useStyles = makeStyles(({ theme, typography, border, fonts }) => ({
   chip: {

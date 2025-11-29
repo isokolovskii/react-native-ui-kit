@@ -1,6 +1,5 @@
 import { useArgs } from '@storybook/preview-api'
 import type { Meta, StoryObj } from '@storybook/react'
-import { useCallback } from 'react'
 
 import { Rating } from '../Rating'
 
@@ -36,16 +35,13 @@ const meta: Meta<typeof Rating> = {
   render: (args) => {
     const [, updateArgs] = useArgs()
 
-    const onChange = useCallback(
-      (rating: number) => {
-        updateArgs({ rating })
-      },
-      [updateArgs]
-    )
+    const onChange = (rating: number) => {
+      updateArgs({ rating })
+    }
 
-    const onClear = useCallback(() => {
+    const onClear = () => {
       updateArgs({ rating: 0 })
-    }, [updateArgs])
+    }
 
     return <Rating {...args} onChange={onChange} onClear={onClear} />
   },

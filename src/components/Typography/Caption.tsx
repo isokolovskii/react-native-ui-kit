@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { Text, type TextProps, View } from 'react-native'
 
 import { type SvgSource, SvgUniversal } from '../../utils/SvgUniversal'
@@ -10,13 +11,13 @@ export interface CaptionProps extends TextProps {
   readonly Icon?: SvgSource
 }
 
-export const Caption = ({
+export const Caption: FC<CaptionProps> = ({
   color = 'default',
   disabled,
   style,
   Icon,
   ...other
-}: CaptionProps) => {
+}) => {
   const styles = useStyles()
   const text = (
     <Text

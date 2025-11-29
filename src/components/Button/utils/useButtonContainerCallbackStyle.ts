@@ -1,4 +1,3 @@
-import { useCallback, useMemo } from 'react'
 import {
   type PressableStateCallbackType,
   type StyleProp,
@@ -14,8 +13,6 @@ import type {
   PressedVariantStyles,
 } from '../types'
 
-import { useTypeBasedStyle } from './useTypeBasedStyle'
-
 export const useButtonContainerCallbackStyle = <Variant extends ButtonVariant>(
   size: Required<BaseButtonProps<Variant>>['size'],
   variant: Required<BaseButtonProps<Variant>>['variant'],
@@ -29,69 +26,45 @@ export const useButtonContainerCallbackStyle = <Variant extends ButtonVariant>(
 ) => {
   const styles = useButtonContainerStyle()
 
-  const sizeBasedStyle = useTypeBasedStyle(size, styles)
-  const variantBasedStyle = useTypeBasedStyle(variant, containerVariantStyles)
-  const shapeBasedStyle = useTypeBasedStyle(shape, styles)
-  const pressedStyle = useTypeBasedStyle(variant, pressedVariantStyles)
+  const sizeBasedStyle = styles[size]
+  const variantBasedStyle = containerVariantStyles[variant]
+  const shapeBasedStyle = styles[shape]
+  const pressedStyle = pressedVariantStyles[variant]
   const iconOnlyLinkContainerStyle = useIconOnlyLinkContainerStyle()
-  const disabledStyle = useMemo(() => {
-    if (variant === 'link') {
-      return
+  const disabledStyle = variant === 'link' ? undefined : styles.disabled
+
+  return ({ pressed }: PressableStateCallbackType) => {
+    const containerStyle: Array<StyleProp<ViewStyle>> = [
+      styles.container,
+      sizeBasedStyle,
+      variantBasedStyle,
+      shapeBasedStyle,
+    ]
+
+    if (iconOnly) {
+      containerStyle.push(styles.iconOnly)
+
+      if (variant === 'link') {
+        containerStyle.push(iconOnlyLinkContainerStyle[size])
+      }
     }
 
-    return styles.disabled
-  }, [styles.disabled, variant])
+    if (disabled || loading) {
+      containerStyle.push(disabledStyle)
+    }
 
-  return useCallback(
-    ({ pressed }: PressableStateCallbackType) => {
-      const containerStyle: Array<StyleProp<ViewStyle>> = [
-        styles.container,
-        sizeBasedStyle,
-        variantBasedStyle,
-        shapeBasedStyle,
-      ]
+    if (pressed) {
+      containerStyle.push(pressedStyle)
+    }
 
-      if (iconOnly) {
-        containerStyle.push(styles.iconOnly)
+    if (typeof style === 'function') {
+      containerStyle.push(style({ pressed }))
+    } else {
+      containerStyle.push(style)
+    }
 
-        if (variant === 'link') {
-          containerStyle.push(iconOnlyLinkContainerStyle[size])
-        }
-      }
-
-      if (disabled || loading) {
-        containerStyle.push(disabledStyle)
-      }
-
-      if (pressed) {
-        containerStyle.push(pressedStyle)
-      }
-
-      if (typeof style === 'function') {
-        containerStyle.push(style({ pressed }))
-      } else {
-        containerStyle.push(style)
-      }
-
-      return StyleSheet.flatten(containerStyle)
-    },
-    [
-      disabled,
-      disabledStyle,
-      iconOnly,
-      iconOnlyLinkContainerStyle,
-      loading,
-      pressedStyle,
-      shapeBasedStyle,
-      size,
-      sizeBasedStyle,
-      style,
-      styles.container,
-      styles.iconOnly,
-      variant,
-      variantBasedStyle,
-    ]
-  )
+    return StyleSheet.flatten(containerStyle)
+  }
 }
 
 const useButtonContainerStyle = makeStyles(({ theme, border, spacing }) => ({

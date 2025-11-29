@@ -1,5 +1,5 @@
 import { IconBan } from '@tabler/icons-react-native'
-import { memo } from 'react'
+import type { FC } from 'react'
 
 import { makeStyles } from '../../utils/makeStyles'
 
@@ -21,7 +21,7 @@ export interface RatingClearProps
  * @see RatingClearProps - cвойства компонента элемента рейтинга для очистки рейтинга
  * @see RatingItemContainer - компонент контейнер для элемента
  */
-export const RatingClear = memo<RatingClearProps>(({ ...rest }) => {
+export const RatingClear: FC<RatingClearProps> = ({ ...rest }) => {
   const styles = useStyles()
 
   return (
@@ -41,7 +41,7 @@ export const RatingClear = memo<RatingClearProps>(({ ...rest }) => {
       )}
     </RatingItemContainer>
   )
-})
+}
 
 const useStyles = makeStyles(({ theme }) => ({
   icon: {

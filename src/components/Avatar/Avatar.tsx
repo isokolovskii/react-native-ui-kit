@@ -1,10 +1,9 @@
+'strict'
 import {
   type ComponentProps,
-  memo,
+  type FC,
   type ReactNode,
-  useCallback,
   useEffect,
-  useMemo,
   useState,
 } from 'react'
 import {
@@ -14,6 +13,7 @@ import {
   type ImageSourcePropType,
   type LayoutChangeEvent,
   type LayoutRectangle,
+  type StyleProp,
   Text,
   useWindowDimensions,
   View,
@@ -38,7 +38,7 @@ interface AvatarBase extends AccessibilityProps {
    */
   shape?: 'square' | 'circle'
   /** Дополнительная стилизация для контейнера компонента */
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
   testID?: string
   /** Callback функция при ошибке загрузки картинки */
   onError?: ComponentProps<typeof Image>['onError']
@@ -121,138 +121,114 @@ const ICON_MULTIPLIER = 0.43
  * @param showBadge - Показывать бейдж или нет
  * @link https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-4972&m=dev
  */
-export const Avatar = memo<AvatarProps>(
-  ({
-    type,
-    size = 'normal',
-    shape = 'circle',
-    style,
-    children,
-    source,
-    Icon,
-    badge,
-    showBadge = true,
-    testID,
-    onError,
-    iconColor,
-  }) => {
-    const styles = useStyles()
-    const window = useWindowDimensions()
-    const [badgeLayout, setBadgeLayout] = useState<LayoutRectangle>()
+export const Avatar: FC<AvatarProps> = ({
+  type,
+  size = 'normal',
+  shape = 'circle',
+  style,
+  children,
+  source,
+  Icon,
+  badge,
+  showBadge = true,
+  testID = AvatarTestId.root,
+  onError,
+  iconColor,
+}) => {
+  const styles = useStyles()
+  const window = useWindowDimensions()
+  const [badgeLayout, setBadgeLayout] = useState<LayoutRectangle>()
 
-    const calculatedSize = useMemo(() => {
-      if (typeof size === 'number') {
-        return size
-      }
+  const calculatedSize = typeof size === 'number' ? size : SizeMap[size]
 
-      return SizeMap[size]
-    }, [size])
+  const sizeStyle = { width: calculatedSize, height: calculatedSize }
 
-    const sizeStyle = useMemo(
-      () => ({ width: calculatedSize, height: calculatedSize }),
-      [calculatedSize]
-    )
-
-    const badgeContainerStyle = useMemo<ViewStyle>(
-      () => ({
-        left: badgeLayout?.width
-          ? Math.round(calculatedSize - badgeLayout.width / 2)
-          : 0,
-        width: badgeLayout?.width ? badgeLayout.width : window.width,
-        height: badgeLayout?.width ? 'auto' : 0,
-      }),
-      [badgeLayout?.width, calculatedSize, window.width]
-    )
-
-    const handleBadgeLayout = useCallback(
-      (e: LayoutChangeEvent) => setBadgeLayout(e.nativeEvent.layout),
-      []
-    )
-
-    const icon = useMemo(() => {
-      if (type !== 'icon') {
-        return null
-      }
-
-      let iconSize = styles.icon.width
-
-      if (typeof size === 'number' && size > SizeMap.xlarge) {
-        iconSize = Math.round(calculatedSize * ICON_MULTIPLIER)
-      } else if (size === 'xlarge') {
-        iconSize = styles.iconXLarge.width
-      }
-
-      return (
-        <SvgUniversal
-          color={iconColor || styles.icon.color}
-          height={iconSize}
-          source={Icon}
-          testID={AvatarTestId.icon}
-          width={iconSize}
-        />
-      )
-    }, [Icon, calculatedSize, iconColor, size, styles, type])
-
-    useEffect(() => {
-      if (badge) {
-        setBadgeLayout(undefined)
-      }
-    }, [badge])
-
-    return (
-      <View collapsable={false} testID={testID || AvatarTestId.root}>
-        <View
-          style={[
-            styles.container,
-            sizeStyle,
-            type !== 'image' && styles.backgroundFill,
-            shape === 'circle' && styles.circle,
-            style,
-          ]}
-          testID={AvatarTestId.container}
-        >
-          {type === 'label' && (
-            <Text
-              ellipsizeMode='clip'
-              numberOfLines={1}
-              style={styles.text}
-              testID={AvatarTestId.text}
-            >
-              {children}
-            </Text>
-          )}
-
-          {icon}
-
-          {type === 'image' && (
-            <Image
-              resizeMode='cover'
-              source={source}
-              style={sizeStyle}
-              testID={AvatarTestId.image}
-              onError={onError}
-            />
-          )}
-        </View>
-
-        {badge && showBadge ? (
-          <View
-            style={[styles.badgeContainer, badgeContainerStyle]}
-            testID={AvatarTestId.badgeContainer}
-          >
-            <View
-              style={styles.badgeMeasureContainer}
-              testID={AvatarTestId.badgeInnerContainer}
-              onLayout={handleBadgeLayout}
-            >
-              {badge}
-            </View>
-          </View>
-        ) : null}
-      </View>
-    )
+  const badgeContainerStyle: ViewStyle = {
+    left: badgeLayout?.width
+      ? Math.round(calculatedSize - badgeLayout.width / 2)
+      : 0,
+    width: badgeLayout?.width ? badgeLayout.width : window.width,
+    height: badgeLayout?.width ? 'auto' : 0,
   }
-)
+
+  const handleBadgeLayout = (e: LayoutChangeEvent) =>
+    setBadgeLayout(e.nativeEvent.layout)
+
+  let iconSize = styles.icon.width
+
+  if (typeof size === 'number' && size > SizeMap.xlarge) {
+    iconSize = Math.round(calculatedSize * ICON_MULTIPLIER)
+  } else if (size === 'xlarge') {
+    iconSize = styles.iconXLarge.width
+  }
+
+  useEffect(() => {
+    if (badge) {
+      setBadgeLayout(undefined)
+    }
+  }, [badge])
+
+  return (
+    <View collapsable={false} testID={testID}>
+      <View
+        style={[
+          styles.container,
+          sizeStyle,
+          type !== 'image' && styles.backgroundFill,
+          shape === 'circle' && styles.circle,
+          style,
+        ]}
+        testID={AvatarTestId.container}
+      >
+        {type === 'label' && (
+          <Text
+            ellipsizeMode='clip'
+            numberOfLines={1}
+            style={styles.text}
+            testID={AvatarTestId.text}
+          >
+            {children}
+          </Text>
+        )}
+
+        {type === 'icon' && (
+          <SvgUniversal
+            color={iconColor || styles.icon.color}
+            height={iconSize}
+            source={Icon}
+            testID={AvatarTestId.icon}
+            width={iconSize}
+          />
+        )}
+
+        {type === 'image' && (
+          <Image
+            resizeMode='cover'
+            source={source}
+            style={sizeStyle}
+            testID={AvatarTestId.image}
+            onError={onError}
+          />
+        )}
+      </View>
+
+      {badge && showBadge ? (
+        <View
+          style={[styles.badgeContainer, badgeContainerStyle]}
+          testID={AvatarTestId.badgeContainer}
+        >
+          <View
+            style={styles.badgeMeasureContainer}
+            testID={AvatarTestId.badgeInnerContainer}
+            onLayout={handleBadgeLayout}
+          >
+            {badge}
+          </View>
+        </View>
+      ) : null}
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme, border, typography, fonts }) => ({
   container: {

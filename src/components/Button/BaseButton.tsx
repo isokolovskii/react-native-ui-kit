@@ -1,8 +1,6 @@
-import { useCallback, useState } from 'react'
+import { useState } from 'react'
 
 import type { GestureResponderEvent } from 'react-native'
-
-import { genericMemo } from '../../utils/genericMemo'
 
 import type { ButtonProps, ButtonVariant, VariantStyles } from './types'
 import {
@@ -17,7 +15,7 @@ export type BaseButtonComponentProps<Variant extends ButtonVariant> = Omit<
   'variant'
 > & { readonly variant: Variant } & VariantStyles<Variant>
 
-const BaseButtonComponent = <Variant extends ButtonVariant>({
+export const BaseButton = <Variant extends ButtonVariant>({
   size = 'base',
   shape = 'square',
   loading = false,
@@ -39,21 +37,15 @@ const BaseButtonComponent = <Variant extends ButtonVariant>({
 }: BaseButtonComponentProps<Variant>) => {
   const [pressed, setPressed] = useState(false)
 
-  const onPressIn = useCallback(
-    (event: GestureResponderEvent) => {
-      onPressInProp?.(event)
-      setPressed(true)
-    },
-    [onPressInProp]
-  )
+  const onPressIn = (event: GestureResponderEvent) => {
+    onPressInProp?.(event)
+    setPressed(true)
+  }
 
-  const onPressOut = useCallback(
-    (event: GestureResponderEvent) => {
-      onPressOutProp?.(event)
-      setPressed(false)
-    },
-    [onPressOutProp]
-  )
+  const onPressOut = (event: GestureResponderEvent) => {
+    onPressOutProp?.(event)
+    setPressed(false)
+  }
 
   return (
     <ButtonContainer
@@ -114,5 +106,3 @@ const BaseButtonComponent = <Variant extends ButtonVariant>({
     </ButtonContainer>
   )
 }
-
-export const BaseButton = genericMemo(BaseButtonComponent)

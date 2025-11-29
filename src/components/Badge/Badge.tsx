@@ -1,9 +1,10 @@
-import { memo, useCallback, useState } from 'react'
+import { useState, type FC } from 'react'
 import {
   type AccessibilityProps,
   Dimensions,
   type LayoutChangeEvent,
   type LayoutRectangle,
+  type StyleProp,
   Text,
   View,
   type ViewStyle,
@@ -23,7 +24,7 @@ export interface BadgeBase
    */
   severity?: BadgeSeverity
   /** Дополнительная стилизация для контейнера компонента */
-  style?: ViewStyle
+  style?: StyleProp<ViewStyle>
 }
 
 interface BadgeText extends BadgeBase {
@@ -50,55 +51,60 @@ export type BadgeProps = BadgeText | BadgeDot
  * @param style - Дополнительная стилизация для контейнера компонента
  * @link https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=484-4871&m=dev
  */
-export const Badge = memo<BadgeProps>(
-  ({ children, dot, severity = 'basic', style, testID, ...rest }) => {
-    const styles = useStyles()
-    const [textLayout, setTextLayout] = useState<LayoutRectangle>()
+export const Badge: FC<BadgeProps> = ({
+  children,
+  dot,
+  severity = 'basic',
+  style,
+  testID,
+  ...rest
+}) => {
+  const styles = useStyles()
+  const [textLayout, setTextLayout] = useState<LayoutRectangle>()
 
-    const onTextLayout = useCallback((e: LayoutChangeEvent) => {
-      setTextLayout(e.nativeEvent.layout)
-    }, [])
+  const onTextLayout = (e: LayoutChangeEvent) => {
+    setTextLayout(e.nativeEvent.layout)
+  }
 
-    return (
-      <View style={[styles.container, style]} {...rest}>
-        {dot ? (
-          <View style={[styles.dot, styles[severity]]} testID={testID} />
-        ) : (
-          <>
-            <View
-              style={[styles.textBadgeContainer, styles[severity]]}
-              testID={testID}
+  return (
+    <View style={[styles.container, style]} {...rest}>
+      {dot ? (
+        <View style={[styles.dot, styles[severity]]} testID={testID} />
+      ) : (
+        <>
+          <View
+            style={[styles.textBadgeContainer, styles[severity]]}
+            testID={testID}
+          >
+            <Text
+              numberOfLines={1}
+              style={[styles.textBadge, { minWidth: textLayout?.width }]}
             >
+              {children}
+            </Text>
+          </View>
+
+          {/* скрытый элемент для подсчета ширины текста в 1 строку */}
+          <View
+            accessibilityElementsHidden
+            importantForAccessibility='no-hide-descendants'
+            style={styles.hiddenContainer}
+          >
+            <View collapsable={false}>
               <Text
                 numberOfLines={1}
-                style={[styles.textBadge, { minWidth: textLayout?.width }]}
+                style={styles.textBadge}
+                onLayout={onTextLayout}
               >
                 {children}
               </Text>
             </View>
-
-            {/* скрытый элемент для подсчета ширины текста в 1 строку */}
-            <View
-              accessibilityElementsHidden
-              importantForAccessibility='no-hide-descendants'
-              style={styles.hiddenContainer}
-            >
-              <View collapsable={false}>
-                <Text
-                  numberOfLines={1}
-                  style={styles.textBadge}
-                  onLayout={onTextLayout}
-                >
-                  {children}
-                </Text>
-              </View>
-            </View>
-          </>
-        )}
-      </View>
-    )
-  }
-)
+          </View>
+        </>
+      )}
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme, border, typography, fonts }) => ({
   container: { alignItems: 'flex-start' },

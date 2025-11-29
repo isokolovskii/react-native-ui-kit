@@ -853,14 +853,21 @@ exports[`Message {"closeLabel": "Close", "footer": [Object], "onClose": [Functio
       >
         <Text
           style={
-            {
-              "color": "#44e858",
-              "fontFamily": "TT Fellows",
-              "fontSize": 12.25,
-              "fontWeight": 600,
-              "includeFontPadding": false,
-              "verticalAlign": "middle",
-            }
+            [
+              {
+                "fontFamily": "TT Fellows",
+                "fontWeight": 600,
+                "includeFontPadding": false,
+                "verticalAlign": "middle",
+              },
+              {
+                "fontSize": 12.25,
+              },
+              {
+                "color": "#44e858",
+              },
+              false,
+            ]
           }
           testID="Button_Text"
         >

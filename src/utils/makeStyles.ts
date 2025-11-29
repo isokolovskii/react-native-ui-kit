@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import type { ImageStyle, TextStyle, ViewStyle } from 'react-native'
 
 import { useFonts } from '../hooks/useFonts'
@@ -16,23 +15,9 @@ export const makeStyles =
   () => {
     const fonts = useFonts()
     const theme = useTheme()
-    const themeValues = useMemo(() => {
-      switch (theme) {
-        case ThemeVariant.Light:
-          return lightTheme
+    const themeValues = theme === ThemeVariant.Dark ? darkTheme : lightTheme
 
-        case ThemeVariant.Dark:
-          return darkTheme
-
-        default:
-          return lightTheme
-      }
-    }, [theme])
-
-    return useMemo(
-      () => createStyles({ ...themeValues, fonts }) as T,
-      [fonts, themeValues]
-    )
+    return createStyles({ ...themeValues, fonts }) as T
   }
 
 type StylesItem = ViewStyle | ImageStyle | TextStyle

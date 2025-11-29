@@ -1,4 +1,4 @@
-import { Fragment, memo, useCallback, useMemo, useState } from 'react'
+import { Fragment, useState, type FC } from 'react'
 import {
   Pressable,
   type StyleProp,
@@ -35,99 +35,88 @@ export interface AnchorProps
  * Используется для ссылок и якорей
  * @see https://www.figma.com/design/2ZnL6XPKEpxAHvrlbRvnMu/Template-Tailwind-CSS--DS-?node-id=1-271
  */
-export const Anchor = memo(
-  ({
-    onPress,
-    base,
-    visited,
-    children,
-    noWrapper,
-    LeftIcon,
-    RightIcon,
-    testID,
-    style,
-    ...other
-  }: AnchorProps) => {
-    const styles = useStyles()
+export const Anchor: FC<AnchorProps> = ({
+  onPress,
+  base,
+  visited,
+  children,
+  noWrapper,
+  LeftIcon,
+  RightIcon,
+  testID = AnchorTestId.root,
+  style,
+  ...other
+}) => {
+  const styles = useStyles()
 
-    const [pressed, setPressed] = useState(false)
-    const onPressIn = useCallback(() => setPressed(true), [])
-    const onPressOut = useCallback(() => setPressed(false), [])
+  const [pressed, setPressed] = useState(false)
+  const onPressIn = () => setPressed(true)
+  const onPressOut = () => setPressed(false)
 
-    const Wrapper = noWrapper ? Fragment : View
-    const containerProps = useMemo(() => {
-      if (noWrapper) {
-        return {}
-      }
+  const Wrapper = noWrapper ? Fragment : View
+  const containerProps = noWrapper ? {} : { style: styles.container, testID }
 
-      return { style: styles.container, testID: testID || AnchorTestId.root }
-    }, [noWrapper, styles.container, testID])
+  const iconColor = visited ? styles.visited.color : styles.text.color
 
-    const iconColor = useMemo(
-      () => (visited ? styles.visited.color : styles.text.color),
-      [styles.text.color, styles.visited.color, visited]
-    )
-
-    return (
-      <Wrapper {...containerProps}>
-        {LeftIcon ? (
-          <Pressable
-            style={styles.leftIconContainer}
-            testID={AnchorTestId.leftPressable}
-            onPress={onPress}
-            onPressIn={onPressIn}
-            onPressOut={onPressOut}
-          >
-            <SvgUniversal
-              source={LeftIcon}
-              testID={AnchorTestId.leftIcon}
-              {...styles.icon}
-              {...(base ? styles.iconBase : {})}
-              color={iconColor}
-            />
-          </Pressable>
-        ) : null}
-        <Text
-          suppressHighlighting
-          style={[
-            styles.text,
-            pressed && styles.underlined,
-            base && styles.base,
-            visited && styles.visited,
-            style,
-          ]}
-          testID={AnchorTestId.text}
+  return (
+    <Wrapper {...containerProps}>
+      {LeftIcon ? (
+        <Pressable
+          style={styles.leftIconContainer}
+          testID={AnchorTestId.leftPressable}
           onPress={onPress}
           onPressIn={onPressIn}
           onPressOut={onPressOut}
-          {...other}
         >
-          {LeftIcon ? WORD_JOINER : null}
-          {children}
-          {RightIcon ? WORD_JOINER : null}
-        </Text>
+          <SvgUniversal
+            source={LeftIcon}
+            testID={AnchorTestId.leftIcon}
+            {...styles.icon}
+            {...(base ? styles.iconBase : {})}
+            color={iconColor}
+          />
+        </Pressable>
+      ) : null}
+      <Text
+        suppressHighlighting
+        style={[
+          styles.text,
+          pressed && styles.underlined,
+          base && styles.base,
+          visited && styles.visited,
+          style,
+        ]}
+        testID={AnchorTestId.text}
+        onPress={onPress}
+        onPressIn={onPressIn}
+        onPressOut={onPressOut}
+        {...other}
+      >
+        {LeftIcon ? WORD_JOINER : null}
+        {children}
+        {RightIcon ? WORD_JOINER : null}
+      </Text>
 
-        {RightIcon ? (
-          <Pressable
-            style={styles.rightIconContainer}
-            testID={AnchorTestId.rightPressable}
-            onPress={onPress}
-            onPressIn={onPressIn}
-            onPressOut={onPressOut}
-          >
-            <SvgUniversal
-              source={RightIcon}
-              {...styles.icon}
-              {...(base ? styles.iconBase : {})}
-              color={iconColor}
-              testID={AnchorTestId.rightIcon}
-            />
-          </Pressable>
-        ) : null}
-      </Wrapper>
-    )
-  }
-)
+      {RightIcon ? (
+        <Pressable
+          style={styles.rightIconContainer}
+          testID={AnchorTestId.rightPressable}
+          onPress={onPress}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
+        >
+          <SvgUniversal
+            source={RightIcon}
+            {...styles.icon}
+            {...(base ? styles.iconBase : {})}
+            color={iconColor}
+            testID={AnchorTestId.rightIcon}
+          />
+        </Pressable>
+      ) : null}
+    </Wrapper>
+  )
+}
 
 const useStyles = makeStyles(({ spacing, typography, fonts }) => ({
   container: { flexDirection: 'row', alignItems: 'center' },

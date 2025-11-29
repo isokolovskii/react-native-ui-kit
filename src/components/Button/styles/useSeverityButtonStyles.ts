@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import type { ButtonSeverityProps } from '../types'
 
 import { useDangerButtonStyles } from './useDangerButtonStyles'
@@ -15,25 +13,17 @@ export const useSeverityButtonStyles = (
   const infoButtonStyles = useInfoButtonStyles()
   const successButtonStyles = useSuccessButtonStyles()
 
-  return useMemo(() => {
-    switch (severity) {
-      case 'danger':
-        return dangerButtonStyles
+  switch (severity) {
+    case 'danger':
+      return dangerButtonStyles
 
-      case 'warning':
-        return warningButtonStyles
+    case 'warning':
+      return warningButtonStyles
 
-      case 'info':
-        return infoButtonStyles
+    case 'info':
+      return infoButtonStyles
 
-      case 'success':
-        return successButtonStyles
-    }
-  }, [
-    dangerButtonStyles,
-    infoButtonStyles,
-    severity,
-    successButtonStyles,
-    warningButtonStyles,
-  ])
+    case 'success':
+      return successButtonStyles
+  }
 }

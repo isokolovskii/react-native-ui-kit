@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react'
+import type { FC } from 'react'
 import { type AccessibilityProps, View, type ViewProps } from 'react-native'
 
 import { makeStyles } from '../../utils/makeStyles'
@@ -17,30 +17,30 @@ export interface RatingProps
    * Управление состоянием включённости компонента для нажатий пользователем
    * @default false
    */
-  disabled?: boolean
+  readonly disabled?: boolean
   /**
    * Отображение элемента с паддингами
    * @default false
    */
-  paddings?: boolean
+  readonly paddings?: boolean
   /**
    * Максимальный рейтинг(количество звёздочек)
    * @default 5
    */
-  maxRating?: number
+  readonly maxRating?: number
   /**
    * Текущий рейтинг
    */
-  rating: number
+  readonly rating: number
   /**
    * Обработчик изменения рейтинга
    * @param rating - новый рейтинг
    */
-  onChange: (rating: number) => void
+  readonly onChange: (rating: number) => void
   /**
    * Обработчик очистки рейтинга
    */
-  onClear: () => void
+  readonly onClear: () => void
 }
 
 /**
@@ -55,50 +55,45 @@ export interface RatingProps
  * @see RatingItem - элемент рейтинга с иконкой звёздочки
  * @see RatingClear - элемент рейтинга для очистки
  */
-export const Rating = memo<RatingProps>(
-  ({
-    disabled = false,
-    paddings = false,
-    maxRating = 5,
-    rating,
-    onChange,
-    onClear,
-    testID,
-    ...rest
-  }) => {
-    const styles = useStyles()
+export const Rating: FC<RatingProps> = ({
+  disabled = false,
+  paddings = false,
+  maxRating = 5,
+  rating,
+  onChange,
+  onClear,
+  testID = 'RatingClear',
+  ...rest
+}) => {
+  const styles = useStyles()
 
-    const handleItemPress = useCallback(
-      (index: number) => () => {
-        onChange(index + 1)
-      },
-      [onChange]
-    )
-
-    return (
-      <View style={styles.container}>
-        <RatingClear
-          disabled={disabled}
-          paddings={paddings}
-          testID={testID || 'RatingClear'}
-          onPress={onClear}
-          {...rest}
-        />
-        {new Array(maxRating).fill(null).map((_, index) => (
-          <RatingItem
-            checked={index < rating}
-            // Использовать индекс массива в качестве ключа - единственно возможное и правильное решение
-            // eslint-disable-next-line react/no-array-index-key
-            key={`RatingItem-${index}`}
-            paddings={paddings}
-            testID={`RatingItem-${index + 1}`}
-            onPress={handleItemPress(index)}
-          />
-        ))}
-      </View>
-    )
+  const handleItemPress = (index: number) => () => {
+    onChange(index + 1)
   }
-)
+
+  return (
+    <View style={styles.container}>
+      <RatingClear
+        disabled={disabled}
+        paddings={paddings}
+        testID={testID}
+        onPress={onClear}
+        {...rest}
+      />
+      {new Array(maxRating).fill(null).map((_, index) => (
+        <RatingItem
+          checked={index < rating}
+          // Использовать индекс массива в качестве ключа - единственно возможное и правильное решение
+          // eslint-disable-next-line react/no-array-index-key
+          key={`RatingItem-${index}`}
+          paddings={paddings}
+          testID={`RatingItem-${index + 1}`}
+          onPress={handleItemPress(index)}
+        />
+      ))}
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme }) => ({
   container: {

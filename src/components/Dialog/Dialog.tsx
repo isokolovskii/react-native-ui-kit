@@ -1,5 +1,5 @@
 import { Portal } from '@gorhom/portal'
-import React, { useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { View, StyleSheet, BackHandler, Pressable } from 'react-native'
 import Animated, {
   useSharedValue,
@@ -35,7 +35,7 @@ export const Dialog: React.FC<DialogProps> = ({
   header,
   footer,
   body,
-  testID,
+  testID = DialogTestId.root,
 }) => {
   const opacity = useSharedValue(0)
   const scale = useSharedValue(SCALE_INIT_VALUE)
@@ -101,7 +101,7 @@ export const Dialog: React.FC<DialogProps> = ({
           styles.container,
           !isVisible && styles.containerNoPointerEvents,
         ]}
-        testID={testID ?? DialogTestId.root}
+        testID={testID}
       >
         <AnimatedPressable
           style={[styles.backdrop, backdropAnimatedStyle]}

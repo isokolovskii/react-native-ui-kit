@@ -1,22 +1,19 @@
 import { ActivityIndicator } from 'react-native'
 
-import { genericMemo } from '../../../utils/genericMemo'
 import { makeStyles } from '../../../utils/makeStyles'
 import type { BaseButtonProps, ButtonVariant } from '../types'
-
-import { useTypeBasedStyle } from './useTypeBasedStyle'
 
 export type ButtonActivityIndicatorProps<Variant extends ButtonVariant> = Pick<
   Required<BaseButtonProps<Variant>>,
   'size'
 >
 
-const ButtonActivityIndicatorComponent = <Variant extends ButtonVariant>({
+export const ButtonActivityIndicator = <Variant extends ButtonVariant>({
   size,
 }: ButtonActivityIndicatorProps<Variant>) => {
   const styles = useStyles()
 
-  const sizeBasedStyle = useTypeBasedStyle(size, styles) as { height: number }
+  const sizeBasedStyle = styles[size]
 
   return (
     <ActivityIndicator
@@ -38,7 +35,3 @@ const useStyles = makeStyles(({ theme }) => ({
 
   activityIndicator: { color: theme.Button.Disabled.disabledButtonTextColor },
 }))
-
-export const ButtonActivityIndicator = genericMemo(
-  ButtonActivityIndicatorComponent
-)

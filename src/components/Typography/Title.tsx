@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { Text, type TextProps } from 'react-native'
 
 import { makeStyles } from '../../utils/makeStyles'
@@ -6,7 +7,7 @@ export interface TitleProps extends TextProps {
   readonly level: 'd1' | 'd2' | 'd3' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
-export const Title = ({ level, style, ...other }: TitleProps) => {
+export const Title: FC<TitleProps> = ({ level, style, ...other }) => {
   const styles = useStyles()
 
   return <Text style={[styles.text, styles[level], style]} {...other} />

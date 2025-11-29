@@ -2,9 +2,7 @@ import { render } from '@testing-library/react-native'
 
 import { InputText } from '../InputText'
 
-jest.mock('../InputTextBase/InputTextBase', () => ({
-  InputTextBase: 'InputTextBase',
-}))
+jest.mock('../InputTextBase', () => ({ InputTextBase: 'InputTextBase' }))
 
 describe('InputText component tests', () => {
   test('snapshot', () => {

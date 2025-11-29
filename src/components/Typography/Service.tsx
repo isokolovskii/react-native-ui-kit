@@ -5,7 +5,7 @@ import {
   IconHelpCircle,
   IconInfoCircle,
 } from '@tabler/icons-react-native'
-import { useMemo } from 'react'
+import type { FC } from 'react'
 import { Text, View, type TextProps } from 'react-native'
 
 import { type SvgSource, SvgUniversal } from '../../utils/SvgUniversal'
@@ -31,52 +31,47 @@ export interface ServiceProps extends TextProps {
   readonly Icon?: SvgSource
 }
 
+const iconMap = {
+  danger: IconCircleX,
+  warning: IconAlertTriangle,
+  success: IconCircleCheck,
+  info: IconInfoCircle,
+  help: IconHelpCircle,
+}
+
 /**
  * @see https://www.figma.com/design/2ZnL6XPKEpxAHvrlbRvnMu/Template-Tailwind-CSS-(DS)?node-id=1-284&m=dev
  */
-export const Service = ({
+export const Service: FC<ServiceProps> = ({
   variant = 'success',
   showIcon = true,
   base = true,
   Icon: IconFromProps,
   ...other
-}: ServiceProps) => {
+}) => {
   const styles = useStyles()
 
-  const { Icon, variantStyle, iconSize, textStyles, containerStyle } =
-    useMemo(() => {
-      const iconMap = {
-        danger: { Icon: IconCircleX, style: styles.danger },
-        warning: { Icon: IconAlertTriangle, style: styles.warning },
-        success: { Icon: IconCircleCheck, style: styles.success },
-        info: { Icon: IconInfoCircle, style: styles.info },
-        help: { Icon: IconHelpCircle, style: styles.help },
-      }
-
-      return {
-        Icon: IconFromProps || iconMap[variant]?.Icon || IconInfoCircle,
-        variantStyle: iconMap[variant]?.style || styles.info,
-        iconSize: base ? styles.iconBase : styles.icon,
-        textStyles: [
-          styles.textCommon,
-          base ? styles.textBase : styles.text,
-          iconMap[variant]?.style || styles.info,
-        ],
-        containerStyle: base ? styles.containerBase : styles.container,
-      }
-    }, [variant, base, styles, IconFromProps])
+  const variantStyle = styles[variant] || styles.info
+  const iconSize = base ? styles.iconBase : styles.icon
 
   return (
-    <View style={containerStyle}>
+    <View style={base ? styles.containerBase : styles.container}>
       {showIcon ? (
         <SvgUniversal
           color={variantStyle.color}
           height={iconSize.height}
-          source={Icon}
+          source={IconFromProps || iconMap[variant] || IconInfoCircle}
           width={iconSize.width}
         />
       ) : null}
-      <Text style={textStyles} {...other} />
+      <Text
+        style={[
+          styles.textCommon,
+          base ? styles.textBase : styles.text,
+          variantStyle,
+        ]}
+        {...other}
+      />
     </View>
   )
 }

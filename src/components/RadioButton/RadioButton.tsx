@@ -1,9 +1,8 @@
-import { memo, useCallback, useMemo } from 'react'
+import type { FC } from 'react'
 import {
   type AccessibilityProps,
   Pressable,
   type PressableStateCallbackType,
-  StyleSheet,
   View,
   type ViewProps,
 } from 'react-native'
@@ -15,113 +14,94 @@ export interface RadioButtonProps
   extends AccessibilityProps,
     Pick<ViewProps, 'testID'> {
   /** Обработчик нажатия на кнопку */
-  onPress: () => void
+  readonly onPress: () => void
   /**
    * true, если необходим компонент в активном состоянии
    * @default false
    */
-  checked?: boolean
+  readonly checked?: boolean
   /**
    * Управление доступностью компонента
    * @default false
    */
-  disabled?: boolean
+  readonly disabled?: boolean
   /** Выбор состояния компонента */
-  state?: 'default' | 'danger'
+  readonly state?: 'default' | 'danger'
 }
 
-export const RadioButton = memo<RadioButtonProps>(
-  ({
-    onPress,
-    checked = false,
-    disabled = false,
-    state = 'default',
-    testID = 'RadioButton_Pressable',
-    ...rest
-  }) => {
-    const styles = useStyles()
+export const RadioButton: FC<RadioButtonProps> = ({
+  onPress,
+  checked = false,
+  disabled = false,
+  state = 'default',
+  testID = 'RadioButton_Pressable',
+  ...rest
+}) => {
+  const styles = useStyles()
 
-    const centerViewBackground = useMemo(
-      () => [styles.defaultView, disabled && !checked && styles.disabledView],
-      [disabled, checked, styles.defaultView, styles.disabledView]
-    )
+  const pressableStyles = ({ pressed }: PressableStateCallbackType) => {
+    const result = [styles.container, styles.default]
 
-    const pressableStyles = useCallback(
-      ({ pressed }: PressableStateCallbackType) => {
-        const result = [styles.container, styles.default]
+    if (checked) {
+      result.push(styles.checked)
+    }
 
-        if (checked) {
-          result.push(styles.checked)
-        }
+    if (pressed) {
+      result.push(styles.pressed)
+
+      if (checked) {
+        result.push(styles.checkedPressed)
+      }
+    }
+
+    if (state === 'danger') {
+      result.push(styles.danger)
+
+      if (checked) {
+        result.push(styles.dangerChecked)
 
         if (pressed) {
-          result.push(styles.pressed)
-
-          if (checked) {
-            result.push(styles.checkedPressed)
-          }
+          result.push(styles.dangerCheckedPressed)
         }
+      }
+    }
 
-        if (state === 'danger') {
-          result.push(styles.danger)
+    if (disabled) {
+      result.push(styles.disabled)
 
-          if (checked) {
-            result.push(styles.dangerChecked)
+      if (checked) {
+        result.push(styles.disabledChecked)
+      }
+    }
 
-            if (pressed) {
-              result.push(styles.dangerCheckedPressed)
-            }
-          }
-        }
-
-        if (disabled) {
-          result.push(styles.disabled)
-
-          if (checked) {
-            result.push(styles.disabledChecked)
-          }
-        }
-
-        return StyleSheet.flatten(result)
-      },
-      [
-        checked,
-        disabled,
-        state,
-        styles.container,
-        styles.default,
-        styles.pressed,
-        styles.checked,
-        styles.checkedPressed,
-        styles.danger,
-        styles.dangerChecked,
-        styles.dangerCheckedPressed,
-        styles.disabled,
-        styles.disabledChecked,
-      ]
-    )
-
-    return (
-      <View>
-        {!disabled && state === 'danger' && (
-          <Animated.View
-            layout={LinearTransition.duration(100)}
-            style={styles.outline}
-          />
-        )}
-        <Pressable
-          disabled={disabled}
-          style={pressableStyles}
-          testID={testID}
-          onPress={onPress}
-          {...rest}
-        >
-          <View style={[styles.center, centerViewBackground]} />
-        </Pressable>
-      </View>
-    )
+    return result
   }
-)
+
+  return (
+    <View>
+      {!disabled && state === 'danger' && (
+        <Animated.View
+          layout={LinearTransition.duration(100)}
+          style={styles.outline}
+        />
+      )}
+      <Pressable
+        disabled={disabled}
+        style={pressableStyles}
+        testID={testID}
+        onPress={onPress}
+        {...rest}
+      >
+        <View
+          style={[
+            styles.center,
+            [styles.defaultView, disabled && !checked && styles.disabledView],
+          ]}
+        />
+      </Pressable>
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme }) => ({
   container: {

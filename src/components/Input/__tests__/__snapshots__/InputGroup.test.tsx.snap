@@ -26,13 +26,19 @@ exports[`InputTextBase component functionality tests left & right 1`] = `
   >
     <InputTextBase
       containerStyle={
-        {
-          "borderBottomLeftRadius": 0,
-          "borderBottomRightRadius": 0,
-          "borderTopLeftRadius": 0,
-          "borderTopRightRadius": 0,
-          "flexGrow": 1,
-        }
+        [
+          {
+            "flexGrow": 1,
+          },
+          {
+            "borderBottomLeftRadius": 0,
+            "borderTopLeftRadius": 0,
+          },
+          {
+            "borderBottomRightRadius": 0,
+            "borderTopRightRadius": 0,
+          },
+        ]
       }
       inputRef={
         {
@@ -75,11 +81,16 @@ exports[`InputTextBase component functionality tests left 1`] = `
   >
     <InputTextBase
       containerStyle={
-        {
-          "borderBottomLeftRadius": 0,
-          "borderTopLeftRadius": 0,
-          "flexGrow": 1,
-        }
+        [
+          {
+            "flexGrow": 1,
+          },
+          {
+            "borderBottomLeftRadius": 0,
+            "borderTopLeftRadius": 0,
+          },
+          false,
+        ]
       }
       inputRef={
         {
@@ -114,9 +125,13 @@ exports[`InputTextBase component functionality tests no addons, style 1`] = `
   >
     <InputTextBase
       containerStyle={
-        {
-          "flexGrow": 1,
-        }
+        [
+          {
+            "flexGrow": 1,
+          },
+          false,
+          false,
+        ]
       }
       inputRef={
         {
@@ -149,11 +164,16 @@ exports[`InputTextBase component functionality tests right 1`] = `
   >
     <InputTextBase
       containerStyle={
-        {
-          "borderBottomRightRadius": 0,
-          "borderTopRightRadius": 0,
-          "flexGrow": 1,
-        }
+        [
+          {
+            "flexGrow": 1,
+          },
+          false,
+          {
+            "borderBottomRightRadius": 0,
+            "borderTopRightRadius": 0,
+          },
+        ]
       }
       inputRef={
         {

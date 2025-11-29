@@ -47,30 +47,35 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#85888e",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#85888e"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#85888e",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#85888e",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -84,19 +89,23 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -104,10 +113,13 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -163,30 +175,35 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#85888e",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""rgba(133, 136, 142, 1)"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "rgba(133, 136, 142, 1)",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#85888e",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -200,19 +217,23 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -220,10 +241,13 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -279,30 +303,35 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#DFDFDF"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#DFDFDF",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -316,19 +345,23 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -336,10 +369,13 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -395,30 +431,35 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#DFDFDF"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#DFDFDF",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -432,19 +473,23 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -452,10 +497,13 @@ exports[`InputSwitch component tests checked - false, danger - false, disabled -
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -511,30 +559,35 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#85888e",
+          "borderColor": "#db3424",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#85888e"",
-        "borderColor": ""#db3424"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#85888e",
-          "borderColor": "#db3424",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#85888e",
+          "borderColor": "#db3424",
         },
       ]
     }
@@ -548,19 +601,23 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -568,10 +625,13 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -627,30 +687,35 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#85888e",
+          "borderColor": "#db3424",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""rgba(133, 136, 142, 1)"",
-        "borderColor": ""#db3424"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "rgba(133, 136, 142, 1)",
-          "borderColor": "#db3424",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#85888e",
+          "borderColor": "#db3424",
         },
       ]
     }
@@ -664,19 +729,23 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -684,10 +753,13 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -743,30 +815,35 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#DFDFDF"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#DFDFDF",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -780,19 +857,23 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -800,10 +881,13 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -859,30 +943,35 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#DFDFDF"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#DFDFDF",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#DFDFDF",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -896,19 +985,23 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#ffffff"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "2.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
@@ -916,10 +1009,13 @@ exports[`InputSwitch component tests checked - false, danger - true, disabled - 
             "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 2.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#ffffff",
+            "left": 2.5,
           },
         ]
       }
@@ -975,30 +1071,35 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#2b2e33"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#2b2e33",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -1012,30 +1113,37 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1091,30 +1199,35 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""rgba(43, 46, 51, 1)"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "rgba(43, 46, 51, 1)",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -1128,30 +1241,37 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1207,30 +1327,35 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#9A9A9A"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#9A9A9A",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -1244,30 +1369,37 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1323,30 +1455,35 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#9A9A9A"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#9A9A9A",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -1360,30 +1497,37 @@ exports[`InputSwitch component tests checked - true, danger - false, disabled - 
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1439,30 +1583,35 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - f
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#db3424",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#2b2e33"",
-        "borderColor": ""#db3424"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#2b2e33",
-          "borderColor": "#db3424",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#db3424",
         },
       ]
     }
@@ -1476,30 +1625,37 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - f
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1555,30 +1711,35 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - f
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#db3424",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""rgba(43, 46, 51, 1)"",
-        "borderColor": ""#db3424"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "rgba(43, 46, 51, 1)",
-          "borderColor": "#db3424",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#db3424",
         },
       ]
     }
@@ -1592,30 +1753,37 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - f
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1671,30 +1839,35 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - t
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#9A9A9A"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#9A9A9A",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -1708,30 +1881,37 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - t
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }
@@ -1787,30 +1967,35 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - t
     }
     jestAnimatedStyle={
       {
-        "value": {},
+        "value": {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
+        },
       }
     }
     jestInlineStyle={
-      {
-        "backgroundColor": ""#9A9A9A"",
-        "borderColor": ""transparent"",
-        "borderRadius": 100,
-        "borderWidth": 1,
-        "height": 21,
-        "padding": 3.5,
-        "width": 35,
-      }
-    }
-    style={
       [
         {
-          "backgroundColor": "#9A9A9A",
-          "borderColor": "transparent",
           "borderRadius": 100,
           "borderWidth": 1,
           "height": 21,
           "padding": 3.5,
           "width": 35,
+        },
+      ]
+    }
+    style={
+      [
+        {
+          "borderRadius": 100,
+          "borderWidth": 1,
+          "height": 21,
+          "padding": 3.5,
+          "width": 35,
+        },
+        {
+          "backgroundColor": "#9A9A9A",
+          "borderColor": "transparent",
         },
       ]
     }
@@ -1824,30 +2009,37 @@ exports[`InputSwitch component tests checked - true, danger - true, disabled - t
       }
       jestAnimatedStyle={
         {
-          "value": {},
+          "value": {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
+          },
         }
       }
       jestInlineStyle={
-        {
-          "backgroundColor": ""#fafafa"",
-          "borderRadius": 100,
-          "height": 14,
-          "left": "16.5",
-          "position": "absolute",
-          "top": 2.5,
-          "width": 14,
-        }
+        [
+          {
+            "backgroundColor": "#ffffff",
+            "borderRadius": 100,
+            "height": 14,
+            "position": "absolute",
+            "top": 2.5,
+            "width": 14,
+          },
+        ]
       }
       style={
         [
           {
-            "backgroundColor": "#fafafa",
+            "backgroundColor": "#ffffff",
             "borderRadius": 100,
             "height": 14,
-            "left": 16.5,
             "position": "absolute",
             "top": 2.5,
             "width": 14,
+          },
+          {
+            "backgroundColor": "#fafafa",
+            "left": 16.5,
           },
         ]
       }

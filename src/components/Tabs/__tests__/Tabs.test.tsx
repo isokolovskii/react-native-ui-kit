@@ -4,8 +4,8 @@ import { render, userEvent } from '@testing-library/react-native'
 import { Text } from 'react-native'
 
 import { Badge } from '../../Badge'
-import { TabItem, type TabItemProps, TestId } from '../TabItem/TabItem'
-import { TabPanel, type TabPanelProps } from '../TabPanel/TabPanel'
+import { TabItem, type TabItemProps, TestId } from '../TabItem'
+import { TabPanel, type TabPanelProps } from '../TabPanel'
 import { Tabs, type TabsProps } from '../Tabs'
 
 describe('TabItem component tests', () => {

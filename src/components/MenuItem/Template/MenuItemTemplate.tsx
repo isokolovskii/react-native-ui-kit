@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, type ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import {
   View,
   Pressable,
@@ -18,35 +18,35 @@ import { MenuItemIcon } from '../MenuItemIcon'
 
 export interface MenuItemTemplateProps extends ViewProps {
   /** Заголовок пункта меню */
-  title: string
+  readonly title: string
   /** Подзаголовок пункта меню */
-  caption?: string
+  readonly caption?: string
   /** SVG-иконка слева от заголовка */
-  Icon?: SvgSource
+  readonly Icon?: SvgSource
   /** Цвет иконки. Если цвет не задан - применяется такой же цвет что и для аксессуаров (prefix, suffix) */
-  iconColor?: ColorValue
+  readonly iconColor?: ColorValue
   /** Цвет бейджа (точки) в правом верхнем углу иконки. Бейдж может выводиться только при наличии иконки. */
-  badgeSeverity?: BadgeSeverity
+  readonly badgeSeverity?: BadgeSeverity
   /** Аксессуар (SVG-иконка) в самой левой части пункта меню */
-  PrefixIcon?: SvgSource
+  readonly PrefixIcon?: SvgSource
   /** Аксессуар (SVG-иконка) в самой правой части пункта меню */
-  SuffixIcon?: SvgSource
+  readonly SuffixIcon?: SvgSource
   /**
    * Дополнительный контент пункта меню, выводится справа от текста. Может быть любым react компонентом. Важно! Размеры доплолнительного контента не контролируются пунктом меню и могут его растягивать. Использовать с осторожностью.
    */
-  extra?: ReactNode
+  readonly extra?: ReactNode
   /** Неактивное состояние. В неактивном состоянии отключается чувствительность к нажатиям, компонент становится полупрозрачным, а аксессуары заменяются иконкой с замком*/
-  disabled?: boolean
+  readonly disabled?: boolean
   /** Разделитель. Выводится как полоска сверху. Изменяет общую высоту элемента меню.*/
-  separator?: boolean
+  readonly separator?: boolean
   /** Обработчик нажатия */
-  onPress?: () => void
+  readonly onPress?: () => void
   /**
    * Кастомные стили
    * Если нужно изменить отступы, не используйте `padding`.
    * Допускается использовать `paddingVertical`, `paddingHorizontal`, `paddingStart`, `paddingEnd`, `paddingLeft`, `paddingRight`, `paddingTop`, `paddingBottom`.
    */
-  style?: StyleProp<ViewStyle>
+  readonly style?: StyleProp<ViewStyle>
 }
 
 /**
@@ -54,81 +54,72 @@ export interface MenuItemTemplateProps extends ViewProps {
  *
  * @link https://www.figma.com/design/4TYeki0MDLhfPGJstbIicf/UI-kit-PrimeFace-(DS)?node-id=937-6724&m=dev
  */
-export const MenuItemTemplate = memo<MenuItemTemplateProps>(
-  ({
-    title,
-    caption,
-    Icon,
-    iconColor,
-    badgeSeverity,
-    PrefixIcon,
-    SuffixIcon,
-    extra,
-    separator,
-    testID,
-    onPress,
-    disabled,
+export const MenuItemTemplate: FC<MenuItemTemplateProps> = ({
+  title,
+  caption,
+  Icon,
+  iconColor,
+  badgeSeverity,
+  PrefixIcon,
+  SuffixIcon,
+  extra,
+  separator,
+  testID = 'menuItemButton',
+  onPress,
+  disabled,
+  style,
+  ...rest
+}) => {
+  const styles = useStyles()
+
+  const pressableStyle = ({ pressed }: PressableStateCallbackType) => [
+    styles.container,
+    pressed && styles.containerPressed,
     style,
-    ...rest
-  }) => {
-    const styles = useStyles()
+    disabled && styles.containerDisabled,
+  ]
 
-    const iconStyle = useMemo(
-      () => ({ ...styles.icon, color: iconColor || styles.icon.color }),
-      [iconColor, styles.icon]
-    )
-
-    const pressableStyle = useCallback(
-      ({ pressed }: PressableStateCallbackType) => [
-        styles.container,
-        pressed && styles.containerPressed,
-        style,
-        disabled && styles.containerDisabled,
-      ],
-      [disabled, styles, style]
-    )
-
-    return (
-      <View style={separator ? styles.separator : null}>
-        <Pressable
-          accessibilityLabel={title}
-          accessibilityRole='button'
-          accessibilityValue={{ text: caption }}
-          disabled={disabled}
-          style={pressableStyle}
-          testID={testID || 'menuItemButton'}
-          onPress={onPress}
-          {...rest}
-        >
-          <View style={styles.contentContainer}>
-            {PrefixIcon ? (
-              <MenuItemAccessory Icon={PrefixIcon} disabled={disabled} />
+  return (
+    <View style={separator ? styles.separator : null}>
+      <Pressable
+        accessibilityLabel={title}
+        accessibilityRole='button'
+        accessibilityValue={{ text: caption }}
+        disabled={disabled}
+        style={pressableStyle}
+        testID={testID}
+        onPress={onPress}
+        {...rest}
+      >
+        <View style={styles.contentContainer}>
+          {PrefixIcon ? (
+            <MenuItemAccessory Icon={PrefixIcon} disabled={disabled} />
+          ) : null}
+          <View style={styles.templateContainer}>
+            {Icon ? (
+              <MenuItemIcon
+                Icon={Icon}
+                badgeSeverity={badgeSeverity}
+                style={{
+                  ...styles.icon,
+                  color: iconColor || styles.icon.color,
+                }}
+              />
             ) : null}
-            <View style={styles.templateContainer}>
-              {Icon ? (
-                <MenuItemIcon
-                  Icon={Icon}
-                  badgeSeverity={badgeSeverity}
-                  style={iconStyle}
-                />
-              ) : null}
-              <View style={styles.textContainer}>
-                <Body base>{title}</Body>
-                {caption ? (
-                  <Caption color='secondary'>{caption}</Caption>
-                ) : null}
-              </View>
+            <View style={styles.textContainer}>
+              <Body base>{title}</Body>
+              {caption ? <Caption color='secondary'>{caption}</Caption> : null}
             </View>
-            {extra}
-            {SuffixIcon ? (
-              <MenuItemAccessory Icon={SuffixIcon} disabled={disabled} />
-            ) : null}
           </View>
-        </Pressable>
-      </View>
-    )
-  }
-)
+          {extra}
+          {SuffixIcon ? (
+            <MenuItemAccessory Icon={SuffixIcon} disabled={disabled} />
+          ) : null}
+        </View>
+      </Pressable>
+    </View>
+  )
+}
 
 const useStyles = makeStyles(({ theme, spacing, typography, border }) => ({
   container: {

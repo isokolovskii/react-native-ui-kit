@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import { useEffect, useState, type FC } from 'react'
 import { View, Text } from 'react-native'
 import Animated, {
   useSharedValue,
@@ -16,10 +16,11 @@ interface TimerFlipProps {
   readonly duration?: number
 }
 
-export const TimerFlip = memo<TimerFlipProps>(({ value, duration = 300 }) => {
+export const TimerFlip: FC<TimerFlipProps> = ({ value, duration = 300 }) => {
   const styles = useStyles()
   const [currentValue, setCurrentValue] = useState(value)
   const [nextValue, setNextValue] = useState<number | null>(value)
+
   const progress = useSharedValue(0)
 
   const currentStyle = useAnimatedStyle(() => ({
@@ -63,7 +64,7 @@ export const TimerFlip = memo<TimerFlipProps>(({ value, duration = 300 }) => {
       </Animated.View>
     </View>
   )
-})
+}
 
 const useStyles = makeStyles(({ typography, fonts }) => ({
   container: {

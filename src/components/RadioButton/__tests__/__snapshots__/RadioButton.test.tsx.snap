@@ -74,17 +74,26 @@ exports[`RadioButton snapshots checked = false, disabled = false, state = danger
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderColor": "#db3424",
-        "borderRadius": 21,
-        "borderWidth": 1,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#db3424",
+          "borderWidth": 1,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >
@@ -142,17 +151,21 @@ exports[`RadioButton snapshots checked = false, disabled = false, state = defaul
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderColor": "#cecfd2",
-        "borderRadius": 21,
-        "borderWidth": 1,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >
@@ -210,19 +223,28 @@ exports[`RadioButton snapshots checked = false, disabled = true, state = default
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#e2e2e4",
-        "borderColor": "#cecfd2",
-        "borderRadius": 21,
-        "borderWidth": 1,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "mixBlendMode": "luminosity",
-        "opacity": 0.6,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+        {
+          "backgroundColor": "#e2e2e4",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+          "mixBlendMode": "luminosity",
+          "opacity": 0.6,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >
@@ -323,17 +345,36 @@ exports[`RadioButton snapshots checked = true, disabled = false, state = danger 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#2b2e33",
-        "borderColor": "#db3424",
-        "borderRadius": 21,
-        "borderWidth": 1,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#2b2e33",
+          "borderWidth": 5,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#db3424",
+          "borderWidth": 1,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#db3424",
+          "borderWidth": 1,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >
@@ -391,17 +432,26 @@ exports[`RadioButton snapshots checked = true, disabled = false, state = default
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#2b2e33",
-        "borderColor": "#2b2e33",
-        "borderRadius": 21,
-        "borderWidth": 5,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#2b2e33",
+          "borderWidth": 5,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >
@@ -459,19 +509,38 @@ exports[`RadioButton snapshots checked = true, disabled = true, state = default 
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#2b2e33",
-        "borderColor": "#2b2e33",
-        "borderRadius": 21,
-        "borderWidth": 5,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "mixBlendMode": "luminosity",
-        "opacity": 0.6,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#2b2e33",
+          "borderWidth": 5,
+        },
+        {
+          "backgroundColor": "#e2e2e4",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+          "mixBlendMode": "luminosity",
+          "opacity": 0.6,
+        },
+        {
+          "backgroundColor": "#2b2e33",
+          "borderColor": "#2b2e33",
+          "borderWidth": 5,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >
@@ -529,17 +598,21 @@ exports[`RadioButton snapshots default 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      {
-        "alignItems": "center",
-        "backgroundColor": "#ffffff",
-        "borderColor": "#cecfd2",
-        "borderRadius": 21,
-        "borderWidth": 1,
-        "height": 21,
-        "justifyContent": "center",
-        "margin": 3.5,
-        "width": 21,
-      }
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 21,
+          "height": 21,
+          "justifyContent": "center",
+          "margin": 3.5,
+          "width": 21,
+        },
+        {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#cecfd2",
+          "borderWidth": 1,
+        },
+      ]
     }
     testID="RadioButton_Pressable"
   >

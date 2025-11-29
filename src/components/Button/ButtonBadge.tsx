@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from 'react'
+import { useState, type FC } from 'react'
 import {
   type LayoutChangeEvent,
   type LayoutRectangle,
@@ -29,31 +29,26 @@ import type { ButtonBadgeProps, ButtonBaseVariant, ButtonProps } from './types'
  * @param badgeLabel - text label inside badge
  * @see BaseButton
  */
-export const ButtonBadge = memo<
+export const ButtonBadge: FC<
   ButtonProps<ButtonBaseVariant> & ButtonBadgeProps
->(({ badgeLabel, badgeSeverity, variant = 'primary', ...props }) => {
+> = ({ badgeLabel, badgeSeverity, variant = 'primary', ...props }) => {
   const buttonStyles = useBasicButtonStyles()
   const styles = useStyles()
   const [badgeLayout, setBadgeLayout] = useState<LayoutRectangle>()
 
-  const badgeContainerStyle = useMemo<ViewStyle>(
-    () => ({
-      position: 'absolute',
-      top: badgeLayout ? -Math.round(badgeLayout.height / 2) : 0,
-      right: badgeLayout ? -Math.round(badgeLayout.width / 2) : 0,
-    }),
-    [badgeLayout]
-  )
+  const badgeContainerStyle: ViewStyle = {
+    position: 'absolute',
+    top: badgeLayout ? -Math.round(badgeLayout.height / 2) : 0,
+    right: badgeLayout ? -Math.round(badgeLayout.width / 2) : 0,
+  }
 
-  const onLayout = useCallback(
-    (e: LayoutChangeEvent) => setBadgeLayout(e.nativeEvent.layout),
-    []
-  )
+  const onLayout = (e: LayoutChangeEvent) =>
+    setBadgeLayout(e.nativeEvent.layout)
 
-  const badgeCommonProps = useMemo(
-    () => ({ severity: badgeSeverity, testID: ButtonBadgeTestId.badge }),
-    [badgeSeverity]
-  )
+  const badgeCommonProps = {
+    severity: badgeSeverity,
+    testID: ButtonBadgeTestId.badge,
+  }
 
   return (
     <View style={styles.root}>
@@ -79,7 +74,7 @@ export const ButtonBadge = memo<
       </View>
     </View>
   )
-})
+}
 
 const useStyles = makeStyles(() => ({
   root: { flexDirection: 'row' },

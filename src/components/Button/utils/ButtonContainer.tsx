@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react'
 import { Pressable } from 'react-native'
 
-import { genericMemo } from '../../../utils/genericMemo'
 import type { BaseButtonProps, ButtonVariant, VariantStyles } from '../types'
 
 import { useButtonContainerCallbackStyle } from './useButtonContainerCallbackStyle'
@@ -25,7 +24,7 @@ export type ButtonContainerComponentProps<Variant extends ButtonVariant> = Omit<
     'containerVariantStyles' | 'pressedVariantStyles'
   >
 
-export const ButtonContainerComponent = <Variant extends ButtonVariant>({
+export const ButtonContainer = <Variant extends ButtonVariant>({
   style,
   size,
   disabled,
@@ -63,5 +62,3 @@ export const ButtonContainerComponent = <Variant extends ButtonVariant>({
     </Pressable>
   )
 }
-
-export const ButtonContainer = genericMemo(ButtonContainerComponent)

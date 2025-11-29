@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import type { FC } from 'react'
 import { Text, type TextProps } from 'react-native'
 
 import { makeStyles } from '../../utils/makeStyles'
@@ -8,30 +8,33 @@ export interface SubtitleProps extends TextProps {
    * true, если необходим базовый размер текста подзаголовка
    * @default false
    */
-  base?: boolean
+  readonly base?: boolean
   /**
    * Выбор цвета подзаголовка
    * @default 'default'
    */
-  color?: 'default' | 'primary' | 'secondary'
+  readonly color?: 'default' | 'primary' | 'secondary'
 }
 
 /**
  * Используется для подзаголовков
  * @see https://www.figma.com/design/2ZnL6XPKEpxAHvrlbRvnMu/Template-Tailwind-CSS-(DS)?node-id=1-245
  */
-export const Subtitle = memo<SubtitleProps>(
-  ({ base = false, color = 'default', style, ...other }) => {
-    const styles = useStyles()
+export const Subtitle: FC<SubtitleProps> = ({
+  base = false,
+  color = 'default',
+  style,
+  ...other
+}) => {
+  const styles = useStyles()
 
-    return (
-      <Text
-        style={[styles.text, styles[color], base && styles.base, style]}
-        {...other}
-      />
-    )
-  }
-)
+  return (
+    <Text
+      style={[styles.text, styles[color], base && styles.base, style]}
+      {...other}
+    />
+  )
+}
 
 const useStyles = makeStyles(({ theme, typography, fonts }) => ({
   text: {

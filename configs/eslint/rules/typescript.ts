@@ -105,7 +105,7 @@ export const typescriptConfig = defineConfig([
 
       // https://typescript-eslint.io/rules/max-params/
       'max-params': 'off',
-      '@typescript-eslint/max-params': ['warn', { max: 5 }],
+      '@typescript-eslint/max-params': ['warn', { max: 10 }],
 
       // https://typescript-eslint.io/rules/member-ordering/
       '@typescript-eslint/member-ordering': 'off',

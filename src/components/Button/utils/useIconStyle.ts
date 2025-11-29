@@ -1,5 +1,4 @@
-import { useMemo } from 'react'
-import { type ColorValue, StyleSheet, type TextStyle } from 'react-native'
+import { type ColorValue, StyleSheet } from 'react-native'
 
 import { makeStyles } from '../../../utils/makeStyles'
 import type {
@@ -7,8 +6,6 @@ import type {
   ButtonVariant,
   IconVariantStyles,
 } from '../types'
-
-import { useTypeBasedStyle } from './useTypeBasedStyle'
 
 export const useIconStyle = <Variant extends ButtonVariant>(
   size: Required<BaseButtonProps<Variant>>['size'],
@@ -19,22 +16,11 @@ export const useIconStyle = <Variant extends ButtonVariant>(
 ) => {
   const styles = useStyles()
 
-  const sizeBasedStyle = useTypeBasedStyle(size, styles)
-  const variantBasedStyle = useTypeBasedStyle(variant, iconVariantStyles)
-
-  return useMemo(() => {
-    const containerStyle = [sizeBasedStyle, variantBasedStyle] as TextStyle[]
-
-    if (disabled || loading) {
-      containerStyle.push(styles.disabled)
-    }
-
-    return StyleSheet.flatten(containerStyle) as {
-      width: number
-      height: number
-      color: ColorValue
-    }
-  }, [disabled, loading, sizeBasedStyle, styles.disabled, variantBasedStyle])
+  return StyleSheet.flatten([
+    styles[size],
+    iconVariantStyles[variant],
+    (disabled || loading) && styles.disabled,
+  ]) as { width: number; height: number; color: ColorValue }
 }
 
 const useStyles = makeStyles(({ theme, typography }) => ({

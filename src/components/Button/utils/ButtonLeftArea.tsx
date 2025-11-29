@@ -1,4 +1,3 @@
-import { genericMemo } from '../../../utils/genericMemo'
 import type { BaseButtonProps, ButtonVariant, VariantStyles } from '../types'
 
 import { ButtonActivityIndicator } from './ButtonActivityIndicator'
@@ -14,7 +13,7 @@ export type ButtonLeftAreaComponentProps<Variant extends ButtonVariant> = Pick<
   > &
   Pick<VariantStyles<Variant>, 'iconVariantStyles'>
 
-export const ButtonLeftAreaComponent = <Variant extends ButtonVariant>({
+export const ButtonLeftArea = <Variant extends ButtonVariant>({
   size,
   iconPosition,
   variant,
@@ -37,5 +36,3 @@ export const ButtonLeftAreaComponent = <Variant extends ButtonVariant>({
 
   return null
 }
-
-export const ButtonLeftArea = genericMemo(ButtonLeftAreaComponent)

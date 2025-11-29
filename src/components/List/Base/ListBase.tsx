@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react'
+import type { FC } from 'react'
 import {
   View,
   type ViewStyle,
@@ -14,25 +14,25 @@ import { Subtitle, Body, Caption } from '../../Typography'
 /** Свойства ListBase */
 export interface ListBaseProps extends ViewProps {
   /** Положение левой иконки - вверху или по центру. Правая иконка всегда по центру. */
-  iconAlignment?: 'top' | 'center'
+  readonly iconAlignment?: 'top' | 'center'
   /** Основной текст */
-  text: string
+  readonly text: string
   /** Заголовок */
-  title?: string
+  readonly title?: string
   /** Пояснение */
-  caption?: string
+  readonly caption?: string
   /** Левая иконка (SVG) */
-  LeftIcon?: SvgSource
-  leftIconColor?: ColorValue
+  readonly LeftIcon?: SvgSource
+  readonly leftIconColor?: ColorValue
   /** Правая иконка (SVG) */
-  RightIcon?: SvgSource
-  rightIconColor?: ColorValue
+  readonly RightIcon?: SvgSource
+  readonly rightIconColor?: ColorValue
   /** Дополнительный контент. Выводится между названием и правой иконкой */
-  extra?: React.ReactNode
+  readonly extra?: React.ReactNode
   /** Разделитель - наверху только контента, не захватывая левую иконку, либо наверху всего компонента*/
-  divider?: 'content' | 'full'
-  disabled?: boolean
-  onPress?: () => void
+  readonly divider?: 'content' | 'full'
+  readonly disabled?: boolean
+  readonly onPress?: () => void
 }
 
 /**
@@ -40,101 +40,93 @@ export interface ListBaseProps extends ViewProps {
  *
  * Фигма https://www.figma.com/design/2ZnL6XPKEpxAHvrlbRvnMu/Template-Tailwind-CSS-(DS)?node-id=641-2254&m=dev
  */
-export const ListBase = memo<ListBaseProps>(
-  ({
-    iconAlignment = 'top',
-    text: title,
-    title: subtitle,
-    caption,
-    LeftIcon,
-    leftIconColor,
-    RightIcon,
-    rightIconColor,
-    extra,
-    divider,
-    disabled = false,
-    onPress,
-    style,
-    testID,
-    ...rest
-  }) => {
-    const styles = useStyles()
+export const ListBase: FC<ListBaseProps> = ({
+  iconAlignment = 'top',
+  text: title,
+  title: subtitle,
+  caption,
+  LeftIcon,
+  leftIconColor,
+  RightIcon,
+  rightIconColor,
+  extra,
+  divider,
+  disabled = false,
+  onPress,
+  style,
+  testID = 'ListBase',
+  ...rest
+}) => {
+  const styles = useStyles()
 
-    const leftIconStyle: ViewStyle = useMemo(() => {
-      return {
-        ...styles.leftIcon,
-        alignSelf: iconAlignment === 'top' ? 'flex-start' : undefined,
-      }
-    }, [styles.leftIcon, iconAlignment])
+  const leftIconStyle: ViewStyle = {
+    ...styles.leftIcon,
+    alignSelf: iconAlignment === 'top' ? 'flex-start' : undefined,
+  }
 
-    const fullDivider = divider === 'full' ? styles.divider : {}
-    const contentDivider = divider === 'content' ? styles.divider : {}
-    const accessibilityLabel = useMemo(
-      () => [subtitle, title].join(' '),
-      [subtitle, title]
-    )
+  const fullDivider = divider === 'full' ? styles.divider : {}
+  const contentDivider = divider === 'content' ? styles.divider : {}
 
-    return (
-      <Pressable
-        accessibilityLabel={accessibilityLabel}
-        accessibilityRole='button'
-        accessibilityValue={{ text: caption }}
-        disabled={disabled}
-        testID={testID || 'ListBase'}
-        onPress={onPress}
-        {...rest}
-      >
-        {({ pressed }) => (
-          <View
-            style={[
-              style,
-              styles.container,
-              fullDivider,
-              disabled && styles.disabled,
-              pressed && styles.pressed,
-            ]}
-            {...rest}
-          >
-            {LeftIcon ? (
-              <View style={leftIconStyle}>
-                <SvgUniversal
-                  source={LeftIcon}
-                  {...styles.icon}
-                  color={leftIconColor}
-                />
-              </View>
-            ) : null}
-            <View style={[styles.content, contentDivider]}>
-              <View style={styles.labelContainer}>
-                {subtitle ? (
-                  <Subtitle color='primary'>{subtitle}</Subtitle>
-                ) : null}
-                <View style={styles.titleContainer}>
-                  <Body>{title}</Body>
-                  {caption ? (
-                    <Caption color='secondary'>{caption}</Caption>
-                  ) : null}
-                </View>
-              </View>
-              <View style={styles.rightSection}>
-                {extra ? (
-                  <View style={styles.extraContainer}>{extra}</View>
-                ) : null}
-                {RightIcon ? (
-                  <SvgUniversal
-                    source={RightIcon}
-                    {...styles.icon}
-                    color={rightIconColor}
-                  />
+  return (
+    <Pressable
+      accessibilityLabel={`${subtitle ?? ''} ${title}`}
+      accessibilityRole='button'
+      accessibilityValue={{ text: caption }}
+      disabled={disabled}
+      testID={testID}
+      onPress={onPress}
+      {...rest}
+    >
+      {({ pressed }) => (
+        <View
+          style={[
+            style,
+            styles.container,
+            fullDivider,
+            disabled && styles.disabled,
+            pressed && styles.pressed,
+          ]}
+          {...rest}
+        >
+          {LeftIcon ? (
+            <View style={leftIconStyle}>
+              <SvgUniversal
+                source={LeftIcon}
+                {...styles.icon}
+                color={leftIconColor}
+              />
+            </View>
+          ) : null}
+          <View style={[styles.content, contentDivider]}>
+            <View style={styles.labelContainer}>
+              {subtitle ? (
+                <Subtitle color='primary'>{subtitle}</Subtitle>
+              ) : null}
+              <View style={styles.titleContainer}>
+                <Body>{title}</Body>
+                {caption ? (
+                  <Caption color='secondary'>{caption}</Caption>
                 ) : null}
               </View>
             </View>
+            <View style={styles.rightSection}>
+              {extra ? (
+                <View style={styles.extraContainer}>{extra}</View>
+              ) : null}
+              {RightIcon ? (
+                <SvgUniversal
+                  source={RightIcon}
+                  {...styles.icon}
+                  color={rightIconColor}
+                />
+              ) : null}
+            </View>
           </View>
-        )}
-      </Pressable>
-    )
-  }
-)
+        </View>
+      )}
+    </Pressable>
+  )
+}
 
 const useStyles = makeStyles(({ spacing, typography, theme, background }) => ({
   container: {
