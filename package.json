@@ -163,6 +163,5 @@
         "listUnknownPackages": false
       }
     }
-  },
-  "dependencies": {}
+  }
 }
