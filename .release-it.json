@@ -4,14 +4,13 @@
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
     "requireCommits": true,
-    "push": false,
     "requireBranch": "main"
   },
   "github": { "release": true },
   "npm": { "publish": true, "skipChecks": true },
   "hooks": {
     "after:bump": "yarn build",
-    "after:release": "yarn expo prebuild --no-install && git restore package.json && git add . && git commit --amend --no-edit && git push"
+    "before:git:release": "yarn expo prebuild --no-install && git restore package.json && git add ."
   },
   "plugins": {
     "@release-it/conventional-changelog": {
