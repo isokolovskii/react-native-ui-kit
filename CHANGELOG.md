@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.0...v0.2.1) (2025-12-01)
+
+### 🧹 Другое
+
+* **readme:** исправлена опечатка ([3a717ce](https://github.com/cdek-it/react-native-ui-kit/commit/3a717cea50c82baec674089365eee1a7ac11b90b))
+* **readme:** исправлены опечатки ([da15c8f](https://github.com/cdek-it/react-native-ui-kit/commit/da15c8fc228231f478d6229290a1fe028c4fc8ca))
+
 ## 0.2.0 (2025-11-28)
 
 ### 🧹 Другое
