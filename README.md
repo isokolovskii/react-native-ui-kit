@@ -6,7 +6,7 @@
 
 ```shell
 yarn add --save-exact @cdek-it/react-native-ui-kit
-yarn add react react-native @tabler/icons-react-native react-native-svg react-native-reanimateds
+yarn add react react-native @tabler/icons-react-native react-native-svg react-native-reanimated
 ```
 
 ## Шрифты
