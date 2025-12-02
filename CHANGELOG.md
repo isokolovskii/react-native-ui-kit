@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.4](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.3...v0.2.4) (2025-12-02)
+
+### 🐛 Исправления багов
+
+* **InputTextBase:** убран лишний отступ ([d2eca69](https://github.com/cdek-it/react-native-ui-kit/commit/d2eca6910ae9b9dd8dcbfcf46a4ad57ad5f5b3cd))
+
 ## [0.2.3](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.2...v0.2.3) (2025-12-01)
 
 ## [0.2.2](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.1...v0.2.2) (2025-12-01)
