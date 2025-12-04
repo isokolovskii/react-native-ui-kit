@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.5](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.4...v0.2.5) (2025-12-04)
+
+### 🐛 Исправления багов
+
+* **InputTextBase:** исправлено поведение плейсхолдеров при увеличенных шрифтах ([317a771](https://github.com/cdek-it/react-native-ui-kit/commit/317a771866892ae300a1a14ca4e0e3acdb9d5be2))
+
 ## [0.2.4](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.3...v0.2.4) (2025-12-02)
 
 ### 🐛 Исправления багов
