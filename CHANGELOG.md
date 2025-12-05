@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.7](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.6...v0.2.7) (2025-12-05)
+
+### 🐛 Исправления багов
+
+* **InputTextBase:** поправлена верстка для корректной работы контекстного меню ([d010089](https://github.com/cdek-it/react-native-ui-kit/commit/d010089a2bff9db3847c6635b62f731be8b27ed6))
+
+### 🧹 Другое
+
+* добавлены правила внесения изменений ([9fdbabb](https://github.com/cdek-it/react-native-ui-kit/commit/9fdbabb6837a779ce4bcff72d485b45bdefcdcb3))
+
 ## [0.2.6](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.5...v0.2.6) (2025-12-05)
 
 ### 🐛 Исправления багов
