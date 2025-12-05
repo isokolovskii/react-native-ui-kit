@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.6](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.5...v0.2.6) (2025-12-05)
+
+### 🐛 Исправления багов
+
+* **InputTextBase:** исправлена верстка для корректного поведения поля при длительном нажатии ([f533b62](https://github.com/cdek-it/react-native-ui-kit/commit/f533b6250eec6deaece60c1837aa2926e9d65bb9))
+
 ## [0.2.5](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.4...v0.2.5) (2025-12-04)
 
 ### 🐛 Исправления багов
