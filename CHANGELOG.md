@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.8](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.7...v0.2.8) (2025-12-06)
+
+### 🐛 Исправления багов
+
+* **InputTextBase:** исправлен баг при императивной очистке поля ([1f4d63d](https://github.com/cdek-it/react-native-ui-kit/commit/1f4d63d7f2c35325b5b31edc66ddbae091289259))
+* **InputTextBase:** увеличена область нажатия для кнопок справа ([065ad18](https://github.com/cdek-it/react-native-ui-kit/commit/065ad18da7fc5a15829566b2ce46a1c6d8177458))
+
 ## [0.2.7](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.6...v0.2.7) (2025-12-05)
 
 ### 🐛 Исправления багов
