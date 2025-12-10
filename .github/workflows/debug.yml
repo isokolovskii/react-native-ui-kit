@@ -13,4 +13,7 @@ jobs:
     steps:
       - name: Debug
         run: |
-          gh api "orgs/cdek-it/teams/react-native-release/memberships/$GITHUB_ACTOR"
+          if ! gh api "orgs/cdek-it/teams/react-native-release/memberships/$GITHUB_ACTOR" --silent 2>/dev/null; then
+            echo "❌ Этот workflow может быть запущен только участниками команды release"
+            exit 1
+          fi
