@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.9...v0.3.0) (2025-12-15)
+
+### 🚀 Новый функционал
+
+* **skeleton:** единая анимация для всех скелетонов ([1c13454](https://github.com/cdek-it/react-native-ui-kit/commit/1c13454715ed025b8fa2a029acc1887d5ead6b5c))
+
 ## [0.2.9](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.8...v0.2.9) (2025-12-06)
 
 ### 🐛 Исправления багов
