@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/cdek-it/react-native-ui-kit/compare/v0.4.0...v0.4.1) (2025-12-15)
+
+### 🐛 Исправления багов
+
+* **input:** добавлен проброс ref к полю ввода одноразового кода ([bc753c5](https://github.com/cdek-it/react-native-ui-kit/commit/bc753c5e431fdc319039417d483cae363abfc150))
+* **input:** добавлены события onFocus и onBlur в поле ввода одноразового кода ([48b9d70](https://github.com/cdek-it/react-native-ui-kit/commit/48b9d70b8977c31510aff5ac53db9cfe2092b2fe))
+* **input:** исправление логики работы поля ввода одноразового кода ([27dfab4](https://github.com/cdek-it/react-native-ui-kit/commit/27dfab45ba5644cdf897f09eab7e4e0dac7b0f23))
+
 ## [0.4.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.0...v0.4.0) (2025-12-15)
 
 ### 🚀 Новый функционал
