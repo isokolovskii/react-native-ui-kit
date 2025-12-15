@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.0...v0.4.0) (2025-12-15)
+
+### 🚀 Новый функционал
+
+* **input:** добавлено поле ввода для одноразового кода ([f281369](https://github.com/cdek-it/react-native-ui-kit/commit/f281369b0f708a3049ba76eed971253d22171029))
+
 ## [0.3.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.9...v0.3.0) (2025-12-15)
 
 ### 🚀 Новый функционал
