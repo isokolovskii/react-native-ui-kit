@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2](https://github.com/cdek-it/react-native-ui-kit/compare/v0.4.1...v0.4.2) (2025-12-15)
+
+### 🐛 Исправления багов
+
+* **input:** исправление отображения disabled состояния и проброс editable в пропсах ([002659c](https://github.com/cdek-it/react-native-ui-kit/commit/002659cb4d2fffcc55712732945949f111b961e1))
+
 ## [0.4.1](https://github.com/cdek-it/react-native-ui-kit/compare/v0.4.0...v0.4.1) (2025-12-15)
 
 ### 🐛 Исправления багов
