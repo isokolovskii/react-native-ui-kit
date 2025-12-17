@@ -9,6 +9,7 @@ import {
   reactConfig,
   reactNativeConfig,
   prettierConfig,
+  refinedConfig,
 } from './rules'
 
 export const MobileConfig = defineConfig([
@@ -20,6 +21,7 @@ export const MobileConfig = defineConfig([
   ...importConfig,
   ...reactConfig,
   ...reactNativeConfig,
+  ...refinedConfig,
   globalIgnores([
     'dist/',
     '.yarn/',

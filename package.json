@@ -85,6 +85,7 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.0.1",
     "eslint-plugin-react-native": "5.0.0",
+    "eslint-plugin-refined": "0.0.5",
     "eslint-plugin-testing-library": "7.13.4",
     "expo": "53.0.24",
     "expo-application": "6.1.5",

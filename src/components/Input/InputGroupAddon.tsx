@@ -53,6 +53,8 @@ export const InputGroupAddon = memo<InputGroupAddonProps>(
 
 const useStyles = makeStyles(({ theme, typography, fonts }) => ({
   container: {
+    height: 5,
+    width: 5,
     paddingVertical: theme.Form.InputText.inputPaddingTopBottom,
     paddingHorizontal: theme.Form.InputText.inputPaddingLeftRight,
     justifyContent: 'center',

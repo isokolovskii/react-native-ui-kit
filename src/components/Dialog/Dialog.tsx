@@ -17,6 +17,7 @@ const BACKDROP_OPACITY = 0.5
 const SCALE_DAMPING = 5
 const SCALE_STIFFNESS = 50
 const SCALE_INIT_VALUE = 0.9
+const SCALE_MASS = 1
 
 export interface DialogProps extends DialogComponentProps {
   readonly isVisible: boolean
@@ -51,6 +52,7 @@ export const Dialog: React.FC<DialogProps> = ({
       scale.value = withSpring(1, {
         damping: SCALE_DAMPING,
         stiffness: SCALE_STIFFNESS,
+        mass: SCALE_MASS,
       })
     } else {
       opacity.value = withTiming(0, { duration: ANIMATION_DURATION })
