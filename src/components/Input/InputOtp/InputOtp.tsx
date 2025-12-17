@@ -90,7 +90,7 @@ export const InputOtp = memo<InputOtpProps>(
     )
 
     const renderArray = useMemo(
-      () => Array.from({ length }).fill(null),
+      () => Array.from({ length }, (_, i) => `Otp-Item-${i}`),
       [length]
     )
 
@@ -105,13 +105,12 @@ export const InputOtp = memo<InputOtpProps>(
         {({ pressed }) => (
           <>
             <View style={styles.content}>
-              {renderArray.map((_, index) => (
+              {renderArray.map((key, index) => (
                 <InputOtpItem
                   disabled={disabled}
                   error={error}
                   focused={isFocused ? index === activeIndex : false}
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={index}
+                  key={key}
                   pressed={pressed}
                   testID={`${testID}Item`}
                   value={value[index]}
