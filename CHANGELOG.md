@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.4.2...v0.5.0) (2025-12-17)
+
+### 🚀 Новый функционал
+
+* **InputTextBase:** добавлена возможность выбора размера инпута ([1c453d8](https://github.com/cdek-it/react-native-ui-kit/commit/1c453d82e1d0f7235368959ba88beb5fbbc68d5a))
+* **theme:** добавлена коллекция ModelSize ([3a6ec6c](https://github.com/cdek-it/react-native-ui-kit/commit/3a6ec6cf0be77c6602e54deacb06b838c06b2a31))
+
 ## [0.4.2](https://github.com/cdek-it/react-native-ui-kit/compare/v0.4.1...v0.4.2) (2025-12-15)
 
 ### 🐛 Исправления багов
